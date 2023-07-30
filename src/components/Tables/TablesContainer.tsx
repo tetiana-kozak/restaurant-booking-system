@@ -8,12 +8,12 @@ const TablesContainer = (props: Props) => {
     <div className="tables-container">
       {tablesArray.map((table) => (
         <div
-          className="table"
+          className={'table ' + (table.isBooked ? 'booked' : 'free')}
           key={table.id}
           id={table.id.toString()}
           style={{ left: table.positionX, top: table.positionY }}
         >
-          <span className="table-id">{table.id}</span>
+          <span className="table-id ">{table.id}</span>
         </div>
       ))}
     </div>

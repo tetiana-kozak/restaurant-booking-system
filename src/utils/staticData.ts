@@ -5,14 +5,14 @@ export const tablesArray: TableType[] = [
     id: 1,
     positionX: '100px',
     positionY: '50px',
-    isBooked: false,
+    isBooked: true,
     maxPeople: 2,
   },
   {
     id: 2,
     positionX: '200px',
     positionY: '50px',
-    isBooked: false,
+    isBooked: true,
     maxPeople: 4,
   },
   {
