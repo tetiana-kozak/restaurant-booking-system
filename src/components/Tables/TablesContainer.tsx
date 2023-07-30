@@ -1,12 +1,9 @@
 import { tablesArray } from 'utils/staticData'
 import './Tables.scss'
 import { useState } from 'react'
+import { selectedTableType } from 'types/TablesEntity'
 
 type Props = {}
-
-type selectedTableType = {
-  id?: number
-}
 
 const TablesContainer = (props: Props) => {
   const [selectedTable, setSelectedTable] = useState<selectedTableType>({})

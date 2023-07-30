@@ -5,3 +5,7 @@ export type TableType = {
   isBooked: boolean
   maxPeople: number
 }
+
+export type selectedTableType = {
+  id?: number
+}
