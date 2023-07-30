@@ -1,4 +1,6 @@
-export const tablesArray = [
+import { TableType } from 'types/TablesEntity'
+
+export const tablesArray: TableType[] = [
   {
     id: 1,
     positionX: '100px',
