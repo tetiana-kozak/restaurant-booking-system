@@ -58,3 +58,25 @@ export const tablesArray: TableType[] = [
     maxPeople: 10,
   },
 ]
+
+// {
+// 1:
+//     {
+//
+//     positionX: '100px',
+//     positionY: '50px',
+//     isBooked: true,
+//     maxPeople: 2,
+//   },
+// 2:
+//   {
+//     id: 2,
+//     positionX: '200px',
+//     positionY: '50px',
+//     isBooked: true,
+//     maxPeople: 4,
+//   },
+// }
+
+// tablesArray[4]
+// tables[data.id]

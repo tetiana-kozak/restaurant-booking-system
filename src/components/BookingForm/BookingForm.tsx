@@ -6,6 +6,7 @@ import { bookedTable } from 'components/Tables/tablesReducer'
 type Props = {}
 const BookingForm = (props: Props) => {
   const dispatch = useAppDispatch()
+
   return (
     <>
       <div className="title">BookingForm</div>
