@@ -1,12 +1,16 @@
-import { tablesArray } from 'utils/staticData'
 import './Tables.scss'
-import { useState } from 'react'
-import { selectedTableType } from 'types/TablesEntity'
+import { useAppDispatch, useAppSelector } from 'redux/hooks'
+import { updateSelectedTableId } from './tablesReducer'
 
 type Props = {}
 
 const TablesContainer = (props: Props) => {
-  const [selectedTable, setSelectedTable] = useState<selectedTableType>({})
+  const tablesArray = useAppSelector((state) => state.fetchedTables.tablesArray)
+  const selectedTableId = useAppSelector(
+    (state) => state.fetchedTables.selectedTableId
+  )
+
+  const dispatch = useAppDispatch()
 
   return (
     <div className="tables-container">
@@ -15,12 +19,16 @@ const TablesContainer = (props: Props) => {
           className={
             'table' +
             (table.isBooked ? ' booked' : ' free') +
-            (table.id === selectedTable.id ? ' selected' : '')
+            (table.id === selectedTableId ? ' selected' : '')
           }
           key={table.id}
           id={table.id.toString()}
           style={{ left: table.positionX, top: table.positionY }}
-          onClick={() => setSelectedTable({ id: table.id })}
+          onClick={() => {
+            if (!table.isBooked) {
+              dispatch(updateSelectedTableId(table.id))
+            }
+          }}
         >
           <span className="table-id ">{table.id}</span>
         </div>

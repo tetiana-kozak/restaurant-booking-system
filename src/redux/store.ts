@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
+import tablesReducer from 'components/Tables/tablesReducer'
 
 export const store = configureStore({
   reducer: {
-    // favoriteArticles: favoritesReducer,
+    fetchedTables: tablesReducer,
   },
 })
 

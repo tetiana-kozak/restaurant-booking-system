@@ -6,6 +6,9 @@ export type TableType = {
   maxPeople: number
 }
 
-export type selectedTableType = {
-  id?: number
+export type selectedTableIdType = null | number
+
+export type initialTableReducerType = {
+  tablesArray: TableType[]
+  selectedTableId: selectedTableIdType
 }
