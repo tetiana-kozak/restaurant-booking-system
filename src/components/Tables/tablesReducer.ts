@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { initialTableReducerType } from 'types/tablesEntity'
+import { TableType, initialTableReducerType } from 'types/tablesEntity'
 import { tablesArray } from 'utils/staticData'
 
 const initialState: initialTableReducerType = {
@@ -31,7 +31,7 @@ export const tablesSlice = createSlice({
       }
       //
 
-      state.tablesArray.map((table) =>
+      state.tablesArray.map((table: TableType) =>
         table.id === preperedData.id ? findedTable : table
       )
     },
