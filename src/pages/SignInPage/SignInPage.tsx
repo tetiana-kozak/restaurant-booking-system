@@ -17,10 +17,16 @@ const SignInPage = (props: Props) => {
   let navigate = useNavigate()
 
   const signIn = async (values: UserData) => {
+    const params = {
+      user: {
+        ...values,
+      },
+    }
     await axios
       .post(
         'https://table-flow-fca566db5b85.herokuapp.com/api/v1/users/login',
-        values
+
+        params
       )
       .then((response) => {
         console.log('response login ', response)
