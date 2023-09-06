@@ -1,7 +1,7 @@
 import './Tables.scss'
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
 import { updateSelectedTableId } from './tablesReducer'
-import { TableType } from 'types2/tablesEntity'
+import { TableType } from 'types/tablesEntity'
 
 type Props = {}
 

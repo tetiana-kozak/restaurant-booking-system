@@ -7,7 +7,7 @@ import TextInput from 'components/Inputs/TextInput/TextInput'
 import PasswordInput from 'components/Inputs/PasswordInput/PasswordInput'
 import RegisterButton from 'components/Buttons/RegisterButton/RegisterButton'
 import { configureAxios } from 'utils/axios/configureAxios'
-import { UserSignInData } from 'types2/usersEntity'
+import { UserSignInData } from 'types/usersEntity'
 
 type Props = {}
 
