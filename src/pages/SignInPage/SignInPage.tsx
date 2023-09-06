@@ -1,24 +1,20 @@
 import { Form, Formik } from 'formik'
 import './SignInPage.scss'
-import { SignInSchema } from 'validationSchemas/validationSchemas'
+import { SignInSchema } from 'utils/validationSchemas/validationSchemas'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 import TextInput from 'components/Inputs/TextInput/TextInput'
 import PasswordInput from 'components/Inputs/PasswordInput/PasswordInput'
 import RegisterButton from 'components/Buttons/RegisterButton/RegisterButton'
 import { configureAxios } from 'utils/axios/configureAxios'
+import { UserSignInData } from 'types/usersEntity'
 
 type Props = {}
-
-type UserData = {
-  email: string
-  password: string
-}
 
 const SignInPage = (props: Props) => {
   let navigate = useNavigate()
 
-  const signIn = async (values: UserData) => {
+  const signIn = async (values: UserSignInData) => {
     const params = {
       user: {
         ...values,
