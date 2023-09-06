@@ -1,4 +1,4 @@
-import { TableType } from 'types/TablesEntity'
+import { TableType } from 'types/tablesEntity'
 
 export const tablesArray: TableType[] = [
   {

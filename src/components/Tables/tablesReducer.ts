@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { initialTableReducerType } from 'types/TablesEntity'
+import { initialTableReducerType } from 'types/tablesEntity'
 import { tablesArray } from 'utils/staticData'
 
 const initialState: initialTableReducerType = {
