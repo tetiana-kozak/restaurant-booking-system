@@ -5,6 +5,8 @@ import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 import TextInput from 'components/Inputs/TextInput/TextInput'
 import PasswordInput from 'components/Inputs/PasswordInput/PasswordInput'
+import RegisterButton from 'components/Buttons/RegisterButton/RegisterButton'
+import { configureAxios } from 'utils/axios/configureAxios'
 
 type Props = {}
 
@@ -22,12 +24,8 @@ const SignInPage = (props: Props) => {
         ...values,
       },
     }
-    await axios
-      .post(
-        'https://table-flow-fca566db5b85.herokuapp.com/api/v1/users/login',
-
-        params
-      )
+    await configureAxios
+      .post('/users/login', params)
       .then((response) => {
         console.log('response login ', response)
         if (response.data.user.token) {
@@ -69,9 +67,7 @@ const SignInPage = (props: Props) => {
               placeholder={'***************'}
             />
 
-            <button type="submit" className="button">
-              Sign In
-            </button>
+            <RegisterButton>Sign In</RegisterButton>
           </Form>
         </Formik>
         <p className="account-message">
