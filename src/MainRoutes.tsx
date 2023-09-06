@@ -19,7 +19,8 @@ const MainRoutes = (props: Props) => {
           path="main"
           element={
             <ProtectedRoute>
-              <UserReservePage />
+              {/* <UserReservePage /> */}
+              <div>Main</div>
             </ProtectedRoute>
           }
         />
