@@ -30,8 +30,11 @@ const SignInPage = (props: Props) => {
       )
       .then((response) => {
         console.log('response login ', response)
-        if (response.data.token) {
-          localStorage.setItem('token', JSON.stringify(response.data.token))
+        if (response.data.user.token) {
+          localStorage.setItem(
+            'token',
+            JSON.stringify(response.data.user.token)
+          )
           navigate('/main')
         }
       })
