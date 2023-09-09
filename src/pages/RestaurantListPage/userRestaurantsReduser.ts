@@ -2,8 +2,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import {
   initialStateRestaurantsListType,
   restaurantType,
-  restaurantsType,
-} from 'types/usersEntity'
+} from 'types/restaurantsEntity'
+
 import { configureAxios } from 'utils/axios/configureAxios'
 
 const initialState: initialStateRestaurantsListType = {
@@ -15,7 +15,6 @@ export const getUserRestaurantsList = createAsyncThunk<restaurantType[]>(
   async () => {
     try {
       const response = await configureAxios.get('/restaurants')
-      console.log('response', response.data.restaurants)
       const restaurants: restaurantType[] = response.data.restaurants
       return restaurants
     } catch (error) {
@@ -31,9 +30,7 @@ export const userRestaurantsListSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder.addCase(getUserRestaurantsList.fulfilled, (state, action) => {
-      console.log('action.payload', action.payload)
       state.userRestaurantsList = action.payload
-      // return state
     })
   },
 })

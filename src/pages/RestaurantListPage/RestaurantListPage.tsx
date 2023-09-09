@@ -14,8 +14,6 @@ const RestaurantListPage = (props: Props) => {
     (state) => state.userRestaurants.userRestaurantsList
   )
 
-  console.log('userRestaurantsList', userRestaurantsList)
-
   return (
     <>
       <div className="user-restaurants-list">
