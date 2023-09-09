@@ -4,6 +4,7 @@ import SignInPage from 'pages/SignInPage/SignInPage'
 import SignUpPage from 'pages/SignUpPage/SignUpPage'
 import ProtectedRoute from 'components/ProtectedRoute/ProtectedRoute'
 import UserReservePage from 'pages/UserReservePage/UserReservePage'
+import RestaurantListPage from 'pages/RestaurantListPage/RestaurantListPage'
 
 type Props = {}
 
@@ -20,7 +21,7 @@ const MainRoutes = (props: Props) => {
           element={
             <ProtectedRoute>
               {/* <UserReservePage /> */}
-              <div>Main</div>
+              <RestaurantListPage />
             </ProtectedRoute>
           }
         />
