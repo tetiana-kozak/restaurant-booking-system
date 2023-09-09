@@ -31,3 +31,14 @@ export const SignInSchema = Yup.object().shape({
     .min(3, 'Password must have at least 3 characters!')
     .required('This field is required!'),
 })
+
+export const createRestaurantSchema = Yup.object().shape({
+  title: Yup.string()
+    .min(3, 'Restaurant name must have at least 3 characters!')
+    .required('This field is required!'),
+  description: Yup.string().min(
+    3,
+    'Description must have at least 3 characters!'
+  ),
+  location: Yup.string().min(3, 'Location must have at least 3 characters!'),
+})

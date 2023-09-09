@@ -19,3 +19,13 @@ export type restaurantType = {
     image: string
   }
 }
+
+export type createRestaurantType = {
+  restaurant: createRestaurantValuesType
+}
+
+export type createRestaurantValuesType = {
+  title: string
+  description: string
+  location: string
+}
