@@ -14,6 +14,7 @@ const SignUpPage = (props: Props) => {
   let navigate = useNavigate()
 
   const signUp = async (values: UserSignUpData) => {
+    console.log('sign up')
     const params = {
       user: {
         ...values,
