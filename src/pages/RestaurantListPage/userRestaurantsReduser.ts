@@ -42,6 +42,27 @@ export const createRestaurant = createAsyncThunk<
   }
 })
 
+export const deleteRestaurant = createAsyncThunk<number, number>(
+  'deleteRestaurant',
+  async (value) => {
+    const params = {
+      data: {
+        restaurant: {
+          id: value,
+        },
+      },
+    }
+
+    try {
+      await configureAxios.delete('/restaurant', params)
+      return value
+    } catch (error) {
+      console.log('error', error)
+      throw error
+    }
+  }
+)
+
 export const userRestaurantsListSlice = createSlice({
   name: 'restaurantsList',
   initialState,
@@ -53,6 +74,11 @@ export const userRestaurantsListSlice = createSlice({
       })
       .addCase(createRestaurant.fulfilled, (state, action) => {
         state.userRestaurantsList.push(action.payload)
+      })
+      .addCase(deleteRestaurant.fulfilled, (state, action) => {
+        state.userRestaurantsList = state.userRestaurantsList.filter(
+          (item) => item.id !== action.payload
+        )
       })
   },
 })

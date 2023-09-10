@@ -1,14 +1,21 @@
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
 import {
   createRestaurant,
+  deleteRestaurant,
   getUserRestaurantsList,
 } from './userRestaurantsReduser'
 import { useEffect } from 'react'
 import TextInput from 'components/Inputs/TextInput/TextInput'
 import { Form, Formik } from 'formik'
 import { createRestaurantSchema } from 'utils/validationSchemas/validationSchemas'
-import { createRestaurantValuesType } from 'types/restaurantsEntity'
+import {
+  createRestaurantValuesType,
+  restaurantType,
+} from 'types/restaurantsEntity'
 import RegisterButton from 'components/Buttons/RegisterButton/RegisterButton'
+import DeleteIcon from '@mui/icons-material/Delete'
+import { IconButton } from '@mui/material'
+import './RestaurantListPage.scss'
 
 type Props = {}
 const RestaurantListPage = (props: Props) => {
@@ -18,7 +25,7 @@ const RestaurantListPage = (props: Props) => {
     dispatch(getUserRestaurantsList())
   }, [dispatch])
 
-  const userRestaurantsList = useAppSelector(
+  const userRestaurantsList: restaurantType[] = useAppSelector(
     (state) => state.userRestaurants.userRestaurantsList
   )
 
@@ -26,9 +33,18 @@ const RestaurantListPage = (props: Props) => {
     <>
       <div className="user-restaurants-list">
         <h1>User restaurants list</h1>
-        <ul>
+        <ul className="list">
           {userRestaurantsList.map((restaurant) => (
-            <li key={restaurant.id}>{restaurant.title}</li>
+            <div key={restaurant.id} className="list-container">
+              <li>{restaurant.title}</li>
+
+              <IconButton
+                aria-label="delete"
+                onClick={() => dispatch(deleteRestaurant(restaurant.id))}
+              >
+                <DeleteIcon />
+              </IconButton>
+            </div>
           ))}
         </ul>
 
