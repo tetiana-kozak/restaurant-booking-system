@@ -25,7 +25,7 @@ const SignUpPage = (props: Props) => {
       .then((response) => {
         console.log('response', response)
         localStorage.setItem('token', JSON.stringify(response.data.token))
-        navigate('/main')
+        navigate('/admin-panel')
       })
       .catch((error) => console.log('error', error))
   }

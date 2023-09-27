@@ -17,7 +17,7 @@ const MainRoutes = (props: Props) => {
         <Route path="sign-in" element={<SignInPage />} />
 
         <Route
-          path="main"
+          path="admin-panel"
           element={
             <ProtectedRoute>
               {/* <UserReservePage /> */}

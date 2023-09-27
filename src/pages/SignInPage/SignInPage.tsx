@@ -29,7 +29,7 @@ const SignInPage = (props: Props) => {
             'token',
             JSON.stringify(response.data.user.token)
           )
-          navigate('/main')
+          navigate('/admin-panel')
         }
       })
       .catch((error) => console.log('error', error))
