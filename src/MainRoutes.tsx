@@ -5,6 +5,11 @@ import SignUpPage from 'pages/SignUpPage/SignUpPage'
 import ProtectedRoute from 'components/ProtectedRoute/ProtectedRoute'
 import UserReservePage from 'pages/UserReservePage/UserReservePage'
 import RestaurantListPage from 'pages/RestaurantListPage/RestaurantListPage'
+import AdminPanel from 'container/Sections/AdminPanel/AdminPanel'
+import RestaurantEditorPage from 'pages/RestaurantEditorPage/RestaurantEditorPage'
+import RestaurantBookingPage from 'pages/RestaurantBookingPage/RestaurantBookingPage'
+import RestaurantCalendarPage from 'pages/RestaurantCalendarPage/RestaurantCalendarPage'
+import AdminPanelPage from 'pages/AdminPanelPage/AdminPanelPage'
 
 type Props = {}
 
@@ -20,11 +25,21 @@ const MainRoutes = (props: Props) => {
           path="admin-panel"
           element={
             <ProtectedRoute>
-              {/* <UserReservePage /> */}
-              <RestaurantListPage />
+              <AdminPanel />
             </ProtectedRoute>
           }
-        />
+        >
+          <Route index element={<AdminPanelPage />} />
+          <Route path="restaurant-editor" element={<RestaurantEditorPage />} />
+          <Route
+            path="restaurant-booking"
+            element={<RestaurantBookingPage />}
+          />
+          <Route
+            path="restaurant-calendar"
+            element={<RestaurantCalendarPage />}
+          />
+        </Route>
       </Route>
     </Routes>
   )
