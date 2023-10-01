@@ -7,7 +7,7 @@ type Props = {}
 const AdminPanel = (props: Props) => {
   return (
     <Grid container spacing={4} className="bg">
-      <Grid item xs>
+      <Grid item xs={2}>
         <Sidebar />
       </Grid>
       <Grid item xs={10}>
