@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
-  box-sizing: border-box;
+  @apply text-text-color box-border;
 }
 
 h1 {
@@ -13,4 +13,10 @@ h1 {
 
 h2 {
   margin-top: 50px;
+}
+
+@layer components {
+  .button {
+    @apply flex justify-center items-center rounded-lg px-30 py-13;
+  }
 }

@@ -11,11 +11,30 @@ module.exports = {
       error: '#CE2020',
       'text-color': '#292929',
       white: '#FFFFFF',
+      backdrop: 'rgba(202, 196, 208, 0.5)',
     },
     fontFamily: {
       sans: ['Roboto', 'sans-serif'],
     },
-    extend: {},
+    fontSize: {
+      large: '22px',
+    },
+    borderRadius: {
+      none: '0',
+      sm: '5px',
+      lg: '24px',
+    },
+    extend: {
+      spacing: {
+        5: '5px',
+        8: '8px',
+        13: '13px',
+        30: '30px',
+        40: '40px',
+        552: '552px',
+        600: '600px',
+      },
+    },
   },
   plugins: [],
 }

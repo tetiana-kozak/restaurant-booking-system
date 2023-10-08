@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .modal-container {
+    @apply bg-white absolute top-2/4 left-1/2 translate-y-[-50%] translate-x-[-50%] p-40 w-600  rounded-lg;
+  }
+  .modal-content {
+    @apply flex flex-col gap-y-30;
+    .modal-header {
+      @apply flex justify-between items-center;
+    }
+  }
+
+  .modal-actions {
+    @apply flex justify-center items-center gap-x-8;
+  }
+}
+
+.MuiModal-backdrop {
+  @apply bg-backdrop;
+}

@@ -6,14 +6,17 @@ import { store } from './redux/store'
 import './reset.css'
 import './index.css'
 import App from './container/App/App'
+import { StyledEngineProvider } from '@mui/material/styles'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <StyledEngineProvider injectFirst>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </StyledEngineProvider>
     </Provider>
   </React.StrictMode>
 )
