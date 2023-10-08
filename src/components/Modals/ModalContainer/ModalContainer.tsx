@@ -3,21 +3,18 @@ import './ModalContainer.scss'
 type Props = {
   children: React.ReactNode
   handleClose: (isOpen: boolean) => void
+  title: string
 }
 
-const ModalContainer = ({ children, handleClose }: Props) => {
+const ModalContainer = ({ children, handleClose, title }: Props) => {
   return (
     <div className="modal-container">
       <div className="modal-content">
         <div className="modal-header">
-          <h5 className="text-large font-medium">Додати заклад</h5>
+          <h5 className="text-large font-medium">{title}</h5>
           <button onClick={() => handleClose(false)}>X</button>
         </div>
         <div className="modal-body">{children}</div>
-        <div className="modal-actions">
-          <button className="button">Скасувати</button>
-          <button className="button bg-button-primary">Зберегти</button>
-        </div>
       </div>
     </div>
   )

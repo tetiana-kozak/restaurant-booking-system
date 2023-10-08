@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
 import { restaurantType } from 'types/restaurantsEntity'
 import './AllRestaurantsTable.scss'
+import RestaurantInfoForm from 'components/Modals/RestaurantInfoForm/RestaurantInfoForm'
 
 type Props = {}
 
@@ -77,7 +78,9 @@ const AllRestaurantsTable = (props: Props) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <ModalContainer handleClose={handleClose}>sdssds</ModalContainer>
+        <ModalContainer handleClose={handleClose} title={'Додати  заклад'}>
+          <RestaurantInfoForm handleClose={handleClose} />
+        </ModalContainer>
       </Modal>
     </>
   )
