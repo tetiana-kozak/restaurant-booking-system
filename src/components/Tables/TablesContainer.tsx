@@ -1,6 +1,7 @@
 import './Tables.scss'
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
 import { updateSelectedTableId } from './tablesReducer'
+import { TableType } from 'types/tablesEntity'
 
 type Props = {}
 
@@ -14,7 +15,7 @@ const TablesContainer = (props: Props) => {
 
   return (
     <div className="tables-container">
-      {tablesArray.map((table) => (
+      {tablesArray.map((table: TableType) => (
         <div
           className={
             'table' +

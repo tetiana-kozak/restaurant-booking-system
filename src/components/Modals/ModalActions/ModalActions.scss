@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .modal-actions {
+    @apply flex justify-center items-center gap-x-8 mt-30;
+  }
+}

@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply text-text-color box-border;
+}
+
+h1 {
+  font-size: 20px;
+  margin: 20px 0;
+}
+
+h2 {
+  margin-top: 50px;
+}
+
+@layer components {
+  .button {
+    @apply flex justify-center items-center rounded-lg px-30 py-13;
+  }
+}
