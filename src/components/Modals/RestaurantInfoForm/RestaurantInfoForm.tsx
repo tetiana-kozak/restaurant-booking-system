@@ -34,36 +34,35 @@ const RestaurantInfoForm = ({ handleClose }: Props) => {
           <TextInput
             name={'title'}
             id={'restaurant-name-input'}
-            label={'Restaurant name'}
-            placeholder={'Enter your restaurant name'}
+            label={'Назва закладу'}
+            placeholder={'Введіть назву закладу'}
           />
 
           <SelectInput
             name={'city'}
-            id={'restaurant-location-input'}
-            label={'Restaurant city'}
-            placeholder={'Choose a city'}
+            id={'restaurant-city-input'}
+            label={'Місто'}
           />
 
           <TextInput
             name={'location'}
             id={'restaurant-location-input'}
-            label={'Restaurant location'}
-            placeholder={'Enter your restaurant location'}
+            label={'Адреса закладу'}
+            placeholder={'Введіть адресу закладу'}
           />
 
           <TextInput
             name={'type'}
             id={'restaurant-type-input'}
-            label={'Restaurant type'}
-            placeholder={'Enter your restaurant type'}
+            label={'Тип закладу'}
+            placeholder={'Введіть тип закладу'}
           />
 
           <TextareaInput
             name={'description'}
             id={'restaurant-description-input'}
-            label={'Restaurant description'}
-            placeholder={'Enter your restaurant description'}
+            label={'Короткий опис'}
+            placeholder={'Введіть короткий опис закладу'}
           />
 
           <ModalActions handleClose={handleClose} />

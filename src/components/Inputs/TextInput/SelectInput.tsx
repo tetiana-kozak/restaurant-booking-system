@@ -5,14 +5,13 @@ type Props = {
   label: string
   id: string
   name: string
-  placeholder: string
 }
 
 const cities = [
-  { label: 'Kyiv' },
-  { label: 'Lviv' },
-  { label: 'Odessa' },
-  { label: 'Kharkiv' },
+  { label: 'Київ' },
+  { label: 'Львів' },
+  { label: 'Одеса' },
+  { label: 'Харків' },
 ]
 
 const SelectInput = ({ ...props }: Props) => {
