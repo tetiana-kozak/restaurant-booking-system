@@ -1,4 +1,3 @@
-import RegisterButton from 'components/Buttons/RegisterButton/RegisterButton'
 import TextInput from 'components/Inputs/TextInput/TextInput'
 import { Form, Formik } from 'formik'
 import { createRestaurant } from 'pages/RestaurantListPage/userRestaurantsReduser'
@@ -6,10 +5,13 @@ import { useAppDispatch } from 'redux/hooks'
 import { createRestaurantValuesType } from 'types/restaurantsEntity'
 import { createRestaurantSchema } from 'utils/validationSchemas/validationSchemas'
 import ModalActions from '../ModalActions/ModalActions'
+import TextareaInput from 'components/Inputs/TextInput/TextareaInput'
+import SelectInput from 'components/Inputs/TextInput/SelectInput'
 
 type Props = {
   handleClose: (isModalOpen: boolean) => void
 }
+
 const RestaurantInfoForm = ({ handleClose }: Props) => {
   const dispatch = useAppDispatch()
   return (
@@ -36,11 +38,11 @@ const RestaurantInfoForm = ({ handleClose }: Props) => {
             placeholder={'Enter your restaurant name'}
           />
 
-          <TextInput
-            name={'description'}
-            id={'restaurant-description-input'}
-            label={'Restaurant description'}
-            placeholder={'Enter your restaurant description'}
+          <SelectInput
+            name={'city'}
+            id={'restaurant-location-input'}
+            label={'Restaurant city'}
+            placeholder={'Choose a city'}
           />
 
           <TextInput
@@ -48,6 +50,20 @@ const RestaurantInfoForm = ({ handleClose }: Props) => {
             id={'restaurant-location-input'}
             label={'Restaurant location'}
             placeholder={'Enter your restaurant location'}
+          />
+
+          <TextInput
+            name={'type'}
+            id={'restaurant-type-input'}
+            label={'Restaurant type'}
+            placeholder={'Enter your restaurant type'}
+          />
+
+          <TextareaInput
+            name={'description'}
+            id={'restaurant-description-input'}
+            label={'Restaurant description'}
+            placeholder={'Enter your restaurant description'}
           />
 
           <ModalActions handleClose={handleClose} />

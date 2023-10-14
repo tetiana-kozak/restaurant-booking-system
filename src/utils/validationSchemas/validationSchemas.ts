@@ -36,9 +36,8 @@ export const createRestaurantSchema = Yup.object().shape({
   title: Yup.string()
     .min(3, 'Restaurant name must have at least 3 characters!')
     .required('This field is required!'),
-  description: Yup.string().min(
-    3,
-    'Description must have at least 3 characters!'
-  ),
-  location: Yup.string().min(3, 'Location must have at least 3 characters!'),
+  description: Yup.string(),
+  location: Yup.string(),
+  city: Yup.string().required('This field should not be empty!'),
+  type: Yup.string(),
 })
