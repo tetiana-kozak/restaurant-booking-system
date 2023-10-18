@@ -1,6 +1,6 @@
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
-import { IconButton, Modal } from '@mui/material'
+import { IconButton } from '@mui/material'
 import ModalContainer from 'components/Modals/ModalContainer/ModalContainer'
 import {
   deleteRestaurant,
@@ -10,7 +10,6 @@ import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
 import { restaurantType } from 'types/restaurantsEntity'
 import './AllRestaurantsTable.scss'
-import RestaurantInfoForm from 'components/Modals/RestaurantInfoForm/RestaurantInfoForm'
 
 type Props = {}
 
@@ -72,14 +71,11 @@ const AllRestaurantsTable = (props: Props) => {
         ))}
       </ul>
 
-      <Modal open={openEditModal} onClose={handleEditModalClose}>
-        <ModalContainer
-          handleClose={handleEditModalClose}
-          title={'Редагувати  заклад'}
-        >
-          <RestaurantInfoForm handleClose={handleEditModalClose} />
-        </ModalContainer>
-      </Modal>
+      <ModalContainer
+        handleClose={handleEditModalClose}
+        openModal={openEditModal}
+        title={'Редагувати заклад'}
+      />
     </>
   )
 }

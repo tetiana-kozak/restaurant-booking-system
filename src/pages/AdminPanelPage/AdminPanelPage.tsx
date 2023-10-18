@@ -1,7 +1,5 @@
-import { Modal } from '@mui/material'
 import AllRestaurantsTable from 'components/AllRestaurantsTable/AllRestaurantsTable'
 import ModalContainer from 'components/Modals/ModalContainer/ModalContainer'
-import RestaurantInfoForm from 'components/Modals/RestaurantInfoForm/RestaurantInfoForm'
 import PageTitleSection from 'components/Titles/PageTitleSection'
 import { useState } from 'react'
 
@@ -26,11 +24,11 @@ const AdminPanelPage = (props: Props) => {
         </div>
       </div>
 
-      <Modal open={openModal} onClose={handleClose}>
-        <ModalContainer handleClose={handleClose} title={'Додати  заклад'}>
-          <RestaurantInfoForm handleClose={handleClose} />
-        </ModalContainer>
-      </Modal>
+      <ModalContainer
+        handleClose={handleClose}
+        openModal={openModal}
+        title={'Додати заклад'}
+      />
     </>
   )
 }
