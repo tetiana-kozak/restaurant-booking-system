@@ -1,12 +1,7 @@
-import { Container } from '@mui/material'
 import MainRoutes from '../../MainRoutes'
 
 type Props = {}
 const App = (props: Props) => {
-  return (
-    // <Container>
-    <MainRoutes />
-    // </Container>
-  )
+  return <MainRoutes />
 }
 export default App
