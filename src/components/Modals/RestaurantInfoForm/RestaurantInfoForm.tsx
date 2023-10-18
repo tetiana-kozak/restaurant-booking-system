@@ -9,7 +9,7 @@ import TextareaInput from 'components/Inputs/TextInput/TextareaInput'
 import SelectInput from 'components/Inputs/TextInput/SelectInput'
 
 type Props = {
-  handleClose: (isModalOpen: boolean) => void
+  handleClose: () => void
 }
 
 const RestaurantInfoForm = ({ handleClose }: Props) => {
@@ -27,6 +27,7 @@ const RestaurantInfoForm = ({ handleClose }: Props) => {
         validationSchema={createRestaurantSchema}
         onSubmit={(values: createRestaurantValuesType, actions) => {
           dispatch(createRestaurant(values))
+          handleClose()
           actions.resetForm()
         }}
       >

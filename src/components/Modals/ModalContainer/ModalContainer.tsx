@@ -2,7 +2,7 @@ import './ModalContainer.scss'
 
 type Props = {
   children: React.ReactNode
-  handleClose: (isOpen: boolean) => void
+  handleClose: () => void
   title: string
 }
 
@@ -12,7 +12,7 @@ const ModalContainer = ({ children, handleClose, title }: Props) => {
       <div className="modal-content">
         <div className="modal-header">
           <h5 className="text-large font-medium">{title}</h5>
-          <button onClick={() => handleClose(false)}>X</button>
+          <button onClick={() => handleClose()}>X</button>
         </div>
         <div className="modal-body">{children}</div>
       </div>

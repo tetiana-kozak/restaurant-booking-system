@@ -13,7 +13,12 @@ const TextInput = ({ ...props }: Props) => {
   const [field, meta] = useField(props)
   return (
     <FormControl variant="standard" margin="normal" fullWidth>
-      <TextField {...field} {...props} variant="standard" />
+      <TextField
+        {...field}
+        {...props}
+        variant="standard"
+        // defaultValue="Default Value"
+      />
       {meta.touched && meta.error ? (
         <FormHelperText className="error">{meta.error}</FormHelperText>
       ) : null}

@@ -1,13 +1,13 @@
 import './ModalActions.scss'
 
 type Props = {
-  handleClose: (isModalOpen: boolean) => void
+  handleClose: () => void
 }
 
 const ModalActions = ({ handleClose }: Props) => {
   return (
     <div className="modal-actions">
-      <button className="button" onClick={() => handleClose(false)}>
+      <button className="button" onClick={() => handleClose()}>
         Скасувати
       </button>
       <button type="submit" className="button bg-button-primary">

@@ -31,9 +31,9 @@ const AllRestaurantsTable = (props: Props) => {
 
   const [selectedRestaurantId, setSelectedRestaurantId] = useState(1)
 
-  const [openModal, setOpenModal] = useState(true)
-  const handleOpen = () => setOpenModal(true)
-  const handleClose = () => setOpenModal(false)
+  const [openEditModal, setOpenEditModal] = useState(false)
+  const handleEditModalOpen = () => setOpenEditModal(true)
+  const handleEditModalClose = () => setOpenEditModal(false)
 
   return (
     <>
@@ -54,7 +54,7 @@ const AllRestaurantsTable = (props: Props) => {
             <div>
               <IconButton
                 onClick={() => {
-                  setOpenModal(true)
+                  handleEditModalOpen()
                   setSelectedRestaurantId(restaurant.id)
                 }}
               >
@@ -72,14 +72,12 @@ const AllRestaurantsTable = (props: Props) => {
         ))}
       </ul>
 
-      <Modal
-        open={openModal}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <ModalContainer handleClose={handleClose} title={'Додати  заклад'}>
-          <RestaurantInfoForm handleClose={handleClose} />
+      <Modal open={openEditModal} onClose={handleEditModalClose}>
+        <ModalContainer
+          handleClose={handleEditModalClose}
+          title={'Редагувати  заклад'}
+        >
+          <RestaurantInfoForm handleClose={handleEditModalClose} />
         </ModalContainer>
       </Modal>
     </>
