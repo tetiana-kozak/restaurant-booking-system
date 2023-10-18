@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import tablesReducer from 'components/Tables/tablesReducer'
-import userRestaurantsReduser from 'pages/RestaurantListPage/userRestaurantsReduser'
+import userRestaurantsReduser from 'pages/AdminPanelPage/userRestaurantsReduser'
 
 export const store = configureStore({
   reducer: {

@@ -1,6 +1,6 @@
 import TextInput from 'components/Inputs/TextInput/TextInput'
 import { Form, Formik } from 'formik'
-import { createRestaurant } from 'pages/RestaurantListPage/userRestaurantsReduser'
+import { createRestaurant } from 'pages/AdminPanelPage/userRestaurantsReduser'
 import { useAppDispatch } from 'redux/hooks'
 import { createRestaurantValuesType } from 'types/restaurantsEntity'
 import { createRestaurantSchema } from 'utils/validationSchemas/validationSchemas'

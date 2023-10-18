@@ -5,7 +5,7 @@ import ModalContainer from 'components/Modals/ModalContainer/ModalContainer'
 import {
   deleteRestaurant,
   getUserRestaurantsList,
-} from 'pages/RestaurantListPage/userRestaurantsReduser'
+} from 'pages/AdminPanelPage/userRestaurantsReduser'
 import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
 import { restaurantType } from 'types/restaurantsEntity'
