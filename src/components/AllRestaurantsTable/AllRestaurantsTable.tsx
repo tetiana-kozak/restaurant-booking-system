@@ -47,6 +47,9 @@ const AllRestaurantsTable = ({
                 <span>Description:</span> {restaurant.description}
               </div>
               <div>
+                <span>City:</span> {restaurant.city}
+              </div>
+              <div>
                 <span>Location:</span> {restaurant.location}
               </div>
             </li>

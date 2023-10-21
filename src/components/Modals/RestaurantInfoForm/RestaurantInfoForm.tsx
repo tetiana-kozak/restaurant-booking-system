@@ -33,7 +33,7 @@ const RestaurantInfoForm = ({
       <Formik
         initialValues={{
           title: selectedRestaurant?.title || '',
-          city: selectedRestaurant?.location || '',
+          city: selectedRestaurant?.city || '',
           type: selectedRestaurant?.type || '',
           description: selectedRestaurant?.description || '',
           location: selectedRestaurant?.location || '',
