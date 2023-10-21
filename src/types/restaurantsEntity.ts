@@ -12,6 +12,8 @@ export type restaurantType = {
   title: string
   description: string
   location: string
+  city: string
+  type: string
   user: {
     id: number
     email: string
@@ -28,4 +30,15 @@ export type createRestaurantValuesType = {
   title: string
   description: string
   location: string
+}
+
+export type editRestaurantType = {
+  restaurant: editRestaurantValuesType
+}
+
+export type editRestaurantValuesType = {
+  title: string
+  description: string
+  location: string
+  id: number
 }

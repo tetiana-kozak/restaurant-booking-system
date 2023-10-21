@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import {
   createRestaurantValuesType,
+  editRestaurantValuesType,
   initialStateRestaurantsListType,
   restaurantType,
 } from 'types/restaurantsEntity'
@@ -65,8 +66,8 @@ export const deleteRestaurant = createAsyncThunk<number, number>(
 
 export const editRestaurant = createAsyncThunk<
   restaurantType,
-  createRestaurantValuesType
->('editRestaurant', async (values, id) => {
+  editRestaurantValuesType
+>('editRestaurant', async (values) => {
   const params = {
     restaurant: values,
   }

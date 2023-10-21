@@ -14,7 +14,6 @@ const SignUpPage = (props: Props) => {
   let navigate = useNavigate()
 
   const signUp = async (values: UserSignUpData) => {
-    console.log('sign up')
     const params = {
       user: {
         ...values,
@@ -23,7 +22,6 @@ const SignUpPage = (props: Props) => {
     await configureAxios
       .post('/users', params)
       .then((response) => {
-        console.log('response', response)
         localStorage.setItem('token', JSON.stringify(response.data.token))
         navigate('/admin-panel')
       })
@@ -41,7 +39,6 @@ const SignUpPage = (props: Props) => {
           }}
           validationSchema={SignUpSchema}
           onSubmit={(values, actions) => {
-            console.log('values => ', values)
             signUp(values)
           }}
         >

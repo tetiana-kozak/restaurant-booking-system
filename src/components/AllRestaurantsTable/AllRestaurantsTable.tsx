@@ -11,9 +11,15 @@ import { useAppDispatch, useAppSelector } from 'redux/hooks'
 import { restaurantType } from 'types/restaurantsEntity'
 import './AllRestaurantsTable.scss'
 
-type Props = {}
+type Props = {
+  setSelectedRestaurant: (restaurant: restaurantType) => void
+  selectedRestaurant: restaurantType | undefined
+}
 
-const AllRestaurantsTable = (props: Props) => {
+const AllRestaurantsTable = ({
+  setSelectedRestaurant,
+  selectedRestaurant,
+}: Props) => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -21,14 +27,8 @@ const AllRestaurantsTable = (props: Props) => {
   }, [dispatch])
 
   const userRestaurantsList: restaurantType[] = useAppSelector((state) => {
-    console.log(
-      'state.userRestaurants.userRestaurantsList',
-      state.userRestaurants.userRestaurantsList
-    )
     return state.userRestaurants.userRestaurantsList
   })
-
-  const [selectedRestaurantId, setSelectedRestaurantId] = useState(1)
 
   const [openEditModal, setOpenEditModal] = useState(false)
   const handleEditModalOpen = () => setOpenEditModal(true)
@@ -54,7 +54,7 @@ const AllRestaurantsTable = (props: Props) => {
               <IconButton
                 onClick={() => {
                   handleEditModalOpen()
-                  setSelectedRestaurantId(restaurant.id)
+                  setSelectedRestaurant(restaurant)
                 }}
               >
                 <EditIcon />
@@ -75,6 +75,8 @@ const AllRestaurantsTable = (props: Props) => {
         handleClose={handleEditModalClose}
         openModal={openEditModal}
         title={'Редагувати заклад'}
+        selectedRestaurant={selectedRestaurant}
+        onSubmitAction={'edit'}
       />
     </>
   )

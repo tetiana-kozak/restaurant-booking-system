@@ -1,7 +1,6 @@
 import { Form, Formik } from 'formik'
 import './SignInPage.scss'
 import { SignInSchema } from 'utils/validationSchemas/validationSchemas'
-import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 import TextInput from 'components/Inputs/TextInput/TextInput'
 import PasswordInput from 'components/Inputs/PasswordInput/PasswordInput'
@@ -23,7 +22,6 @@ const SignInPage = (props: Props) => {
     await configureAxios
       .post('/users/login', params)
       .then((response) => {
-        console.log('response login ', response)
         if (response.data.user.token) {
           localStorage.setItem(
             'token',
@@ -44,7 +42,6 @@ const SignInPage = (props: Props) => {
           }}
           validationSchema={SignInSchema}
           onSubmit={(values) => {
-            console.log(values)
             signIn(values)
           }}
         >

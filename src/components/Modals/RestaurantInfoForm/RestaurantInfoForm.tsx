@@ -1,8 +1,15 @@
 import TextInput from 'components/Inputs/TextInput/TextInput'
 import { Form, Formik } from 'formik'
-import { createRestaurant } from 'pages/AdminPanelPage/userRestaurantsReduser'
+import {
+  createRestaurant,
+  editRestaurant,
+} from 'pages/AdminPanelPage/userRestaurantsReduser'
 import { useAppDispatch } from 'redux/hooks'
-import { createRestaurantValuesType } from 'types/restaurantsEntity'
+import {
+  createRestaurantValuesType,
+  editRestaurantValuesType,
+  restaurantType,
+} from 'types/restaurantsEntity'
 import { createRestaurantSchema } from 'utils/validationSchemas/validationSchemas'
 import ModalActions from '../ModalActions/ModalActions'
 import TextareaInput from 'components/Inputs/TextInput/TextareaInput'
@@ -10,25 +17,37 @@ import SelectInput from 'components/Inputs/TextInput/SelectInput'
 
 type Props = {
   handleClose: () => void
+  selectedRestaurant: restaurantType | undefined
+  onSubmitAction: string
 }
 
-const RestaurantInfoForm = ({ handleClose }: Props) => {
+const RestaurantInfoForm = ({
+  handleClose,
+  selectedRestaurant,
+  onSubmitAction,
+}: Props) => {
   const dispatch = useAppDispatch()
+
   return (
     <>
       <Formik
         initialValues={{
-          title: '',
-          city: '',
-          type: '',
-          description: '',
-          location: '',
+          title: selectedRestaurant?.title || '',
+          city: selectedRestaurant?.location || '',
+          type: selectedRestaurant?.type || '',
+          description: selectedRestaurant?.description || '',
+          location: selectedRestaurant?.location || '',
         }}
         validationSchema={createRestaurantSchema}
-        onSubmit={(values: createRestaurantValuesType, actions) => {
-          dispatch(createRestaurant(values))
+        onSubmit={(
+          values: createRestaurantValuesType | editRestaurantValuesType
+        ) => {
+          if (onSubmitAction === 'add') {
+            dispatch(createRestaurant(values))
+          } else if (onSubmitAction === 'edit' && selectedRestaurant) {
+            dispatch(editRestaurant({ ...values, id: selectedRestaurant.id }))
+          }
           handleClose()
-          actions.resetForm()
         }}
       >
         <Form>

@@ -2,12 +2,28 @@ import AllRestaurantsTable from 'components/AllRestaurantsTable/AllRestaurantsTa
 import ModalContainer from 'components/Modals/ModalContainer/ModalContainer'
 import PageTitleSection from 'components/Titles/PageTitleSection'
 import { useState } from 'react'
+import { restaurantType } from 'types/restaurantsEntity'
 
 type Props = {}
 const AdminPanelPage = (props: Props) => {
   const [openModal, setOpenModal] = useState(false)
   const handleOpen = () => setOpenModal(true)
   const handleClose = () => setOpenModal(false)
+
+  const [selectedRestaurant, setSelectedRestaurant] = useState<restaurantType>({
+    id: 0,
+    title: '',
+    description: '',
+    location: '',
+    city: '',
+    type: '',
+    user: {
+      id: 0,
+      email: '',
+      bio: '',
+      image: '',
+    },
+  })
 
   return (
     <>
@@ -20,7 +36,10 @@ const AdminPanelPage = (props: Props) => {
               +
             </button>
           </div>
-          <AllRestaurantsTable />
+          <AllRestaurantsTable
+            setSelectedRestaurant={setSelectedRestaurant}
+            selectedRestaurant={selectedRestaurant}
+          />
         </div>
       </div>
 
@@ -28,6 +47,7 @@ const AdminPanelPage = (props: Props) => {
         handleClose={handleClose}
         openModal={openModal}
         title={'Додати заклад'}
+        onSubmitAction={'add'}
       />
     </>
   )
