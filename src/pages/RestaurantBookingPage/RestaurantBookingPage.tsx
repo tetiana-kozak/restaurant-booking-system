@@ -1,5 +1,12 @@
+import SharedBlockReservations from "components/SharedBlockReservations/SharedBlockReservations";
+
 type Props = {}
 const RestaurantBookingPage = (props: Props) => {
-  return <div>RestaurantBookingPage</div>
-}
-export default RestaurantBookingPage
+  return (
+    <div>
+      <SharedBlockReservations />
+    </div>
+  )
+};
+
+export default RestaurantBookingPage;
