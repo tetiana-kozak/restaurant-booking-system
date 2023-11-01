@@ -18,7 +18,15 @@ const SelectInput = ({ ...props }: Props) => {
   const [field, meta] = useField(props)
   return (
     <FormControl variant="standard" margin="normal" fullWidth>
-      <TextField {...props} {...field} select variant="standard">
+      <TextField
+        {...props}
+        {...field}
+        select
+        variant="standard"
+        InputLabelProps={{
+          shrink: true,
+        }}
+      >
         {cities.map((city) => (
           <MenuItem key={city.label} value={city.label}>
             {city.label}

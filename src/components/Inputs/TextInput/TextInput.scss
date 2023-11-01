@@ -3,5 +3,13 @@
 @tailwind utilities;
 
 .MuiFormControl-root {
-  @apply my-4;
+  @apply my-0 bg-input-bg rounded-t-sm;
+}
+
+.MuiInputLabel-root {
+  @apply text-text-color text-normal leading-6;
+}
+
+.MuiTextField-root {
+  @apply mt-10;
 }

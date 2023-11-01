@@ -12,7 +12,16 @@ const TextareaInput = ({ ...props }: Props) => {
   const [field, meta] = useField(props)
   return (
     <FormControl variant="standard" margin="normal" fullWidth>
-      <TextField {...props} multiline variant="standard" rows={3} {...field} />
+      <TextField
+        {...props}
+        multiline
+        variant="standard"
+        rows={3}
+        {...field}
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
 
       {meta.touched && meta.error ? (
         <FormHelperText className="error">{meta.error}</FormHelperText>

@@ -12,6 +12,10 @@
   @apply bg-backdrop;
 }
 
+.MuiDialog-paper {
+  @apply w-552;
+}
+
 .MuiDialogTitle-root {
   @apply p-40;
 }

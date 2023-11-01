@@ -1,5 +1,5 @@
 import './ModalContainer.scss'
-import { Dialog, DialogTitle, DialogContent, IconButton } from '@mui/material'
+import { Dialog, DialogTitle, DialogContent } from '@mui/material'
 import RestaurantInfoForm from '../RestaurantInfoForm/RestaurantInfoForm'
 import { restaurantType } from 'types/restaurantsEntity'
 
@@ -21,15 +21,6 @@ const ModalContainer = ({
   return (
     <Dialog open={openModal} onClose={handleClose}>
       <DialogTitle className="modal-title">{title}</DialogTitle>
-      <IconButton
-        aria-label="close"
-        onClick={handleClose}
-        sx={{
-          position: 'absolute',
-          right: 8,
-          top: 8,
-        }}
-      ></IconButton>
       <DialogContent>
         <RestaurantInfoForm
           handleClose={handleClose}
