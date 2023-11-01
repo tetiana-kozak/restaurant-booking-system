@@ -1,6 +1,5 @@
 import './ModalContainer.scss'
 import { Dialog, DialogTitle, DialogContent, IconButton } from '@mui/material'
-import CloseIcon from '@mui/icons-material/Close'
 import RestaurantInfoForm from '../RestaurantInfoForm/RestaurantInfoForm'
 import { restaurantType } from 'types/restaurantsEntity'
 
@@ -21,7 +20,7 @@ const ModalContainer = ({
 }: Props) => {
   return (
     <Dialog open={openModal} onClose={handleClose}>
-      <DialogTitle>{title}</DialogTitle>
+      <DialogTitle className="modal-title">{title}</DialogTitle>
       <IconButton
         aria-label="close"
         onClick={handleClose}
@@ -30,9 +29,7 @@ const ModalContainer = ({
           right: 8,
           top: 8,
         }}
-      >
-        <CloseIcon />
-      </IconButton>
+      ></IconButton>
       <DialogContent>
         <RestaurantInfoForm
           handleClose={handleClose}

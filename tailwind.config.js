@@ -18,6 +18,7 @@ module.exports = {
     },
     fontSize: {
       large: '22px',
+      xLarge: '28px',
     },
     borderRadius: {
       none: '0',

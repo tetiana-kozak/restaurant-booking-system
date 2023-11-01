@@ -3,8 +3,19 @@
 @tailwind utilities;
 
 @layer components {
+  .modal-title {
+    @apply text-xLarge font-normal leading-9;
+  }
 }
 
 .MuiModal-backdrop {
   @apply bg-backdrop;
+}
+
+.MuiDialogTitle-root {
+  @apply p-40;
+}
+
+.MuiDialogContent-root {
+  @apply p-40 pt-0;
 }
