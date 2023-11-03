@@ -19,8 +19,8 @@ const ModalContainer = ({
   onSubmitAction,
 }: Props) => {
   return (
-    <Dialog open={openModal} onClose={handleClose}>
-      <DialogTitle className="modal-title">{title}</DialogTitle>
+    <Dialog open={openModal} onClose={handleClose} className="main-modal">
+      <DialogTitle className="main-modal_title">{title}</DialogTitle>
       <DialogContent>
         <RestaurantInfoForm
           handleClose={handleClose}

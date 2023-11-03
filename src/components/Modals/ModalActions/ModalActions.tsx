@@ -6,11 +6,11 @@ type Props = {
 
 const ModalActions = ({ handleClose }: Props) => {
   return (
-    <div className="modal-actions">
-      <button type="button" className="button" onClick={() => handleClose()}>
+    <div className="main-modal_actions">
+      <button type="button" className="button " onClick={() => handleClose()}>
         Скасувати
       </button>
-      <button type="submit" className="button bg-button-primary">
+      <button type="submit" className="button bg-button-primary ">
         Зберегти
       </button>
     </div>

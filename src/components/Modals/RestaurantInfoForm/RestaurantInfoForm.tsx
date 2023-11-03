@@ -1,3 +1,4 @@
+import './RestaurantInfoForm.scss'
 import TextInput from 'components/Inputs/TextInput/TextInput'
 import { Form, Formik } from 'formik'
 import {
@@ -14,6 +15,7 @@ import { createRestaurantSchema } from 'utils/validationSchemas/validationSchema
 import ModalActions from '../ModalActions/ModalActions'
 import TextareaInput from 'components/Inputs/TextInput/TextareaInput'
 import SelectInput from 'components/Inputs/TextInput/SelectInput'
+import { useState } from 'react'
 
 type Props = {
   handleClose: () => void
@@ -50,40 +52,42 @@ const RestaurantInfoForm = ({
           handleClose()
         }}
       >
-        <Form className="flex flex-col gap-30 w-full">
-          <TextInput
-            name={'title'}
-            id={'restaurant-name-input'}
-            label={'Назва закладу'}
-            placeholder={'Введіть назву закладу'}
-          />
+        <Form className="w-full">
+          <div className="main-modal_inputs">
+            <TextInput
+              name={'title'}
+              id={'restaurant-name-input'}
+              label={'Назва закладу'}
+              placeholder={'Введіть назву закладу'}
+            />
 
-          <SelectInput
-            name={'city'}
-            id={'restaurant-city-input'}
-            label={'Місто'}
-          />
+            <SelectInput
+              name={'city'}
+              id={'restaurant-city-input'}
+              label={'Місто'}
+            />
 
-          <TextInput
-            name={'location'}
-            id={'restaurant-location-input'}
-            label={'Адреса закладу'}
-            placeholder={'Введіть адресу закладу'}
-          />
+            <TextInput
+              name={'location'}
+              id={'restaurant-location-input'}
+              label={'Адреса закладу'}
+              placeholder={'Введіть адресу закладу'}
+            />
 
-          <TextInput
-            name={'type'}
-            id={'restaurant-type-input'}
-            label={'Тип закладу'}
-            placeholder={'Введіть тип закладу'}
-          />
+            <TextInput
+              name={'type'}
+              id={'restaurant-type-input'}
+              label={'Тип закладу'}
+              placeholder={'Введіть тип закладу'}
+            />
 
-          <TextareaInput
-            name={'description'}
-            id={'restaurant-description-input'}
-            label={'Короткий опис закладу'}
-            placeholder={'Введіть короткий опис закладу'}
-          />
+            <TextareaInput
+              name={'description'}
+              id={'restaurant-description-input'}
+              label={'Короткий опис закладу'}
+              placeholder={'Введіть короткий опис закладу'}
+            />
+          </div>
 
           <ModalActions handleClose={handleClose} />
         </Form>

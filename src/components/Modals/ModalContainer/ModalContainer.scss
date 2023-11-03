@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer components {
-  .modal-title {
+  .main-modal_title {
     @apply text-xLarge font-normal leading-9;
   }
 }
