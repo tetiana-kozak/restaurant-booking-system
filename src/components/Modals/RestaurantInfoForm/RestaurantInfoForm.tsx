@@ -41,6 +41,7 @@ const RestaurantInfoForm = ({
           location: selectedRestaurant?.location || '',
         }}
         validationSchema={createRestaurantSchema}
+        validateOnMount={true}
         onSubmit={(
           values: createRestaurantValuesType | editRestaurantValuesType
         ) => {
@@ -52,45 +53,54 @@ const RestaurantInfoForm = ({
           handleClose()
         }}
       >
-        <Form className="w-full">
-          <div className="main-modal_inputs">
-            <TextInput
-              name={'title'}
-              id={'restaurant-name-input'}
-              label={'Назва закладу'}
-              placeholder={'Введіть назву закладу'}
-            />
+        {(formik) => {
+          const isSubmitButtonDisabled = !formik.isValid || !formik.dirty
 
-            <SelectInput
-              name={'city'}
-              id={'restaurant-city-input'}
-              label={'Місто'}
-            />
+          return (
+            <Form className="w-full">
+              <div className="main-modal_inputs">
+                <TextInput
+                  name={'title'}
+                  id={'restaurant-name-input'}
+                  label={'Назва закладу'}
+                  placeholder={'Введіть назву закладу'}
+                />
 
-            <TextInput
-              name={'location'}
-              id={'restaurant-location-input'}
-              label={'Адреса закладу'}
-              placeholder={'Введіть адресу закладу'}
-            />
+                <SelectInput
+                  name={'city'}
+                  id={'restaurant-city-input'}
+                  label={'Місто'}
+                />
 
-            <TextInput
-              name={'type'}
-              id={'restaurant-type-input'}
-              label={'Тип закладу'}
-              placeholder={'Введіть тип закладу'}
-            />
+                <TextInput
+                  name={'location'}
+                  id={'restaurant-location-input'}
+                  label={'Адреса закладу'}
+                  placeholder={'Введіть адресу закладу'}
+                />
 
-            <TextareaInput
-              name={'description'}
-              id={'restaurant-description-input'}
-              label={'Короткий опис закладу'}
-              placeholder={'Введіть короткий опис закладу'}
-            />
-          </div>
+                <TextInput
+                  name={'type'}
+                  id={'restaurant-type-input'}
+                  label={'Тип закладу'}
+                  placeholder={'Введіть тип закладу'}
+                />
 
-          <ModalActions handleClose={handleClose} />
-        </Form>
+                <TextareaInput
+                  name={'description'}
+                  id={'restaurant-description-input'}
+                  label={'Короткий опис закладу'}
+                  placeholder={'Введіть короткий опис закладу'}
+                />
+              </div>
+
+              <ModalActions
+                handleClose={handleClose}
+                isSubmitButtonDisabled={isSubmitButtonDisabled}
+              />
+            </Form>
+          )
+        }}
       </Formik>
     </>
   )

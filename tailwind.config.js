@@ -8,6 +8,7 @@ module.exports = {
       tertiary: '#EFF4EA',
       'button-primary': '#FFB859',
       'button-secondary': '#503047',
+      'button-disabled': '#CAC4D0',
       error: '#CE2020',
       'text-color': '#292929',
       white: '#FFFFFF',
