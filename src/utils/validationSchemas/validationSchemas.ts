@@ -34,10 +34,10 @@ export const SignInSchema = Yup.object().shape({
 
 export const createRestaurantSchema = Yup.object().shape({
   title: Yup.string()
-    .min(3, 'Restaurant name must have at least 3 characters!')
-    .required('This field is required!'),
+    .min(3, 'Назва закладу повинна мати щонайменше 3 символи!')
+    .required(`Це поле є обов'язковим!`),
   description: Yup.string(),
   location: Yup.string(),
-  city: Yup.string().required('This field should not be empty!'),
+  city: Yup.string().required(`Це поле є обов'язковим!`),
   type: Yup.string(),
 })
