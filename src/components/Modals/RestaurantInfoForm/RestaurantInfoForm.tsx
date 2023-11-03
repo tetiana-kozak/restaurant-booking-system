@@ -50,7 +50,7 @@ const RestaurantInfoForm = ({
           handleClose()
         }}
       >
-        <Form className="flex flex-col gap-20 w-full">
+        <Form className="flex flex-col gap-30 w-full">
           <TextInput
             name={'title'}
             id={'restaurant-name-input'}
@@ -75,7 +75,7 @@ const RestaurantInfoForm = ({
             name={'type'}
             id={'restaurant-type-input'}
             label={'Тип закладу'}
-            placeholder={'Оберіть тип закладу'}
+            placeholder={'Введіть тип закладу'}
           />
 
           <TextareaInput

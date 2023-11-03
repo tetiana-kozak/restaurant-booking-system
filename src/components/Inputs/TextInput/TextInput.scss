@@ -7,9 +7,19 @@
 }
 
 .MuiInputLabel-root {
-  @apply text-text-color text-normal leading-6;
+  @apply text-text-color text-normal leading-6 pl-20;
 }
 
 .MuiTextField-root {
   @apply mt-10;
+}
+
+.css-1x51dt5-MuiInputBase-input-MuiInput-input,
+.MuiInputBase-inputMultiline,
+.MuiSelect-select {
+  @apply pl-16;
+}
+
+.MuiFormHelperText-root {
+  @apply text-error pl-16  m-0 p-0 absolute bottom-[-20px] left-0;
 }

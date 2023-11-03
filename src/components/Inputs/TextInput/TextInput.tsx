@@ -12,7 +12,7 @@ type Props = {
 const TextInput = ({ ...props }: Props) => {
   const [field, meta] = useField(props)
   return (
-    <FormControl variant="standard" margin="normal" fullWidth>
+    <FormControl variant="standard" margin="normal" fullWidth className="input">
       <TextField
         {...field}
         {...props}
