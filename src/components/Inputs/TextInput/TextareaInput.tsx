@@ -1,4 +1,5 @@
 import { FormControl, FormHelperText, TextField } from '@mui/material'
+import HighlightOffIcon from '@mui/icons-material/HighlightOff'
 import { useField } from 'formik'
 
 type Props = {
@@ -20,6 +21,14 @@ const TextareaInput = ({ ...props }: Props) => {
         {...field}
         InputLabelProps={{
           shrink: true,
+        }}
+        InputProps={{
+          endAdornment: (
+            <HighlightOffIcon
+              fontSize={'medium'}
+              className="input-clear-icon"
+            />
+          ),
         }}
       />
 
