@@ -1,8 +1,7 @@
+import { InfoIcon } from "icons/Info";
 
 
-type Props = {};
-
-const SharedBlockReservations = (props: Props) => {
+const SharedBlockReservations = () => {
     return (
         <div>
             <h2>Забронюйте столик онлайн</h2>
@@ -11,7 +10,7 @@ const SharedBlockReservations = (props: Props) => {
             <p>Звісно, ви можете забронювати столик як гість, але щоб мати можливість відстежувати свої бронювання столиків та користуватися всіма перевагами нашого сервісу, будь ласка, увійдіть в свій особистий аккаунт або зареєструйтесь.</p>
             <button type="button">Реєстрація</button>
             <button type="button">Вхід</button>
-            <span>Інформація для рестораторів</span>
+            <span> <InfoIcon /> Інформація для рестораторів</span>
         </div>
     )
 };
