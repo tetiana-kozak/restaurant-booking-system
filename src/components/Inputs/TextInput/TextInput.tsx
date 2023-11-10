@@ -11,7 +11,8 @@ type Props = {
 }
 
 const TextInput = ({ ...props }: Props) => {
-  const [field, meta] = useField(props)
+  const [field, meta, helpers] = useField(props)
+
   return (
     <FormControl variant="standard" margin="normal" fullWidth className="input">
       <TextField
@@ -23,10 +24,12 @@ const TextInput = ({ ...props }: Props) => {
         }}
         InputProps={{
           endAdornment: (
-            <HighlightOffIcon
-              fontSize={'medium'}
-              className="input-clear-icon"
-            />
+            <div onClick={() => helpers.setValue('')}>
+              <HighlightOffIcon
+                fontSize={'medium'}
+                className="input-clear-icon"
+              />
+            </div>
           ),
         }}
       />

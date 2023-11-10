@@ -10,7 +10,7 @@ type Props = {
 }
 
 const TextareaInput = ({ ...props }: Props) => {
-  const [field, meta] = useField(props)
+  const [field, meta, helpers] = useField(props)
   return (
     <FormControl variant="standard" margin="normal" fullWidth>
       <TextField
@@ -24,10 +24,12 @@ const TextareaInput = ({ ...props }: Props) => {
         }}
         InputProps={{
           endAdornment: (
-            <HighlightOffIcon
-              fontSize={'medium'}
-              className="input-clear-icon"
-            />
+            <div onClick={() => helpers.setValue('')}>
+              <HighlightOffIcon
+                fontSize={'medium'}
+                className="input-clear-icon"
+              />
+            </div>
           ),
         }}
       />
