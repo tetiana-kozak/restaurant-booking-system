@@ -3,7 +3,7 @@ import { InfoIcon } from "icons/Info";
 
 const SharedBlockReservations = () => {
     return (
-        <div className="max-width: 1392px mx-auto py-12 px-6 bg-reservation">
+        <div className="max-width: 1392px mx-auto py-12 px-6 bg-iframe_bg_color">
             <h2>Забронюйте столик онлайн</h2>
             <p>Забудьте про довгі черги та незручні дзвінки.</p>
             <p>Наш онлайн-сервіс дозволить вам здійснити бронювання в будь-який час доби, навіть коли ресторан закритий.</p>
