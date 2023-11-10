@@ -12,6 +12,7 @@ module.exports = {
       'text-color': '#292929',
       white: '#FFFFFF',
       backdrop: 'rgba(202, 196, 208, 0.5)',
+      iframe_bg_color: '#F7F2FA'
     },
     fontFamily: {
       sans: ['Roboto', 'sans-serif'],
