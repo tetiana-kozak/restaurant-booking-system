@@ -19,10 +19,13 @@ module.exports = {
     },
     fontSize: {
       large: '22px',
+      h2: '43px',
+      p: '20px'
     },
     borderRadius: {
       none: '0',
       sm: '5px',
+      md: '16px',
       lg: '24px',
     },
     extend: {
@@ -30,11 +33,19 @@ module.exports = {
         4: '4px',
         5: '5px',
         8: '8px',
+        10: '10px',
         13: '13px',
+        20: '20px',
         30: '30px',
         40: '40px',
+        41: '41px',
+        50: '50px',
+        60: '60px',
+        70: '70px',
+        264: '264px',
         552: '552px',
         600: '600px',
+        1392: '1392px'
       },
     },
   },
