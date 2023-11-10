@@ -3,7 +3,7 @@ import SharedBlockReservations from "components/SharedBlockReservations/SharedBl
 type Props = {}
 const RestaurantBookingPage = (props: Props) => {
   return (
-    <div>
+    <div className="max-width: 1440px mx-auto py-12 px-6">
       <SharedBlockReservations />
     </div>
   )
