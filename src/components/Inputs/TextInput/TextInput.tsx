@@ -23,7 +23,6 @@ const TextInput = ({ ...props }: Props) => {
         error={isError ? true : false}
         InputLabelProps={{
           shrink: true,
-          color: 'success',
         }}
         InputProps={{
           endAdornment: (
