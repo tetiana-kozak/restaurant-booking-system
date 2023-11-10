@@ -11,12 +11,15 @@ type Props = {
 
 const TextareaInput = ({ ...props }: Props) => {
   const [field, meta, helpers] = useField(props)
+  const isError = meta.touched && meta.error
+
   return (
     <FormControl variant="standard" margin="normal" fullWidth>
       <TextField
         {...props}
         multiline
         variant="standard"
+        error={isError ? true : false}
         rows={3}
         {...field}
         InputLabelProps={{
@@ -34,7 +37,7 @@ const TextareaInput = ({ ...props }: Props) => {
         }}
       />
 
-      {meta.touched && meta.error ? (
+      {isError ? (
         <FormHelperText className="error">{meta.error}</FormHelperText>
       ) : null}
     </FormControl>

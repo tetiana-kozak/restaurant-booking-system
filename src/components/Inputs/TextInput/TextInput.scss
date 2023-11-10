@@ -29,6 +29,10 @@
   @apply mr-20 cursor-pointer;
 }
 
+.input-clear-icon.icon-error {
+  @apply fill-error;
+}
+
 .css-1rb63tl-MuiInputBase-root-MuiInput-root {
   @apply items-start;
 }

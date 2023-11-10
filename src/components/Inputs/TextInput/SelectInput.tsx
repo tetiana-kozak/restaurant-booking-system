@@ -16,6 +16,8 @@ const cities = [
 
 const SelectInput = ({ ...props }: Props) => {
   const [field, meta] = useField(props)
+  const isError = meta.touched && meta.error
+
   return (
     <FormControl variant="standard" margin="normal" fullWidth>
       <TextField
@@ -23,6 +25,7 @@ const SelectInput = ({ ...props }: Props) => {
         {...field}
         select
         variant="standard"
+        error={isError ? true : false}
         InputLabelProps={{
           shrink: true,
         }}
@@ -34,7 +37,7 @@ const SelectInput = ({ ...props }: Props) => {
         ))}
       </TextField>
 
-      {meta.touched && meta.error ? (
+      {isError ? (
         <FormHelperText className="error">{meta.error}</FormHelperText>
       ) : null}
     </FormControl>

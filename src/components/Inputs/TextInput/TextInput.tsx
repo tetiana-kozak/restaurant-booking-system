@@ -12,6 +12,7 @@ type Props = {
 
 const TextInput = ({ ...props }: Props) => {
   const [field, meta, helpers] = useField(props)
+  const isError = meta.touched && meta.error
 
   return (
     <FormControl variant="standard" margin="normal" fullWidth className="input">
@@ -19,22 +20,24 @@ const TextInput = ({ ...props }: Props) => {
         {...field}
         {...props}
         variant="standard"
+        error={isError ? true : false}
         InputLabelProps={{
           shrink: true,
+          color: 'success',
         }}
         InputProps={{
           endAdornment: (
             <div onClick={() => helpers.setValue('')}>
               <HighlightOffIcon
-                fontSize={'medium'}
-                className="input-clear-icon"
+                fontSize="medium"
+                className={`input-clear-icon ${isError ? 'icon-error' : ''}`}
               />
             </div>
           ),
         }}
       />
 
-      {meta.touched && meta.error ? (
+      {isError ? (
         <FormHelperText className="error">{meta.error}</FormHelperText>
       ) : null}
     </FormControl>
