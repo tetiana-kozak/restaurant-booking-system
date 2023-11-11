@@ -1,7 +1,13 @@
 import './ModalContainer.scss'
-import { Dialog, DialogTitle, DialogContent } from '@mui/material'
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+} from '@mui/material'
 import RestaurantInfoForm from '../RestaurantInfoForm/RestaurantInfoForm'
 import { restaurantType } from 'types/restaurantsEntity'
+import ModalActions from '../ModalActions/ModalActions'
 
 type Props = {
   handleClose: () => void
@@ -28,6 +34,9 @@ const ModalContainer = ({
           onSubmitAction={onSubmitAction}
         />
       </DialogContent>
+      <DialogActions>
+        <ModalActions handleClose={handleClose} isSubmitButtonDisabled={true} />
+      </DialogActions>
     </Dialog>
   )
 }
