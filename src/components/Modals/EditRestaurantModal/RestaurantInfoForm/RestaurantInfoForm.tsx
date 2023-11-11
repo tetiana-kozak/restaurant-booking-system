@@ -1,21 +1,8 @@
 import './RestaurantInfoForm.scss'
 import TextInput from 'components/Inputs/TextInput/TextInput'
-import { Form, Formik } from 'formik'
-import {
-  createRestaurant,
-  editRestaurant,
-} from 'pages/AdminPanelPage/userRestaurantsReduser'
-import { useAppDispatch } from 'redux/hooks'
-import {
-  createRestaurantValuesType,
-  editRestaurantValuesType,
-  restaurantType,
-} from 'types/restaurantsEntity'
-import { createRestaurantSchema } from 'utils/validationSchemas/validationSchemas'
-import ModalActions from '../ModalActions/ModalActions'
+import { restaurantType } from 'types/restaurantsEntity'
 import TextareaInput from 'components/Inputs/TextInput/TextareaInput'
 import SelectInput from 'components/Inputs/TextInput/SelectInput'
-import { useState } from 'react'
 
 type Props = {
   handleClose: () => void
@@ -23,85 +10,44 @@ type Props = {
   onSubmitAction: string
 }
 
-const RestaurantInfoForm = ({
-  handleClose,
-  selectedRestaurant,
-  onSubmitAction,
-}: Props) => {
-  const dispatch = useAppDispatch()
-
+const RestaurantInfoForm = ({}: Props) => {
   return (
     <>
-      <Formik
-        initialValues={{
-          title: selectedRestaurant?.title || '',
-          city: selectedRestaurant?.city || '',
-          type: selectedRestaurant?.type || '',
-          description: selectedRestaurant?.description || '',
-          location: selectedRestaurant?.location || '',
-        }}
-        validationSchema={createRestaurantSchema}
-        validateOnMount={true}
-        onSubmit={(
-          values: createRestaurantValuesType | editRestaurantValuesType
-        ) => {
-          if (onSubmitAction === 'add') {
-            dispatch(createRestaurant(values))
-          } else if (onSubmitAction === 'edit' && selectedRestaurant) {
-            dispatch(editRestaurant({ ...values, id: selectedRestaurant.id }))
-          }
-          handleClose()
-        }}
-      >
-        {(formik) => {
-          const isSubmitButtonDisabled = !formik.isValid || !formik.dirty
+      <div className="main-modal_inputs">
+        <TextInput
+          name={'title'}
+          id={'restaurant-name-input'}
+          label={'Назва закладу*'}
+          placeholder={'Введіть назву закладу'}
+        />
 
-          return (
-            <Form className="w-full">
-              <div className="main-modal_inputs">
-                <TextInput
-                  name={'title'}
-                  id={'restaurant-name-input'}
-                  label={'Назва закладу'}
-                  placeholder={'Введіть назву закладу'}
-                />
+        <SelectInput
+          name={'city'}
+          id={'restaurant-city-input'}
+          label={'Місто*'}
+        />
 
-                <SelectInput
-                  name={'city'}
-                  id={'restaurant-city-input'}
-                  label={'Місто'}
-                />
+        <TextInput
+          name={'location'}
+          id={'restaurant-location-input'}
+          label={'Адреса закладу'}
+          placeholder={'Введіть адресу закладу'}
+        />
 
-                <TextInput
-                  name={'location'}
-                  id={'restaurant-location-input'}
-                  label={'Адреса закладу'}
-                  placeholder={'Введіть адресу закладу'}
-                />
+        <TextInput
+          name={'type'}
+          id={'restaurant-type-input'}
+          label={'Тип закладу'}
+          placeholder={'Введіть тип закладу'}
+        />
 
-                <TextInput
-                  name={'type'}
-                  id={'restaurant-type-input'}
-                  label={'Тип закладу'}
-                  placeholder={'Введіть тип закладу'}
-                />
-
-                <TextareaInput
-                  name={'description'}
-                  id={'restaurant-description-input'}
-                  label={'Короткий опис закладу'}
-                  placeholder={'Введіть короткий опис закладу'}
-                />
-              </div>
-
-              <ModalActions
-                handleClose={handleClose}
-                isSubmitButtonDisabled={isSubmitButtonDisabled}
-              />
-            </Form>
-          )
-        }}
-      </Formik>
+        <TextareaInput
+          name={'description'}
+          id={'restaurant-description-input'}
+          label={'Короткий опис закладу'}
+          placeholder={'Введіть короткий опис закладу'}
+        />
+      </div>
     </>
   )
 }
