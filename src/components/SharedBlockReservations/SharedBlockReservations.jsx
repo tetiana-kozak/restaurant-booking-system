@@ -15,8 +15,8 @@ const SharedBlockReservations = () => {
                 </p>
             </div>
             <div className="w-552 flex items-center justify-center gap-40 mb-264">
-                <button className="py-10 px-41 font-sans text-p leading-8 text-[#FFB859] cursor-pointer" type="button">Реєстрація</button>
-                <button className="font-sans text-p leading-8  cursor-pointer bg-button-primary " type="button">Вхід</button>
+                <button className="py-10 px-41 font-sans text-p leading-8 text-button-primary cursor-pointer rounded-100" type="button">Реєстрація</button>
+                <button className="font-sans text-p leading-8  cursor-pointer bg-button-primary py-10 px-41 rounded-100" type="button">Вхід</button>
             </div>
             <div className="w-552 flex items-center flex-start gap-20">
                 <InfoIcon />
