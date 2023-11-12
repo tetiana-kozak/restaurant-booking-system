@@ -12,13 +12,24 @@ const cities = [
   { label: 'Львів' },
   { label: 'Одеса' },
   { label: 'Харків' },
-]
+] // треба буде замінити коли знайдемо нормальне api українських міст
 
 const SelectInput = ({ ...props }: Props) => {
   const [field, meta] = useField(props)
+  const isError = meta.touched && meta.error
+
   return (
     <FormControl variant="standard" margin="normal" fullWidth>
-      <TextField {...props} {...field} select variant="standard">
+      <TextField
+        {...props}
+        {...field}
+        select
+        variant="standard"
+        error={isError ? true : false}
+        InputLabelProps={{
+          shrink: true,
+        }}
+      >
         {cities.map((city) => (
           <MenuItem key={city.label} value={city.label}>
             {city.label}
@@ -26,9 +37,7 @@ const SelectInput = ({ ...props }: Props) => {
         ))}
       </TextField>
 
-      {meta.touched && meta.error ? (
-        <FormHelperText className="error">{meta.error}</FormHelperText>
-      ) : null}
+      {isError ? <FormHelperText>{meta.error}</FormHelperText> : null}
     </FormControl>
   )
 }

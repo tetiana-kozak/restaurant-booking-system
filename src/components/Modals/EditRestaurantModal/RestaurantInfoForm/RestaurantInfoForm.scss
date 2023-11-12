@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.MuiFormControl-root {
-  @apply my-4;
+.main-modal_inputs {
+  @apply flex flex-col gap-20 w-full;
 }

@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 @layer components {
-}
-
-.MuiModal-backdrop {
-  @apply bg-backdrop;
+  .main-modal_actions {
+    @apply flex justify-center items-center gap-x-8;
+  }
 }
