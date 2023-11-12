@@ -37,7 +37,7 @@ const ModalContainer = ({
 }: Props) => {
   const dispatch = useAppDispatch()
   return (
-    <Dialog open={openModal} onClose={handleClose} className="main-modal">
+    <Dialog open={openModal} onClose={handleClose} className="main-modal ">
       <Formik
         initialValues={{
           title: selectedRestaurant?.title || '',
@@ -65,7 +65,7 @@ const ModalContainer = ({
           return (
             <Form className="w-full">
               <DialogTitle className="main-modal_title">{title}</DialogTitle>
-              <DialogContent className="px-40 pb-0">
+              <DialogContent className="px-40 pb-0 h-350">
                 <RestaurantInfoForm
                   handleClose={handleClose}
                   selectedRestaurant={selectedRestaurant}

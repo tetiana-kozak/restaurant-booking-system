@@ -1,7 +1,7 @@
 import { FormControl, FormHelperText, TextField } from '@mui/material'
 import HighlightOffIcon from '@mui/icons-material/HighlightOff'
 import { useField } from 'formik'
-import './TextInput.scss'
+import '../InputsStandard.scss'
 
 type Props = {
   label: string
@@ -15,7 +15,7 @@ const TextInput = ({ ...props }: Props) => {
   const isError = meta.touched && meta.error
 
   return (
-    <FormControl variant="standard" margin="normal" fullWidth className="input">
+    <FormControl variant="standard" margin="normal" fullWidth>
       <TextField
         {...field}
         {...props}

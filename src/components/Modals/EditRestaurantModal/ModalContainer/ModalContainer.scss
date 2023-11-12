@@ -4,7 +4,7 @@
 
 @layer components {
   .main-modal_title {
-    @apply text-xLarge font-normal leading-9;
+    @apply text-xLarge font-normal leading-9 p-40;
   }
 }
 
@@ -14,10 +14,6 @@
 
 .MuiDialog-paper {
   @apply w-552;
-}
-
-.MuiDialogTitle-root {
-  @apply p-40;
 }
 
 .modal-actions {
