@@ -8,6 +8,7 @@ import RestaurantEditorPage from 'pages/RestaurantEditorPage/RestaurantEditorPag
 import RestaurantBookingPage from 'pages/RestaurantBookingPage/RestaurantBookingPage'
 import RestaurantCalendarPage from 'pages/RestaurantCalendarPage/RestaurantCalendarPage'
 import AdminPanelPage from 'pages/AdminPanelPage/AdminPanelPage'
+import UserReservationTable from 'pages/UserReservationTable/UserReservationTable'
 
 type Props = {}
 
@@ -38,6 +39,7 @@ const MainRoutes = (props: Props) => {
             element={<RestaurantCalendarPage />}
           />
         </Route>
+        <Route path='user-reservation' element={<UserReservationTable />} />
       </Route>
     </Routes>
   )
