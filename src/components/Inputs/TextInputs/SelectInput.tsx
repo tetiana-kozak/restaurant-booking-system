@@ -1,10 +1,4 @@
-import {
-  FormControl,
-  FormHelperText,
-  IconButton,
-  MenuItem,
-  TextField,
-} from '@mui/material'
+import { FormControl, FormHelperText, MenuItem, TextField } from '@mui/material'
 import { useField } from 'formik'
 
 type Props = {
@@ -18,7 +12,7 @@ const cities = [
   { label: 'Львів' },
   { label: 'Одеса' },
   { label: 'Харків' },
-]
+] // треба буде замінити коли знайдемо нормальне api українських міст
 
 const SelectInput = ({ ...props }: Props) => {
   const [field, meta] = useField(props)
@@ -43,9 +37,7 @@ const SelectInput = ({ ...props }: Props) => {
         ))}
       </TextField>
 
-      {isError ? (
-        <FormHelperText className="error">{meta.error}</FormHelperText>
-      ) : null}
+      {isError ? <FormHelperText>{meta.error}</FormHelperText> : null}
     </FormControl>
   )
 }

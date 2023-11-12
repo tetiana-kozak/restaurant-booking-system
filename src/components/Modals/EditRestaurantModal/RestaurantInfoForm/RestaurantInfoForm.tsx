@@ -1,16 +1,11 @@
 import './RestaurantInfoForm.scss'
-import TextInput from 'components/Inputs/TextInput/TextInput'
-import { restaurantType } from 'types/restaurantsEntity'
-import TextareaInput from 'components/Inputs/TextInput/TextareaInput'
-import SelectInput from 'components/Inputs/TextInput/SelectInput'
+import TextInput from 'components/Inputs/TextInputs/TextInput'
+import TextareaInput from 'components/Inputs/TextInputs/TextareaInput'
+import SelectInput from 'components/Inputs/TextInputs/SelectInput'
 
-type Props = {
-  handleClose: () => void
-  selectedRestaurant: restaurantType | undefined
-  onSubmitAction: string
-}
+type Props = {}
 
-const RestaurantInfoForm = ({}: Props) => {
+const RestaurantInfoForm = (props: Props) => {
   return (
     <div className="main-modal_inputs inputs-standard">
       <TextInput

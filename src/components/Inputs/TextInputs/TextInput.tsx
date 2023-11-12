@@ -36,9 +36,7 @@ const TextInput = ({ ...props }: Props) => {
         }}
       />
 
-      {isError ? (
-        <FormHelperText className="error">{meta.error}</FormHelperText>
-      ) : null}
+      {isError ? <FormHelperText>{meta.error}</FormHelperText> : null}
     </FormControl>
   )
 }
