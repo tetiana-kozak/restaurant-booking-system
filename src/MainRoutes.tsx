@@ -16,7 +16,14 @@ const MainRoutes = (props: Props) => {
   return (
     <Routes>
       <Route path="/" element={<InnerContent />}>
-        <Route index element={<SignInPage />} />
+        <Route
+          index
+          element={
+            <ProtectedRoute>
+              <AdminPanel />
+            </ProtectedRoute>
+          }
+        />
         <Route path="sign-up" element={<SignUpPage />} />
         <Route path="sign-in" element={<SignInPage />} />
 
@@ -39,7 +46,7 @@ const MainRoutes = (props: Props) => {
             element={<RestaurantCalendarPage />}
           />
         </Route>
-        <Route path='user-reservation' element={<UserReservationTable />} />
+        <Route path="user-reservation" element={<UserReservationTable />} />
       </Route>
     </Routes>
   )

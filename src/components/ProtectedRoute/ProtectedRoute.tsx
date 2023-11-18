@@ -5,7 +5,7 @@ type Props = { children: React.ReactNode }
 const ProtectedRoute = ({ children }: Props) => {
   const isTokenExist = localStorage.getItem('token')
   if (!isTokenExist) {
-    return <Navigate to={'/'} />
+    return <Navigate to={'/sign-in'} />
   }
   return <>{children}</>
 }
