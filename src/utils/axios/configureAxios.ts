@@ -1,5 +1,4 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios'
-import { useNavigate } from 'react-router-dom'
 
 export const configureAxios = axios.create({
   baseURL: 'https://table-flow-fca566db5b85.herokuapp.com/api/v1',
@@ -27,14 +26,6 @@ const getErrorCode = (error: AxiosError, codeToCheck: number) => {
   // (error.response.data?.statusCode === codeToCheck)
 }
 
-export const useUnauthorizedRedirect = () => {
-  const navigate = useNavigate()
-  const redirectToSignIn = () => {
-    navigate('/sign-in')
-  }
-  return { redirectToSignIn }
-}
-
 configureAxios.interceptors.request.use(authInterceptor)
 configureAxios.interceptors.response.use(
   (response) => response,
@@ -42,8 +33,7 @@ configureAxios.interceptors.response.use(
     const isUnauthorizedError = getErrorCode(error, 401)
     if (isUnauthorizedError) {
       localStorage.removeItem('token')
-      // TODO: Unauthorized Redirect to sign-in
-      // useUnauthorizedRedirect()
+      window.location.href = '/sign-in'
     }
 
     return Promise.reject(error)
