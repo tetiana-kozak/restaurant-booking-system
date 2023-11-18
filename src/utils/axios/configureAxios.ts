@@ -30,7 +30,7 @@ const getErrorCode = (error: AxiosError, codeToCheck: number) => {
   // (error.response.data?.statusCode === codeToCheck)
 }
 
-const errorResponseInterceptorCb = (error: AxiosError) => {
+const errorResponseInterceptor = (error: AxiosError) => {
   const isUnauthorizedError = getErrorCode(error, 401)
   if (isUnauthorizedError) {
     // store.dispatch('auth/logout')
@@ -45,5 +45,5 @@ const errorResponseInterceptorCb = (error: AxiosError) => {
 configureAxios.interceptors.request.use(authInterceptor)
 configureAxios.interceptors.response.use(
   (response) => response,
-  errorResponseInterceptorCb
+  errorResponseInterceptor
 )
