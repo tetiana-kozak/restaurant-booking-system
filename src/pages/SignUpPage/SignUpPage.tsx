@@ -22,8 +22,13 @@ const SignUpPage = (props: Props) => {
     await configureAxios
       .post('/users', params)
       .then((response) => {
-        localStorage.setItem('token', JSON.stringify(response.data.token))
-        navigate('/admin-panel')
+        if (response.data.user.token) {
+          localStorage.setItem(
+            'token',
+            JSON.stringify(response.data.user.token)
+          )
+          navigate('/admin-panel')
+        }
       })
       .catch((error) => console.log('error', error))
   }
