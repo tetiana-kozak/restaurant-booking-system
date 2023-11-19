@@ -1,46 +1,41 @@
 import { Routes, Route } from 'react-router-dom'
-import InnerContent from './components/InnerContent/InnerContent'
 import SignInPage from 'pages/SignInPage/SignInPage'
 import SignUpPage from 'pages/SignUpPage/SignUpPage'
-import ProtectedRoute from 'components/ProtectedRoute/ProtectedRoute'
+import ProtectedRoute from 'components/CustomRoutes/ProtectedRoute'
 import AdminPanel from 'container/Sections/AdminPanel/AdminPanel'
 import RestaurantEditorPage from 'pages/RestaurantEditorPage/RestaurantEditorPage'
 import RestaurantBookingPage from 'pages/RestaurantBookingPage/RestaurantBookingPage'
 import RestaurantCalendarPage from 'pages/RestaurantCalendarPage/RestaurantCalendarPage'
 import AdminPanelPage from 'pages/AdminPanelPage/AdminPanelPage'
 import UserReservationTable from 'pages/UserReservationTable/UserReservationTable'
+import RedirectRoot from 'components/CustomRoutes/RedirectRoot'
 
 type Props = {}
 
 const MainRoutes = (props: Props) => {
   return (
     <Routes>
-      <Route path="/" element={<InnerContent />}>
-        <Route index element={<SignInPage />} />
-        <Route path="sign-up" element={<SignUpPage />} />
-        <Route path="sign-in" element={<SignInPage />} />
+      <Route path="/" element={<RedirectRoot />} />
+      <Route path="sign-up" element={<SignUpPage />} />
+      <Route path="sign-in" element={<SignInPage />} />
 
+      <Route
+        path="admin-panel"
+        element={
+          <ProtectedRoute>
+            <AdminPanel />
+          </ProtectedRoute>
+        }
+      >
+        <Route index element={<AdminPanelPage />} />
+        <Route path="restaurant-editor" element={<RestaurantEditorPage />} />
+        <Route path="restaurant-booking" element={<RestaurantBookingPage />} />
         <Route
-          path="admin-panel"
-          element={
-            <ProtectedRoute>
-              <AdminPanel />
-            </ProtectedRoute>
-          }
-        >
-          <Route index element={<AdminPanelPage />} />
-          <Route path="restaurant-editor" element={<RestaurantEditorPage />} />
-          <Route
-            path="restaurant-booking"
-            element={<RestaurantBookingPage />}
-          />
-          <Route
-            path="restaurant-calendar"
-            element={<RestaurantCalendarPage />}
-          />
-        </Route>
-        <Route path='user-reservation' element={<UserReservationTable />} />
+          path="restaurant-calendar"
+          element={<RestaurantCalendarPage />}
+        />
       </Route>
+      <Route path="user-reservation" element={<UserReservationTable />} />
     </Routes>
   )
 }
