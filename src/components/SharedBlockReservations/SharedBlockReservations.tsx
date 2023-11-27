@@ -3,9 +3,9 @@ import SharedBlockUnregisteredUser from "components/SharedBlockUnregisteredUser/
 import SteppeReservation from "components/SteppeReservation/SteppeReservation";
 import { useState } from "react";
 
+type Props = {};
 
-
-const SharedBlockReservations = () => {
+const SharedBlockReservations = (props: Props) => {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     
     return (
