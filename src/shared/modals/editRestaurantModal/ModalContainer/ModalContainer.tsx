@@ -10,7 +10,7 @@ import {
   createRestaurantValuesType,
   editRestaurantValuesType,
   restaurantType,
-} from 'types/restaurantsEntity'
+} from 'shared/types/restaurantsEntity'
 import ModalActions from '../ModalActions/ModalActions'
 import { useAppDispatch } from 'redux/hooks'
 import { Formik, Form } from 'formik'

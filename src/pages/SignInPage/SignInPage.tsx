@@ -5,15 +5,15 @@ import TextInput from 'shared/inputs/TextInputs/TextInput'
 import PasswordInput from 'shared/inputs/PasswordInput/PasswordInput'
 import RegisterButton from 'pages/SignInPage/RegisterButton/RegisterButton'
 import { configureAxios } from 'shared/axios/configureAxios'
-import { UserSignInData } from 'types/usersEntity'
 import { signInSchema } from './signInSchema'
+import { UserSignInType } from './signInEntity'
 
 type Props = {}
 
 const SignInPage = (props: Props) => {
   let navigate = useNavigate()
 
-  const signIn = async (values: UserSignInData) => {
+  const signIn = async (values: UserSignInType) => {
     const params = {
       user: {
         ...values,

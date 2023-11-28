@@ -4,7 +4,7 @@ import {
   editRestaurantValuesType,
   initialStateRestaurantsListType,
   restaurantType,
-} from 'types/restaurantsEntity'
+} from 'shared/types/restaurantsEntity'
 
 import { configureAxios } from 'shared/axios/configureAxios'
 

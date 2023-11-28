@@ -8,7 +8,7 @@ import {
 } from 'pages/AdminPanelPage/userRestaurantsReduser'
 import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
-import { restaurantType } from 'types/restaurantsEntity'
+import { restaurantType } from 'shared/types/restaurantsEntity'
 import './AllRestaurantsTable.scss'
 
 type Props = {

@@ -2,7 +2,7 @@ import AllRestaurantsTable from 'pages/AdminPanelPage/AllRestaurantsTable/AllRes
 import ModalContainer from 'shared/modals/editRestaurantModal/ModalContainer/ModalContainer'
 import PageTitleSection from 'shared/typography/PageTitleSection'
 import { useState } from 'react'
-import { restaurantType } from 'types/restaurantsEntity'
+import { restaurantType } from 'shared/types/restaurantsEntity'
 
 type Props = {}
 const AdminPanelPage = (props: Props) => {
