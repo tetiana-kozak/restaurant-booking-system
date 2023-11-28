@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import TextInput from 'components/Inputs/TextInputs/TextInput'
 import PasswordInput from 'components/Inputs/PasswordInput/PasswordInput'
 import RegisterButton from 'components/Buttons/RegisterButton/RegisterButton'
-import { configureAxios } from 'utils/axios/configureAxios'
+import { configureAxios } from 'shared/axios/configureAxios'
 import { UserSignInData } from 'types/usersEntity'
 
 type Props = {}

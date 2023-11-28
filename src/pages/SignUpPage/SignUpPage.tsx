@@ -5,7 +5,7 @@ import { SignUpSchema } from 'utils/validationSchemas/validationSchemas'
 import TextInput from 'components/Inputs/TextInputs/TextInput'
 import PasswordInput from 'components/Inputs/PasswordInput/PasswordInput'
 import RegisterButton from 'components/Buttons/RegisterButton/RegisterButton'
-import { configureAxios } from 'utils/axios/configureAxios'
+import { configureAxios } from 'shared/axios/configureAxios'
 import { UserSignUpData } from 'types/usersEntity'
 
 type Props = {}
