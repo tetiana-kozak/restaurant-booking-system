@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { store } from './redux/store'
 import './reset.css'
 import './index.css'
-import App from './container/App/App'
+import App from './App/App'
 import { StyledEngineProvider } from '@mui/material/styles'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)

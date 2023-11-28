@@ -1,4 +1,4 @@
-import MainRoutes from '../../MainRoutes'
+import MainRoutes from '../MainRoutes'
 
 type Props = {}
 const App = (props: Props) => {
