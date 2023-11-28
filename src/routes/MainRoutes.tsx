@@ -1,14 +1,14 @@
 import { Routes, Route } from 'react-router-dom'
 import SignInPage from 'pages/SignInPage/SignInPage'
 import SignUpPage from 'pages/SignUpPage/SignUpPage'
-import ProtectedRoute from 'components/CustomRoutes/ProtectedRoute'
+import ProtectedRoute from 'routes/CustomRoutes/ProtectedRoute'
 import AdminPanelGrid from 'pages/AdminPanelPage/AdminPanelGrid/AdminPanelGrid'
 import RestaurantEditorPage from 'pages/RestaurantEditorPage/RestaurantEditorPage'
 import RestaurantBookingPage from 'pages/RestaurantBookingPage/RestaurantBookingPage'
 import RestaurantCalendarPage from 'pages/RestaurantCalendarPage/RestaurantCalendarPage'
 import AdminPanelPage from 'pages/AdminPanelPage/AdminPanelPage'
 import UserReservationTablePage from 'pages/UserReservationTablePage/UserReservationTablePage'
-import RedirectRoot from 'components/CustomRoutes/RedirectRoot'
+import RedirectRoot from 'routes/CustomRoutes/RedirectRoot'
 
 type Props = {}
 
