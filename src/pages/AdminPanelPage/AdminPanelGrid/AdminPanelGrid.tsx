@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom'
 
 type Props = {}
 
-const AdminPanel = (props: Props) => {
+const AdminPanelGrid = (props: Props) => {
   return (
     <Grid container spacing={0} className="bg">
       <Grid item xs={2}>
@@ -19,4 +19,4 @@ const AdminPanel = (props: Props) => {
     </Grid>
   )
 }
-export default AdminPanel
+export default AdminPanelGrid

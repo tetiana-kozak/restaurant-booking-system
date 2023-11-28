@@ -1,4 +1,4 @@
-import AllRestaurantsTable from 'components/AllRestaurantsTable/AllRestaurantsTable'
+import AllRestaurantsTable from 'pages/AdminPanelPage/AllRestaurantsTable/AllRestaurantsTable'
 import ModalContainer from 'shared/modals/editRestaurantModal/ModalContainer/ModalContainer'
 import PageTitleSection from 'shared/typography/PageTitleSection'
 import { useState } from 'react'

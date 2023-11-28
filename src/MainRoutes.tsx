@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import SignInPage from 'pages/SignInPage/SignInPage'
 import SignUpPage from 'pages/SignUpPage/SignUpPage'
 import ProtectedRoute from 'components/CustomRoutes/ProtectedRoute'
-import AdminPanel from 'container/Sections/AdminPanel/AdminPanel'
+import AdminPanelGrid from 'pages/AdminPanelPage/AdminPanelGrid/AdminPanelGrid'
 import RestaurantEditorPage from 'pages/RestaurantEditorPage/RestaurantEditorPage'
 import RestaurantBookingPage from 'pages/RestaurantBookingPage/RestaurantBookingPage'
 import RestaurantCalendarPage from 'pages/RestaurantCalendarPage/RestaurantCalendarPage'
@@ -23,7 +23,7 @@ const MainRoutes = (props: Props) => {
         path="admin-panel"
         element={
           <ProtectedRoute>
-            <AdminPanel />
+            <AdminPanelGrid />
           </ProtectedRoute>
         }
       >
