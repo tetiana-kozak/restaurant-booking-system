@@ -1,9 +1,8 @@
 import { InfoIcon } from "icons/Info";
 
-
-const SharedBlockReservations = () => {
+const SharedBlockUnregisteredUser = () => {
     return (
-        <div className="w-1392 mx-auto pt-60 pb-70 px-50 bg-iframe_bg_color rounded-md">
+        <div>
             <div className="w-552">
                 <h2 className="font-sans text-h2 text-text-color mb-50">Забронюйте столик онлайн</h2>
                 <p className="font-sans text-p mb-30">Забудьте про довгі черги та незручні дзвінки.</p>
@@ -24,6 +23,6 @@ const SharedBlockReservations = () => {
             </div>
         </div>
     )
-};
+}
 
-export default SharedBlockReservations;
+export default SharedBlockUnregisteredUser;
