@@ -1,7 +1,7 @@
 import { FormControl, FormHelperText, TextField } from '@mui/material'
 import HighlightOffIcon from '@mui/icons-material/HighlightOff'
 import { useField } from 'formik'
-import '../InputsStandard.scss'
+import '../InputsStandardStyles.scss'
 
 type Props = {
   label: string

@@ -1,7 +1,8 @@
 import './RestaurantInfoForm.scss'
-import TextInput from 'components/Inputs/TextInputs/TextInput'
-import TextareaInput from 'components/Inputs/TextInputs/TextareaInput'
-import SelectInput from 'components/Inputs/TextInputs/SelectInput'
+import '../../../../../shared/inputs/InputsStandardStyles.scss'
+import TextInput from 'shared/inputs/TextInputs/TextInput'
+import TextareaInput from 'shared/inputs/TextInputs/TextareaInput'
+import SelectInput from 'shared/inputs/TextInputs/SelectInput'
 
 type Props = {}
 
