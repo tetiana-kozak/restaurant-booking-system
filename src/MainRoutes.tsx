@@ -7,7 +7,7 @@ import RestaurantEditorPage from 'pages/RestaurantEditorPage/RestaurantEditorPag
 import RestaurantBookingPage from 'pages/RestaurantBookingPage/RestaurantBookingPage'
 import RestaurantCalendarPage from 'pages/RestaurantCalendarPage/RestaurantCalendarPage'
 import AdminPanelPage from 'pages/AdminPanelPage/AdminPanelPage'
-import UserReservationTable from 'pages/UserReservationTable/UserReservationTable'
+import UserReservationTablePage from 'pages/UserReservationTablePage/UserReservationTablePage'
 import RedirectRoot from 'components/CustomRoutes/RedirectRoot'
 
 type Props = {}
@@ -35,7 +35,7 @@ const MainRoutes = (props: Props) => {
           element={<RestaurantCalendarPage />}
         />
       </Route>
-      <Route path="user-reservation" element={<UserReservationTable />} />
+      <Route path="user-reservation" element={<UserReservationTablePage />} />
     </Routes>
   )
 }
