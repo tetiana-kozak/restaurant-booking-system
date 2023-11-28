@@ -1,7 +1,7 @@
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import { IconButton } from '@mui/material'
-import ModalContainer from 'components/Modals/EditRestaurantModal/ModalContainer/ModalContainer'
+import ModalContainer from 'shared/modals/editRestaurantModal/ModalContainer/ModalContainer'
 import {
   deleteRestaurant,
   getUserRestaurantsList,

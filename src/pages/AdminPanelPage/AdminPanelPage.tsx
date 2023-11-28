@@ -1,5 +1,5 @@
 import AllRestaurantsTable from 'components/AllRestaurantsTable/AllRestaurantsTable'
-import ModalContainer from 'components/Modals/EditRestaurantModal/ModalContainer/ModalContainer'
+import ModalContainer from 'shared/modals/editRestaurantModal/ModalContainer/ModalContainer'
 import PageTitleSection from 'shared/typography/PageTitleSection'
 import { useState } from 'react'
 import { restaurantType } from 'types/restaurantsEntity'

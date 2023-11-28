@@ -5,7 +5,7 @@ import {
   DialogContent,
   DialogActions,
 } from '@mui/material'
-import RestaurantInfoForm from '../RestaurantInfoForm/RestaurantInfoForm'
+import RestaurantInfoForm from '../../../../pages/AdminPanelPage/modals/editRestaurantModal/RestaurantInfoForm/RestaurantInfoForm'
 import {
   createRestaurantValuesType,
   editRestaurantValuesType,
@@ -14,11 +14,11 @@ import {
 import ModalActions from '../ModalActions/ModalActions'
 import { useAppDispatch } from 'redux/hooks'
 import { Formik, Form } from 'formik'
-import { createRestaurantSchema } from 'utils/validationSchemas/validationSchemas'
 import {
   createRestaurant,
   editRestaurant,
 } from 'pages/AdminPanelPage/userRestaurantsReduser'
+import { createRestaurantSchema } from './createRestaurantSchema'
 
 type Props = {
   handleClose: () => void
