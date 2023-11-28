@@ -1,12 +1,12 @@
 import { Form, Formik } from 'formik'
 import './SignInPage.scss'
-import { SignInSchema } from 'utils/validationSchemas/validationSchemas'
 import { Link, useNavigate } from 'react-router-dom'
 import TextInput from 'shared/inputs/TextInputs/TextInput'
 import PasswordInput from 'shared/inputs/PasswordInput/PasswordInput'
-import RegisterButton from 'components/Buttons/RegisterButton/RegisterButton'
+import RegisterButton from 'pages/SignInPage/RegisterButton/RegisterButton'
 import { configureAxios } from 'shared/axios/configureAxios'
 import { UserSignInData } from 'types/usersEntity'
+import { signInSchema } from './signInSchema'
 
 type Props = {}
 
@@ -40,7 +40,7 @@ const SignInPage = (props: Props) => {
             email: '',
             password: '',
           }}
-          validationSchema={SignInSchema}
+          validationSchema={signInSchema}
           onSubmit={(values) => {
             signIn(values)
           }}
