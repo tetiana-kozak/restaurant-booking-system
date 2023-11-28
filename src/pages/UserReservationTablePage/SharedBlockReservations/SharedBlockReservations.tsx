@@ -1,6 +1,6 @@
 import SharedBlockRegisteredUser from 'pages/UserReservationTablePage/SharedBlockRegisteredUser/SharedBlockRegisteredUser'
 import SharedBlockUnregisteredUser from 'pages/UserReservationTablePage/SharedBlockUnregisteredUser/SharedBlockUnregisteredUser'
-import SteppeReservation from 'components/SteppeReservation/SteppeReservation'
+import StepsTabs from 'shared/stepsTabs/StepsTabs/StepsTabs'
 import { useState } from 'react'
 
 type Props = {}
@@ -15,7 +15,7 @@ const SharedBlockReservations = (props: Props) => {
       ) : (
         <SharedBlockUnregisteredUser />
       )}
-      <SteppeReservation />
+      <StepsTabs />
     </div>
   )
 }
