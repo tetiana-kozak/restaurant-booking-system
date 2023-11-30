@@ -4,9 +4,9 @@ import {
   editRestaurantValuesType,
   initialStateRestaurantsListType,
   restaurantType,
-} from 'types/restaurantsEntity'
+} from 'shared/types/restaurantsEntity'
 
-import { configureAxios } from 'utils/axios/configureAxios'
+import { configureAxios } from 'shared/axios/configureAxios'
 
 const initialState: initialStateRestaurantsListType = {
   userRestaurantsList: [],
