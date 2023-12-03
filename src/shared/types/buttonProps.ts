@@ -1,4 +1,4 @@
-export interface ButtonProps {
+export interface buttonProps {
     onClick: () => void;
     label: string;
 };
