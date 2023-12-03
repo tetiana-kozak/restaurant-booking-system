@@ -7,6 +7,7 @@ import RegisterButton from 'pages/SignInPage/RegisterButton/RegisterButton'
 import { configureAxios } from 'shared/axios/configureAxios'
 import { signInSchema } from './signInSchema'
 import { UserSignInType } from './signInEntity'
+import VisitorBackgroundContainer from 'shared/containers/VisitorBackgroundContainer/VisitorBackgroundContainer'
 
 type Props = {}
 
@@ -33,43 +34,45 @@ const SignInPage = (props: Props) => {
       .catch((error) => console.log('error', error))
   }
   return (
-    <div className="form-container">
-      <div>
-        <Formik
-          initialValues={{
-            email: '',
-            password: '',
-          }}
-          validationSchema={signInSchema}
-          onSubmit={(values) => {
-            signIn(values)
-          }}
-        >
-          <Form>
-            <TextInput
-              name={'email'}
-              id={'email-input'}
-              label={'Email *'}
-              placeholder={'example@gmail.com'}
-            />
+    <div className="mx-24 my-50 ">
+      <VisitorBackgroundContainer>
+        <div>
+          <Formik
+            initialValues={{
+              email: '',
+              password: '',
+            }}
+            validationSchema={signInSchema}
+            onSubmit={(values) => {
+              signIn(values)
+            }}
+          >
+            <Form>
+              <TextInput
+                name={'email'}
+                id={'email-input'}
+                label={'Email *'}
+                placeholder={'example@gmail.com'}
+              />
 
-            <PasswordInput
-              name={'password'}
-              id={'password-input'}
-              label={'Password *'}
-              placeholder={'***************'}
-            />
+              <PasswordInput
+                name={'password'}
+                id={'password-input'}
+                label={'Password *'}
+                placeholder={'***************'}
+              />
 
-            <RegisterButton>Sign In</RegisterButton>
-          </Form>
-        </Formik>
-        <p className="account-message">
-          Don’t have account yet?
-          <span>
-            <Link to={'/sign-up'}> New Account</Link>
-          </span>
-        </p>
-      </div>
+              <RegisterButton>Sign In</RegisterButton>
+            </Form>
+          </Formik>
+          <p className="account-message">
+            Don’t have account yet?
+            <span>
+              <Link to={'/sign-up'}> New Account</Link>
+            </span>
+          </p>
+        </div>
+      </VisitorBackgroundContainer>
     </div>
   )
 }
