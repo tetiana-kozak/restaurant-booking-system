@@ -1,6 +1,17 @@
-import { InfoIcon } from 'assets/icons/Info'
+import { InfoIcon } from 'assets/icons/Info';
+import { useNavigate } from 'react-router-dom';
+import ButtonTFMain from 'shared/buttons/ButtonTFMain/ButtonTFMain';
+
+type Props = {};
 
 const SharedBlockRegisteredUser = () => {
+  const navigate = useNavigate();
+
+  //ЗМІНИТИ РЕДІРЕКТ, коли буде створено сторінку та роут "Особистий кабінет"
+  const redirectToPersonalOffice = () => {
+    navigate('sign-in');
+  }
+
   return (
     <div>
       <div className="w-552">
@@ -22,12 +33,7 @@ const SharedBlockRegisteredUser = () => {
         </p>
       </div>
       <div className="w-552 flex items-center justify-center gap-40 mb-264">
-        <button
-          className="font-sans text-p leading-8  cursor-pointer bg-button-primary py-10 px-41 rounded-100"
-          type="button"
-        >
-          Особистий кабінет
-        </button>
+        <ButtonTFMain onClick={redirectToPersonalOffice} label={"Особистий кабінет"} />
       </div>
       <div className="w-552 flex items-center flex-start gap-20">
         <InfoIcon />
@@ -37,4 +43,4 @@ const SharedBlockRegisteredUser = () => {
   )
 }
 
-export default SharedBlockRegisteredUser
+export default SharedBlockRegisteredUser;
