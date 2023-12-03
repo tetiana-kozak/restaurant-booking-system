@@ -8,6 +8,8 @@ import RestaurantEditorPage from 'pages/RestaurantEditorPage/RestaurantEditorPag
 import RestaurantBookingPage from 'pages/RestaurantBookingPage/RestaurantBookingPage'
 import RestaurantCalendarPage from 'pages/RestaurantCalendarPage/RestaurantCalendarPage'
 import AdminPanelPage from 'pages/AdminPanelPage/AdminPanelPage'
+import PersonalCabinetPage from 'pages/PersonalCabinetPage/PersonalCabinet'
+
 
 type Props = {}
 
@@ -36,6 +38,10 @@ const MainRoutes = (props: Props) => {
           <Route
             path="restaurant-calendar"
             element={<RestaurantCalendarPage />}
+          />
+          <Route
+            path="personal-cabinet"
+            element={<PersonalCabinetPage />}
           />
         </Route>
       </Route>
