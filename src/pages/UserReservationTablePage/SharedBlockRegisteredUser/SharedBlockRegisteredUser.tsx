@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const SharedBlockRegisteredUser = () => {
   const navigate = useNavigate();
 
-  //ЗМІНИТИ РЕДІРЕКТ, коли буде створено сторінку "Особистий кабінет"
+  //ЗМІНИТИ РЕДІРЕКТ, коли буде створено сторінку та роут "Особистий кабінет"
   const redirectToPersonalOffice = () => {
     navigate('sign-in');
   }
