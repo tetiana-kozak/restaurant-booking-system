@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .main-modal_title {
+    @apply text-xLarge font-normal leading-9 p-40;
+  }
+}
+
+.MuiModal-backdrop {
+  @apply bg-backdrop;
+}
+
+.MuiDialog-paper {
+  @apply w-552;
+}
+
+.modal-actions {
+  @apply p-40 justify-center;
+}
