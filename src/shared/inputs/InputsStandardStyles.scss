@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.inputs-standard {
+  .MuiFormControl-root {
+    @apply my-0  rounded-t-sm;
+  }
+
+  .MuiInputLabel-root {
+    @apply text-text-color text-normal pl-20 pt-8 leading-6;
+  }
+
+  .MuiTextField-root {
+    @apply bg-input-bg;
+  }
+
+  .MuiInputBase-input {
+    @apply pt-0 pl-16 pb-8 pr-36;
+  }
+
+  label + .MuiInput-root {
+    @apply mt-24;
+  }
+
+  .MuiFormHelperText-root {
+    @apply text-error pl-16  m-0 p-0;
+  }
+
+  .input-clear-icon,
+  .MuiSelect-icon {
+    @apply absolute right-0 -top-8 mr-12 cursor-pointer;
+  }
+
+  .input-clear-icon.icon-error {
+    @apply fill-error;
+  }
+
+  .css-1rb63tl-MuiInputBase-root-MuiInput-root {
+    @apply items-start;
+  }
+}
