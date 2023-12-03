@@ -4,7 +4,7 @@ type Props = {
 
 const VisitorBackgroundContainer = ({ children }: Props) => {
   return (
-    <div className="rounded-md bg-iframe_bg_color h-screen w-full shadow-page_shadow">
+    <div className="rounded-md bg-iframe_bg_color h-full w-full shadow-page_shadow">
       {children}
     </div>
   )

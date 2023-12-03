@@ -8,6 +8,7 @@ import { configureAxios } from 'shared/axios/configureAxios'
 import { signInSchema } from './signInSchema'
 import { UserSignInType } from './signInEntity'
 import VisitorBackgroundContainer from 'shared/containers/VisitorBackgroundContainer/VisitorBackgroundContainer'
+import VisitorPageTitle from 'shared/typography/VisitorPageTitle'
 
 type Props = {}
 
@@ -34,9 +35,11 @@ const SignInPage = (props: Props) => {
       .catch((error) => console.log('error', error))
   }
   return (
-    <div className="mx-24 my-50 ">
+    <div className="mx-24 my-50 h-calc-container-height ">
       <VisitorBackgroundContainer>
-        <div>
+        <div className="max-w-568 m-auto pt-36 ">
+          <VisitorPageTitle>Вхід</VisitorPageTitle>
+
           <Formik
             initialValues={{
               email: '',

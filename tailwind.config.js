@@ -59,10 +59,14 @@ module.exports = {
         552: '552px',
         600: '600px',
         1392: '1392px',
+        'calc-container-height': 'calc(100vh - 100px)',
       },
       boxShadow: {
         page_shadow:
           '0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30)',
+      },
+      maxWidth: {
+        568: '568px',
       },
     },
   },
