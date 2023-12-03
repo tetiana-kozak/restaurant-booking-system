@@ -1,6 +1,21 @@
-import { InfoIcon } from 'assets/icons/Info'
+import { InfoIcon } from 'assets/icons/Info';
+import ButtonTFMain from 'components/Buttons/ButtonTFMain/ButtonTFMain';
+import ButtonTFPrimary from 'components/Buttons/ButtonTFPrimary/ButtonTFPrimary';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const SharedBlockUnregisteredUser = () => {
+  const navigate = useNavigate();
+
+  const redirectToSignIn = () => {
+    navigate('/sign-in');
+  };
+
+  const redirectToSignUp = () => {
+    navigate('/sign-up');
+  };
+
   return (
     <div>
       <div className="w-552">
@@ -22,18 +37,8 @@ const SharedBlockUnregisteredUser = () => {
         </p>
       </div>
       <div className="w-552 flex items-center justify-center gap-40 mb-264">
-        <button
-          className="py-10 px-41 font-sans text-p leading-8 text-button-primary cursor-pointer rounded-100"
-          type="button"
-        >
-          Реєстрація
-        </button>
-        <button
-          className="font-sans text-p leading-8  cursor-pointer bg-button-primary py-10 px-41 rounded-100"
-          type="button"
-        >
-          Вхід
-        </button>
+        <ButtonTFPrimary onClick={redirectToSignIn} label={"Реєстрація"}/>
+        <ButtonTFMain onClick={redirectToSignUp} label={"Вхід"}/>
       </div>
       <div className="w-552 flex items-center flex-start gap-20">
         <InfoIcon />
@@ -43,4 +48,4 @@ const SharedBlockUnregisteredUser = () => {
   )
 }
 
-export default SharedBlockUnregisteredUser
+export default SharedBlockUnregisteredUser;
