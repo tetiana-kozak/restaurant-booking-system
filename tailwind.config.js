@@ -7,6 +7,7 @@ module.exports = {
       secondary: '#D0E3C4',
       tertiary: '#EFF4EA',
       'button-primary': '#FFB859',
+      'hover-btn-primary': '#FF9C18',
       'button-secondary': '#503047',
       'button-disabled': '#CAC4D0',
       error: '#CE2020',

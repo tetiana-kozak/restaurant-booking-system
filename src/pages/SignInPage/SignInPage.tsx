@@ -37,7 +37,7 @@ const SignInPage = (props: Props) => {
   return (
     <div className="mx-24 my-50 h-calc-container-height ">
       <VisitorBackgroundContainer>
-        <div className="max-w-568 m-auto pt-36 ">
+        <div className="max-w-568 m-auto py-36 flex flex-col gap-40 ">
           <VisitorPageTitle>Вхід</VisitorPageTitle>
 
           <Formik
@@ -68,10 +68,10 @@ const SignInPage = (props: Props) => {
               <RegisterButton>Sign In</RegisterButton>
             </Form>
           </Formik>
-          <p className="account-message">
-            Don’t have account yet?
-            <span>
-              <Link to={'/sign-up'}> New Account</Link>
+          <p className="text-center md:text-p ">
+            Немає акаунту?
+            <span className=" text-button-primary hover:text-hover-btn-primary">
+              <Link to={'/sign-up'}> Зареєструватись</Link>
             </span>
           </p>
         </div>
