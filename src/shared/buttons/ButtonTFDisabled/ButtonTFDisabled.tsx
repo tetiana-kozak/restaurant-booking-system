@@ -1,7 +1,7 @@
-import { ButtonProps } from "types/buttonProps";
+import { buttonProps } from 'shared/types/buttonProps';
 import './ButtonTFDisabled.scss';
 
-const ButtonTFDisabled: React.FC<ButtonProps> = ({ onClick, label }) => {
+const ButtonTFDisabled: React.FC<buttonProps> = ({ onClick, label }) => {
     return (
         <button onClick={onClick} className='button_tf_disabled'>
             {label}
