@@ -14,7 +14,6 @@ const SharedBlockUnregisteredUser = () => {
     navigate('/sign-up');
   };
 
-
   return (
     <div>
       <div className="w-552">

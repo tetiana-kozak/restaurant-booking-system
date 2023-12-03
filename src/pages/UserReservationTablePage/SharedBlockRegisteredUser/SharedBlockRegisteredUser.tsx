@@ -1,3 +1,4 @@
+
 import { InfoIcon } from 'assets/icons/Info';
 import { useNavigate } from 'react-router-dom';
 import ButtonTFMain from 'shared/buttons/ButtonTFMain/ButtonTFMain';
@@ -11,7 +12,7 @@ const SharedBlockRegisteredUser = () => {
   const redirectToPersonalOffice = () => {
     navigate('sign-in');
   }
-
+  
   return (
     <div>
       <div className="w-552">
@@ -32,7 +33,6 @@ const SharedBlockRegisteredUser = () => {
           аккаунт або зареєструйтесь.
         </p>
       </div>
-      <div className="w-552 flex items-center justify-center gap-40 mb-264">
         <ButtonTFMain onClick={redirectToPersonalOffice} label={"Особистий кабінет"} />
       </div>
       <div className="w-552 flex items-center flex-start gap-20">
