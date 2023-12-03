@@ -51,6 +51,7 @@ const SignInPage = (props: Props) => {
             }}
           >
             <Form>
+              <p className=" text-p">Введіть Ваші дані</p>
               <TextInput
                 name={'email'}
                 id={'email-input'}
@@ -65,7 +66,7 @@ const SignInPage = (props: Props) => {
                 placeholder={'***************'}
               />
 
-              <RegisterButton>Sign In</RegisterButton>
+              <RegisterButton>Підтвердити</RegisterButton>
             </Form>
           </Formik>
           <p className="text-center md:text-p ">
