@@ -51,21 +51,22 @@ const SignInPage = (props: Props) => {
             }}
           >
             <Form>
-              <p className=" text-p">Введіть Ваші дані</p>
-              <TextInput
-                name={'email'}
-                id={'email-input'}
-                label={'Email *'}
-                placeholder={'example@gmail.com'}
-              />
+              <div className="inputs-standard flex flex-col gap-20">
+                <p className=" text-p">Введіть Ваші дані</p>
+                <TextInput
+                  name={'email'}
+                  id={'email-input'}
+                  label={'Email *'}
+                  placeholder={'example@gmail.com'}
+                />
 
-              <PasswordInput
-                name={'password'}
-                id={'password-input'}
-                label={'Password *'}
-                placeholder={'***************'}
-              />
-
+                <PasswordInput
+                  name={'password'}
+                  id={'password-input'}
+                  label={'Password *'}
+                  placeholder={'***************'}
+                />
+              </div>
               <RegisterButton>Підтвердити</RegisterButton>
             </Form>
           </Formik>
