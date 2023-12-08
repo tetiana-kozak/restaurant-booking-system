@@ -7,6 +7,8 @@ import RegisterButton from 'pages/SignInPage/RegisterButton/RegisterButton'
 import { configureAxios } from 'shared/axios/configureAxios'
 import { signInSchema } from './signInSchema'
 import { UserSignInType } from './signInEntity'
+import VisitorBackgroundContainer from 'shared/containers/VisitorBackgroundContainer/VisitorBackgroundContainer'
+import VisitorPageTitle from 'shared/typography/VisitorPageTitle'
 
 type Props = {}
 
@@ -33,43 +35,49 @@ const SignInPage = (props: Props) => {
       .catch((error) => console.log('error', error))
   }
   return (
-    <div className="form-container">
-      <div>
-        <Formik
-          initialValues={{
-            email: '',
-            password: '',
-          }}
-          validationSchema={signInSchema}
-          onSubmit={(values) => {
-            signIn(values)
-          }}
-        >
-          <Form>
-            <TextInput
-              name={'email'}
-              id={'email-input'}
-              label={'Email *'}
-              placeholder={'example@gmail.com'}
-            />
+    <div className="mx-24 my-50 h-calc-container-height ">
+      <VisitorBackgroundContainer>
+        <div className="max-w-568 m-auto py-36 flex flex-col gap-40 ">
+          <VisitorPageTitle>Вхід</VisitorPageTitle>
 
-            <PasswordInput
-              name={'password'}
-              id={'password-input'}
-              label={'Password *'}
-              placeholder={'***************'}
-            />
+          <Formik
+            initialValues={{
+              email: '',
+              password: '',
+            }}
+            validationSchema={signInSchema}
+            onSubmit={(values) => {
+              signIn(values)
+            }}
+          >
+            <Form>
+              <div className="inputs-standard flex flex-col gap-20">
+                <p className=" text-p">Введіть Ваші дані</p>
+                <TextInput
+                  name={'email'}
+                  id={'email-input'}
+                  label={'Email *'}
+                  placeholder={'example@gmail.com'}
+                />
 
-            <RegisterButton>Sign In</RegisterButton>
-          </Form>
-        </Formik>
-        <p className="account-message">
-          Don’t have account yet?
-          <span>
-            <Link to={'/sign-up'}> New Account</Link>
-          </span>
-        </p>
-      </div>
+                <PasswordInput
+                  name={'password'}
+                  id={'password-input'}
+                  label={'Password *'}
+                  placeholder={'***************'}
+                />
+              </div>
+              <RegisterButton>Підтвердити</RegisterButton>
+            </Form>
+          </Formik>
+          <p className="text-center md:text-p ">
+            Немає акаунту?
+            <span className=" text-button-primary hover:text-hover-btn-primary">
+              <Link to={'/sign-up'}> Зареєструватись</Link>
+            </span>
+          </p>
+        </div>
+      </VisitorBackgroundContainer>
     </div>
   )
 }
