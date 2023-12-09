@@ -25,14 +25,14 @@ const TextInput = ({ ...props }: Props) => {
           shrink: true,
         }}
         InputProps={{
-          endAdornment: (
+          endAdornment: field.value ? (
             <div onClick={() => helpers.setValue('')}>
               <HighlightOffIcon
                 fontSize="medium"
                 className={`input-clear-icon ${isError ? 'icon-error' : ''}`}
               />
             </div>
-          ),
+          ) : null,
         }}
       />
 
