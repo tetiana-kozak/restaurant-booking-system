@@ -1,5 +1,4 @@
 import { Form, Formik } from 'formik'
-import './SignInPage.scss'
 import { Link, useNavigate } from 'react-router-dom'
 import TextInput from 'shared/inputs/TextInputs/TextInput'
 import PasswordInput from 'shared/inputs/PasswordInput/PasswordInput'
@@ -37,20 +36,20 @@ const SignInPage = (props: Props) => {
   return (
     <div className="mx-24 my-50 h-calc-container-height ">
       <VisitorBackgroundContainer>
-        <div className="max-w-568 m-auto py-36 flex flex-col gap-40 ">
-          <VisitorPageTitle>Вхід</VisitorPageTitle>
+        <Formik
+          initialValues={{
+            email: '',
+            password: '',
+          }}
+          validationSchema={signInSchema}
+          onSubmit={(values) => {
+            signIn(values)
+          }}
+        >
+          <Form>
+            <div className="max-w-568 m-auto py-36 flex flex-col gap-40 ">
+              <VisitorPageTitle>Вхід</VisitorPageTitle>
 
-          <Formik
-            initialValues={{
-              email: '',
-              password: '',
-            }}
-            validationSchema={signInSchema}
-            onSubmit={(values) => {
-              signIn(values)
-            }}
-          >
-            <Form>
               <div className="inputs-standard flex flex-col gap-20">
                 <p className=" text-p">Введіть Ваші дані</p>
                 <TextInput
@@ -66,17 +65,24 @@ const SignInPage = (props: Props) => {
                   label={'Password *'}
                   placeholder={'***************'}
                 />
+                <Link to={'/reset-password'} className="text-right text-p">
+                  Забули пароль?
+                </Link>
               </div>
-              <RegisterButton>Підтвердити</RegisterButton>
-            </Form>
-          </Formik>
-          <p className="text-center md:text-p ">
-            Немає акаунту?
-            <span className=" text-button-primary hover:text-hover-btn-primary">
-              <Link to={'/sign-up'}> Зареєструватись</Link>
-            </span>
-          </p>
-        </div>
+
+              <div className=" flex justify-center">
+                <RegisterButton>Підтвердити</RegisterButton>
+              </div>
+
+              <p className="text-center md:text-p ">
+                Немає акаунту?
+                <span className=" text-button-primary hover:text-hover-btn-primary">
+                  <Link to={'/sign-up'}> Зареєструватись</Link>
+                </span>
+              </p>
+            </div>
+          </Form>
+        </Formik>
       </VisitorBackgroundContainer>
     </div>
   )

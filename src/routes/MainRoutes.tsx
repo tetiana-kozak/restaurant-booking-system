@@ -9,6 +9,7 @@ import RestaurantCalendarPage from 'pages/RestaurantCalendarPage/RestaurantCalen
 import AdminPanelPage from 'pages/AdminPanelPage/AdminPanelPage'
 import UserReservationTablePage from 'pages/UserReservationTablePage/UserReservationTablePage'
 import RedirectRoot from 'routes/CustomRoutes/RedirectRoot'
+import ResetPasswordPage from 'pages/ResetPasswordPage/ResetPasswordPage'
 
 type Props = {}
 
@@ -18,6 +19,7 @@ const MainRoutes = (props: Props) => {
       <Route path="/" element={<RedirectRoot />} />
       <Route path="sign-up" element={<SignUpPage />} />
       <Route path="sign-in" element={<SignInPage />} />
+      <Route path="reset-password" element={<ResetPasswordPage />} />
 
       <Route
         path="admin-panel"
