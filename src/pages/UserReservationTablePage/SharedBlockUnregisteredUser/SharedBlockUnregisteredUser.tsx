@@ -1,7 +1,7 @@
 import { InfoIcon } from 'assets/icons/Info';
 import { useNavigate } from 'react-router-dom';
 import ButtonTFMain from 'shared/buttons/ButtonTFMain/ButtonTFMain';
-import ButtonTFPrimary from 'shared/buttons/ButtonTFSecondary/ButtonTFSecondary';
+import ButtonTFSecondary from 'shared/buttons/ButtonTFSecondary/ButtonTFSecondary';
 
 const SharedBlockUnregisteredUser = () => {
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const SharedBlockUnregisteredUser = () => {
         </p>
       </div>
       <div className="w-552 flex items-center justify-center gap-40 mb-264">
-        <ButtonTFPrimary onClick={redirectToSignIn} label={"Реєстрація"}/>
+        <ButtonTFSecondary onClick={redirectToSignIn} label={"Реєстрація"}/>
         <ButtonTFMain onClick={redirectToSignUp} label={"Вхід"}/>
       </div>
       <div className="w-552 flex items-center flex-start gap-20">
