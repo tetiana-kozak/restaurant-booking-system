@@ -1,7 +1,7 @@
 import { InfoIcon } from 'assets/icons/Info';
 import { useNavigate } from 'react-router-dom';
 import ButtonTFMain from 'shared/buttons/ButtonTFMain/ButtonTFMain';
-import ButtonTFPrimary from 'shared/buttons/ButtonTFPrimary/ButtonTFPrimary';
+import ButtonTFPrimary from 'shared/buttons/ButtonTFSecondary/ButtonTFSecondary';
 
 const SharedBlockUnregisteredUser = () => {
   const navigate = useNavigate();
