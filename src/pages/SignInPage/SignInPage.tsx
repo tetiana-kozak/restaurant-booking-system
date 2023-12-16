@@ -34,7 +34,7 @@ const SignInPage = (props: Props) => {
       .catch((error) => console.log('error', error))
   }
   return (
-    <div className="mx-24 my-50 h-calc-container-height ">
+    <div className="mx-24 my-40 h-calc-container-height ">
       <VisitorBackgroundContainer>
         <Formik
           initialValues={{
@@ -62,19 +62,16 @@ const SignInPage = (props: Props) => {
                 <PasswordInput
                   name={'password'}
                   id={'password-input'}
-                  label={'Password *'}
+                  label={'Пароль *'}
                   placeholder={'***************'}
                 />
-                <Link to={'/reset-password'} className="text-right text-p">
-                  Забули пароль?
-                </Link>
               </div>
 
               <div className=" flex justify-center">
                 <RegisterButton>Підтвердити</RegisterButton>
               </div>
 
-              <p className="text-center md:text-p ">
+              <p className="text-center ">
                 Немає акаунту?
                 <span className=" text-button-primary hover:text-hover-btn-primary">
                   <Link to={'/sign-up'}> Зареєструватись</Link>

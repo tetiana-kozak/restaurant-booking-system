@@ -48,7 +48,14 @@ const PasswordInput = ({ ...props }: Props) => {
         }}
       />
 
-      {isError ? <FormHelperText>{meta.error}</FormHelperText> : null}
+      {isError ? (
+        <FormHelperText>
+          {meta.error}{' '}
+          <div className=" text-error">
+            Будь ласка, перевірте введені дані і спробуйте знову.
+          </div>
+        </FormHelperText>
+      ) : null}
     </FormControl>
   )
 }

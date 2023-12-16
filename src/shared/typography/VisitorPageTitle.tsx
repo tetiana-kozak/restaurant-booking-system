@@ -3,7 +3,7 @@ type Props = {
 }
 const VisitorPageTitle = ({ children }: Props) => {
   return (
-    <div className="font-sans text-large md:text-h2 text-text-color">
+    <div className="font-sans text-large md:text-h2 text-text-color text-center">
       {children}
     </div>
   )
