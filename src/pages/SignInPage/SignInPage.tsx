@@ -8,6 +8,7 @@ import { signInSchema } from './signInSchema'
 import { UserSignInType } from './signInEntity'
 import VisitorBackgroundContainer from 'shared/containers/VisitorBackgroundContainer/VisitorBackgroundContainer'
 import VisitorPageTitle from 'shared/typography/VisitorPageTitle'
+import ButtonTFMain from 'shared/buttons/ButtonTFMain/ButtonTFMain'
 
 type Props = {}
 
@@ -33,6 +34,7 @@ const SignInPage = (props: Props) => {
       })
       .catch((error) => console.log('error', error))
   }
+
   return (
     <div className="mx-24 my-40 h-calc-container-height ">
       <VisitorBackgroundContainer>
@@ -68,7 +70,8 @@ const SignInPage = (props: Props) => {
               </div>
 
               <div className=" flex justify-center">
-                <RegisterButton>Підтвердити</RegisterButton>
+                <ButtonTFMain label="Підтвердити" />
+                {/* <RegisterButton>Підтвердити</RegisterButton> */}
               </div>
 
               <p className="text-center ">

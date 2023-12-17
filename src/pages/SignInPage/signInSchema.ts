@@ -6,7 +6,7 @@ const emailRulles =
 export const signInSchema = Yup.object().shape({
   email: Yup.string()
     .matches(emailRulles, {
-      message: 'Введено невірний email!',
+      message: 'Введено невалідний email!',
     })
     .required("Це поле є обов'язковим!"),
   password: Yup.string()

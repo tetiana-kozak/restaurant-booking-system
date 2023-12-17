@@ -37,7 +37,7 @@ const TextInput = ({ ...props }: Props) => {
       />
 
       {isError ? (
-        <FormHelperText>
+        <FormHelperText component={'div'}>
           {meta.error}
           <div className=" text-error">
             Будь ласка, перевірте введені дані і спробуйте знову.

@@ -30,7 +30,7 @@ const PasswordInput = ({ ...props }: Props) => {
           shrink: true,
         }}
         InputProps={{
-          endAdornment: (
+          endAdornment: field.value ? (
             <div onClick={handleShowPassword}>
               {showPassword ? (
                 <VisibilityOffIcon
@@ -44,13 +44,13 @@ const PasswordInput = ({ ...props }: Props) => {
                 />
               )}
             </div>
-          ),
+          ) : null,
         }}
       />
 
       {isError ? (
-        <FormHelperText>
-          {meta.error}{' '}
+        <FormHelperText component={'div'}>
+          {meta.error}
           <div className=" text-error">
             Будь ласка, перевірте введені дані і спробуйте знову.
           </div>
