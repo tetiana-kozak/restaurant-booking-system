@@ -26,6 +26,12 @@ module.exports = {
       h2: '43px',
       p: '20px',
     },
+    boxShadow: {
+      'hover-btn': '0px 5px 9.5px 0px rgba(0, 0, 0, 0.25)',
+    },
+    transitionDelay: {
+      'btn-transition':'boxShadow 250ms cubic-bezier(0.4, 0, 0.2, 1)',
+    },
     borderRadius: {
       none: '0',
       sm: '5px',
