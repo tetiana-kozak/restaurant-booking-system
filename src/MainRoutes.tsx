@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom'
-import InnerContent from './components/InnerContent/InnerContent'
+import InnerContent from './routes/InnerContent/InnerContent'
 import SignInPage from 'pages/SignInPage/SignInPage'
 import SignUpPage from 'pages/SignUpPage/SignUpPage'
-import ProtectedRoute from 'components/ProtectedRoute/ProtectedRoute'
-import AdminPanel from 'container/Sections/AdminPanel/AdminPanel'
+import ProtectedRoute from './routes/CustomRoutes/ProtectedRoute'
+import AdminPanel from './pages/AdminPanelPage/AdminPanelGrid/AdminPanelGrid'
 import RestaurantEditorPage from 'pages/RestaurantEditorPage/RestaurantEditorPage'
 import RestaurantBookingPage from 'pages/RestaurantBookingPage/RestaurantBookingPage'
 import RestaurantCalendarPage from 'pages/RestaurantCalendarPage/RestaurantCalendarPage'
@@ -29,7 +29,7 @@ const MainRoutes = (props: Props) => {
             </ProtectedRoute>
           }
         >
-          <Route index element={<AdminPanelPage />} />
+          <Route index element={<AdminPanelPage/>} />
           <Route path="restaurant-editor" element={<RestaurantEditorPage />} />
           <Route
             path="restaurant-booking"
@@ -39,10 +39,11 @@ const MainRoutes = (props: Props) => {
             path="restaurant-calendar"
             element={<RestaurantCalendarPage />}
           />
-          <Route
+           <Route
             path="personal-cabinet"
             element={<PersonalCabinetPage />}
           />
+          
         </Route>
       </Route>
     </Routes>

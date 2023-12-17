@@ -10,8 +10,8 @@ const HotelSearch = (props: Props) => {
 	// }
 	return (<>
 		<div className="border-b-[0.5px] border-solid border-gray-500 flex h-[56px] w-[170px] ">
-			<input className=" pt-[4px] pb-[4px] w-[137px]"></input>
-			<button onClick={event => console.log(event)} type="button" className="w-[24px] m-[5px]"><GoChevronDown /></button>
+			<input className="bg-[#F7F2FA] pt-[4px] pb-[4px] w-[137px]"></input>
+			<button onClick={event => console.log(event)} type="button" className="w-[24px] m-[5px] cursor-pointer"><GoChevronDown /></button>
 
 		</div>
 		<p className="text-[#CAC4D0] text-[12px] ml-[16px] mt-[4px] mb-[42px]">Введіть назву</p>

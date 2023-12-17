@@ -1,9 +1,5 @@
 type Props = {}
 const PersonalCabinetPage = (props: Props) => {
-  return (
-    <div>
-      <div>PersonalCabinetPage</div>
-    </div>
-  )
+  return <div>PersonalCabinetPage</div>
 }
 export default PersonalCabinetPage

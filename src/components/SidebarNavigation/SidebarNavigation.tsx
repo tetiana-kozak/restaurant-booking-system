@@ -1,11 +1,15 @@
 import { Link } from 'react-router-dom'
 import './SidebarNavigation.scss'
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
-import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined'
-import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined'
-import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import LinkOutlinedIcon from '@mui/icons-material/LinkOutlined';
-import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined';
+
+import { CheckIcon } from '../../assets/svgSidebar/check';
+import {ApertureSidebar} from '../../assets/svgSidebar/aperturesidebar';
+import {Gridsidebar} from '../../assets/svgSidebar/gridsidebar';
+import {HomeSidebar} from '../../assets/svgSidebar/homesidebar';
+import { LinkSidebar } from '../../assets/svgSidebar/linksidebar';
+import { UserSidebar } from '../../assets/svgSidebar/usersidebar';
+
+
+
 
 type Props = {}
 
@@ -14,28 +18,28 @@ const SidebarNavigation = (props: Props) => {
     <nav className="sidebar-menu  ">
       <ul className="sidebar-menu-list">
         <Link to={'/admin-panel'} className="flex gap-[12px]">
-            <HomeOutlinedIcon />
+            <HomeSidebar />
             <li className="item icon-adm mb-[32px]">Адміністратор</li>
     
         </Link>
         <Link to={'restaurant-editor'} className="flex gap-[12px]">
-          <GridViewOutlinedIcon />
+          <Gridsidebar />
           <li className="item icon-constructor mb-[32px]">Конструктор залу</li>
         </Link>
         <Link to={'restaurant-booking'} className="flex gap-[12px]">
-          <CheckBoxOutlinedIcon />
+          <CheckIcon/> 
           <li className="item icon-booking mb-[32px]">Бронювання</li>
         </Link>
         <Link to={'personal-cabinet'} className="flex gap-[12px]">
-          <PersonOutlineOutlinedIcon/>
+          <UserSidebar/>
           <li className="item icon-cabinet mb-[32px]">Особистий кабінет</li>
         </Link>
         <Link to={'generate-link'} className="flex gap-[12px]">
-          <LinkOutlinedIcon/>
+          <LinkSidebar/>
           <li className="item icon-link mb-[32px]">Link</li>
         </Link>
         <Link to={'change-colors'} className="flex gap-[12px]">
-          <ColorLensOutlinedIcon/>
+          <ApertureSidebar/>
           <li className="item icon-color ">Colors</li>
         </Link>
       </ul>
