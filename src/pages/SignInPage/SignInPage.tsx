@@ -2,43 +2,20 @@ import { Form, Formik } from 'formik'
 import { Link, useNavigate } from 'react-router-dom'
 import TextInput from 'shared/inputs/TextInputs/TextInput'
 import PasswordInput from 'shared/inputs/PasswordInput/PasswordInput'
-import { configureAxios } from 'shared/axios/configureAxios'
-import { UserSignInType, signInErrorType } from './signInEntity'
+import { signInErrorType } from './signInEntity'
 import VisitorBackgroundContainer from 'shared/containers/VisitorBackgroundContainer/VisitorBackgroundContainer'
 import VisitorPageTitle from 'shared/typography/VisitorPageTitle'
 import ButtonTFMain from 'shared/buttons/ButtonTFMain/ButtonTFMain'
 import { signInSchema } from './signInSchema'
 import { useState } from 'react'
 import { checkSignInErrorStatus } from './checkSignInError'
+import { signIn } from './signInUtils'
 
 type Props = {}
 
 const SignInPage = (props: Props) => {
   let navigate = useNavigate()
   const [signInErrorData, setSignInErrorData] = useState<signInErrorType>()
-
-  const signIn = async (values: UserSignInType) => {
-    const params = {
-      user: {
-        ...values,
-      },
-    }
-    await configureAxios
-      .post('/users/login', params)
-      .then((response) => {
-        if (response.data.user.token) {
-          localStorage.setItem(
-            'token',
-            JSON.stringify(response.data.user.token)
-          )
-          navigate('/admin-panel')
-        }
-      })
-      .catch((error) => {
-        console.log('error signin', error)
-        setSignInErrorData(error.response.data)
-      })
-  }
 
   return (
     <div className="mx-24 my-40 h-calc-container-height ">
@@ -50,7 +27,7 @@ const SignInPage = (props: Props) => {
           }}
           validationSchema={signInSchema}
           onSubmit={(values) => {
-            signIn(values)
+            signIn(values, setSignInErrorData, navigate)
           }}
         >
           <Form>
