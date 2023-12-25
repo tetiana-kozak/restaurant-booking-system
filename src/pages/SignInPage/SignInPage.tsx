@@ -19,7 +19,7 @@ const SignInPage = (props: Props) => {
   const [signInErrorData, setSignInErrorData] = useState<signInErrorType>()
 
   return (
-    <div className="mx-24 my-40 h-calc-container-height ">
+    <div className="mx-0 my-0 h-full  md:mx-24 md:my-40">
       <VisitorBackgroundContainer>
         <Formik
           initialValues={{
@@ -35,11 +35,11 @@ const SignInPage = (props: Props) => {
             const isSubmitButtonDisabled = !formik.isValid || !formik.dirty
             return (
               <Form>
-                <div className="max-w-568 m-auto py-36 flex flex-col gap-40 ">
+                <div className="max-w-568 m-auto py-36 px-16 md:px-0  flex flex-col gap-40 ">
                   <VisitorPageTitle>Вхід</VisitorPageTitle>
 
                   <div className="inputs-standard flex flex-col gap-20">
-                    <p className=" text-p">Введіть Ваші дані</p>
+                    <p className=" text-normal md:text-p">Введіть Ваші дані</p>
                     <TextInput
                       name={'email'}
                       id={'email-input'}

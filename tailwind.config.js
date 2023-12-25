@@ -67,7 +67,6 @@ module.exports = {
         552: '552px',
         600: '600px',
         1392: '1392px',
-        'calc-container-height': 'calc(100vh - 100px)',
       },
       boxShadow: {
         page_shadow:
