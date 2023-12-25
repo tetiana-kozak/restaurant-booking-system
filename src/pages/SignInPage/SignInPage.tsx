@@ -10,6 +10,7 @@ import { signInSchema } from './signInSchema'
 import { useState } from 'react'
 import { checkSignInErrorStatus } from './checkSignInError'
 import { signIn } from './signInUtils'
+import ButtonTFDisabled from 'shared/buttons/ButtonTFDisabled/ButtonTFDisabled'
 
 type Props = {}
 
@@ -30,42 +31,52 @@ const SignInPage = (props: Props) => {
             signIn(values, setSignInErrorData, navigate)
           }}
         >
-          <Form>
-            <div className="max-w-568 m-auto py-36 flex flex-col gap-40 ">
-              <VisitorPageTitle>Вхід</VisitorPageTitle>
+          {(formik) => {
+            const isSubmitButtonDisabled = !formik.isValid || !formik.dirty
+            return (
+              <Form>
+                <div className="max-w-568 m-auto py-36 flex flex-col gap-40 ">
+                  <VisitorPageTitle>Вхід</VisitorPageTitle>
 
-              <div className="inputs-standard flex flex-col gap-20">
-                <p className=" text-p">Введіть Ваші дані</p>
-                <TextInput
-                  name={'email'}
-                  id={'email-input'}
-                  label={'Email *'}
-                  placeholder={'example@gmail.com'}
-                />
+                  <div className="inputs-standard flex flex-col gap-20">
+                    <p className=" text-p">Введіть Ваші дані</p>
+                    <TextInput
+                      name={'email'}
+                      id={'email-input'}
+                      label={'Email *'}
+                      placeholder={'example@gmail.com'}
+                    />
 
-                <PasswordInput
-                  name={'password'}
-                  id={'password-input'}
-                  label={'Пароль *'}
-                  placeholder={'***************'}
-                />
-              </div>
+                    <PasswordInput
+                      name={'password'}
+                      id={'password-input'}
+                      label={'Пароль *'}
+                      placeholder={'***************'}
+                    />
+                  </div>
 
-              <div className=" flex flex-col items-center">
-                <ButtonTFMain label="Підтвердити" />
-                {signInErrorData
-                  ? checkSignInErrorStatus(signInErrorData)
-                  : null}
-              </div>
+                  <div className=" flex flex-col items-center">
+                    {isSubmitButtonDisabled ? (
+                      <ButtonTFDisabled label="Підтвердити" />
+                    ) : (
+                      <ButtonTFMain label="Підтвердити" />
+                    )}
 
-              <p className="text-center ">
-                Немає акаунту?
-                <span className=" text-button-primary hover:text-hover-btn-primary">
-                  <Link to={'/sign-up'}> Зареєструватись</Link>
-                </span>
-              </p>
-            </div>
-          </Form>
+                    {signInErrorData
+                      ? checkSignInErrorStatus(signInErrorData)
+                      : null}
+                  </div>
+
+                  <p className="text-center ">
+                    Немає акаунту?
+                    <span className=" text-button-primary hover:text-hover-btn-primary">
+                      <Link to={'/sign-up'}> Зареєструватись</Link>
+                    </span>
+                  </p>
+                </div>
+              </Form>
+            )
+          }}
         </Formik>
       </VisitorBackgroundContainer>
     </div>
