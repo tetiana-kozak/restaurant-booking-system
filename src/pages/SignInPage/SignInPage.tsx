@@ -2,18 +2,20 @@ import { Form, Formik } from 'formik'
 import { Link, useNavigate } from 'react-router-dom'
 import TextInput from 'shared/inputs/TextInputs/TextInput'
 import PasswordInput from 'shared/inputs/PasswordInput/PasswordInput'
-import RegisterButton from 'pages/SignInPage/RegisterButton/RegisterButton'
 import { configureAxios } from 'shared/axios/configureAxios'
-import { signInSchema } from './signInSchema'
-import { UserSignInType } from './signInEntity'
+import { UserSignInType, signInErrorType } from './signInEntity'
 import VisitorBackgroundContainer from 'shared/containers/VisitorBackgroundContainer/VisitorBackgroundContainer'
 import VisitorPageTitle from 'shared/typography/VisitorPageTitle'
 import ButtonTFMain from 'shared/buttons/ButtonTFMain/ButtonTFMain'
+import { signInSchema } from './signInSchema'
+import { useState } from 'react'
+import { checkSignInErrorStatus } from './checkSignInError'
 
 type Props = {}
 
 const SignInPage = (props: Props) => {
   let navigate = useNavigate()
+  const [signInErrorData, setSignInErrorData] = useState<signInErrorType>()
 
   const signIn = async (values: UserSignInType) => {
     const params = {
@@ -32,7 +34,10 @@ const SignInPage = (props: Props) => {
           navigate('/admin-panel')
         }
       })
-      .catch((error) => console.log('error', error))
+      .catch((error) => {
+        console.log('error signin', error)
+        setSignInErrorData(error.response.data)
+      })
   }
 
   return (
@@ -69,9 +74,11 @@ const SignInPage = (props: Props) => {
                 />
               </div>
 
-              <div className=" flex justify-center">
+              <div className=" flex flex-col items-center">
                 <ButtonTFMain label="Підтвердити" />
-                {/* <RegisterButton>Підтвердити</RegisterButton> */}
+                {signInErrorData
+                  ? checkSignInErrorStatus(signInErrorData)
+                  : null}
               </div>
 
               <p className="text-center ">

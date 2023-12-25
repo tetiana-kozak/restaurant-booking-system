@@ -21,6 +21,7 @@ module.exports = {
       sans: ['Roboto', 'sans-serif'],
     },
     fontSize: {
+      small: '12px',
       normal: '16px',
       large: '22px',
       xLarge: '28px',
@@ -31,7 +32,7 @@ module.exports = {
       'hover-btn': '0px 5px 9.5px 0px rgba(0, 0, 0, 0.25)',
     },
     transitionDelay: {
-      'btn-transition':'boxShadow 250ms cubic-bezier(0.4, 0, 0.2, 1)',
+      'btn-transition': 'boxShadow 250ms cubic-bezier(0.4, 0, 0.2, 1)',
     },
     borderRadius: {
       none: '0',
