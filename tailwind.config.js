@@ -7,6 +7,7 @@ module.exports = {
       secondary: '#D0E3C4',
       tertiary: '#EFF4EA',
       'button-primary': '#FFB859',
+      'hover-btn-primary': '#FF9C18',
       'button-secondary': '#503047',
       'button-disabled': '#CAC4D0',
       error: '#CE2020',
@@ -20,6 +21,7 @@ module.exports = {
       sans: ['Roboto', 'sans-serif'],
     },
     fontSize: {
+      small: '12px',
       normal: '16px',
       large: '22px',
       xLarge: '28px',
@@ -30,7 +32,7 @@ module.exports = {
       'hover-btn': '0px 5px 9.5px 0px rgba(0, 0, 0, 0.25)',
     },
     transitionDelay: {
-      'btn-transition':'boxShadow 250ms cubic-bezier(0.4, 0, 0.2, 1)',
+      'btn-transition': 'boxShadow 250ms cubic-bezier(0.4, 0, 0.2, 1)',
     },
     borderRadius: {
       none: '0',
@@ -65,6 +67,13 @@ module.exports = {
         552: '552px',
         600: '600px',
         1392: '1392px',
+      },
+      boxShadow: {
+        page_shadow:
+          '0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30)',
+      },
+      maxWidth: {
+        568: '568px',
       },
     },
   },

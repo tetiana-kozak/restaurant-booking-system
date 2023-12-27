@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 * {
-  @apply text-text-color box-border;
+  @apply box-border;
+}
+
+html {
+  @apply text-text-color;
 }
 
 h1 {

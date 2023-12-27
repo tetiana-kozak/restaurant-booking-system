@@ -6,10 +6,10 @@ const emailRulles =
 export const signInSchema = Yup.object().shape({
   email: Yup.string()
     .matches(emailRulles, {
-      message: 'Please, enter a valid email!',
+      message: 'Введено невалідний email!',
     })
-    .required('This field is required!'),
+    .required("Це поле є обов'язковим!"),
   password: Yup.string()
-    .min(3, 'Password must have at least 3 characters!')
-    .required('This field is required!'),
+    .min(3, 'Пароль має складатись з мінімум 3 символів!')
+    .required("Це поле є обов'язковим!"),
 })
