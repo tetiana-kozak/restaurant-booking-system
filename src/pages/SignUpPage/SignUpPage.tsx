@@ -1,5 +1,4 @@
 import { Link, useNavigate } from 'react-router-dom'
-import './SignUpPage.scss'
 import { Form, Formik } from 'formik'
 import TextInput from 'shared/inputs/TextInputs/TextInput'
 import PasswordInput from 'shared/inputs/PasswordInput/PasswordInput'
@@ -7,6 +6,9 @@ import RegisterButton from 'pages/SignInPage/RegisterButton/RegisterButton'
 import { configureAxios } from 'shared/axios/configureAxios'
 import { UserSignUpType } from 'pages/SignUpPage/signUpEntity'
 import { signUpSchema } from './signUpSchema'
+import VisitorBackgroundContainer from 'shared/containers/VisitorBackgroundContainer/VisitorBackgroundContainer'
+import ButtonTFMain from 'shared/buttons/ButtonTFMain/ButtonTFMain'
+import VisitorPageTitle from 'shared/typography/VisitorPageTitle'
 
 type Props = {}
 
@@ -34,10 +36,11 @@ const SignUpPage = (props: Props) => {
   }
 
   return (
-    <div className="form-container">
-      <div>
+    <div className="mx-0 my-0 h-full  md:mx-24 md:my-40">
+      <VisitorBackgroundContainer>
         <Formik
           initialValues={{
+            name: '',
             email: '',
             password: '',
             confirmedPassword: '',
@@ -48,37 +51,60 @@ const SignUpPage = (props: Props) => {
           }}
         >
           <Form>
-            <TextInput
-              name={'email'}
-              id={'email-input'}
-              label={'Email *'}
-              placeholder={'example@gmail.com'}
-            />
+            <div className="max-w-568 m-auto py-36 px-16 md:px-0  flex flex-col gap-40">
+              <VisitorPageTitle>Реєстрація</VisitorPageTitle>
 
-            <PasswordInput
-              name={'password'}
-              id={'password-input'}
-              label={'Password *'}
-              placeholder={'***************'}
-            />
+              <div className="inputs-standard flex flex-col gap-50">
+                <div className="flex flex-col gap-20">
+                  <p className=" text-normal md:text-p">Введіть Ваші дані</p>
+                  <TextInput
+                    name={'name'}
+                    id={'name-input'}
+                    label={"Ім'я *"}
+                    placeholder={"Введіть ваше ім'я"}
+                  />
 
-            <PasswordInput
-              name={'confirmedPassword'}
-              id={'confirmed-password-input'}
-              label={'Confirm Password *'}
-              placeholder={'***************'}
-            />
+                  <TextInput
+                    name={'email'}
+                    id={'email-input'}
+                    label={'Email *'}
+                    placeholder={'example@gmail.com'}
+                  />
+                </div>
 
-            <RegisterButton>Sign Up</RegisterButton>
+                <div className="flex flex-col gap-20">
+                  <p className=" text-normal md:text-p">Створіть пароль</p>
+
+                  <PasswordInput
+                    name={'password'}
+                    id={'password-input'}
+                    label={'Пароль *'}
+                    placeholder={'***************'}
+                  />
+
+                  <PasswordInput
+                    name={'confirmedPassword'}
+                    id={'confirmed-password-input'}
+                    label={'Підтвердіть пароль *'}
+                    placeholder={'***************'}
+                  />
+                </div>
+              </div>
+
+              <div className=" flex flex-col items-center">
+                <ButtonTFMain label="Підтвердити" />
+              </div>
+
+              <p className="text-center ">
+                Уже маєте акаунт?
+                <span className=" text-button-primary hover:text-hover-btn-primary">
+                  <Link to={'/sign-in'}> Увійти</Link>
+                </span>
+              </p>
+            </div>
           </Form>
         </Formik>
-        <p className="account-message">
-          I have an account.
-          <span>
-            <Link to={'/sign-in'}> Go to Sign in</Link>
-          </span>
-        </p>
-      </div>
+      </VisitorBackgroundContainer>
     </div>
   )
 }
