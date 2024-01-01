@@ -2,7 +2,7 @@
 type Props = {
     onClick: () => void
     label: string
-  }
+}
 
 const ButtonTFMain = ({ onClick, label }: Props) => {
     return (
