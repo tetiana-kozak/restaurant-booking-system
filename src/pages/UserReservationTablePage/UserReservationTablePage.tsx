@@ -2,7 +2,7 @@ import SharedBlockReservations from 'pages/UserReservationTablePage/SharedBlockR
 
 const UserReservationTablePage = () => {
   return (
-    <div className="max-width: 1440px mx-auto py-12 px-6">
+    <div className="w-1392 mx-auto py-12 px-6">
       <SharedBlockReservations />
     </div>
   )
