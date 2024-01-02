@@ -4,24 +4,29 @@ type Props = {
   activeStep: number;
 }
 
-const StepTabs = ({ steps, activeStep }:Props) => {
+const StepTabs = ({ steps, activeStep }: Props) => {
 
   return (
     <div className="w-665">
       <div>
         {steps.map((step, index) => {
-          let buttonClass = 'stepper';
+          let buttonClass = 'bg-stepper';
+          let textColor = 'text-text-color';
+
           if (index < activeStep) {
-            buttonClass = 'stepper';
+            buttonClass = 'bg-secondary';
           } else if (index === activeStep) {
-            buttonClass = 'button-secondary';
+            buttonClass = 'bg-button-secondary';
+            textColor = 'text-white';
           } else if (index > activeStep) {
-            buttonClass = 'secondary';
+            buttonClass = 'bg-stepper';
           }
+
           return (
             <button
               type="button"
-              className={`py-10 px-20 w-164 font-sans text-p text-text-color bg-${buttonClass}`}
+              key={index}
+              className={`py-10 px-20 w-164 font-sans text-p ${textColor} ${buttonClass}`}
               disabled={index > activeStep}
             >
               {step}
