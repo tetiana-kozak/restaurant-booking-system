@@ -33,7 +33,8 @@ export const signIn = async (
 export const signUp = async (
   values: UserSignUpType,
   setRegistrationErrorData: (data: RegistrationErrorType) => void,
-  navigate: NavigateFunction
+  navigate: NavigateFunction,
+  setIsUserRegistered: (isUserRegistered: boolean) => void
 ) => {
   const params = {
     user: {
@@ -45,11 +46,12 @@ export const signUp = async (
     .then((response) => {
       if (response.data.user.token) {
         localStorage.setItem('token', JSON.stringify(response.data.user.token))
-        navigate('/admin-panel')
+        setIsUserRegistered(true)
       }
     })
     .catch((error) => {
       console.log('error signup', error)
       setRegistrationErrorData(error.response.data)
+      // navigate('/error-page')
     })
 }
