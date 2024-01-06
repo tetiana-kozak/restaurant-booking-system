@@ -1,6 +1,6 @@
-import { signInErrorType } from './signInEntity'
+import { RegistrationErrorType } from './registrationEntity'
 
-export const checkSignInErrorStatus = (errorStatus: signInErrorType) => {
+export const checkRegistrationError = (errorStatus: RegistrationErrorType) => {
   if (errorStatus.statusCode === 422) {
     return (
       <div className="text-error text-small pt-8 text-center">
