@@ -1,23 +1,24 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Form, Formik } from 'formik'
 import TextInput from 'shared/inputs/TextInputs/TextInput'
 import PasswordInput from 'shared/inputs/PasswordInput/PasswordInput'
 import ButtonTFMain from 'shared/buttons/ButtonTFMain/ButtonTFMain'
 import VisitorPageTitle from 'shared/typography/VisitorPageTitle'
 import ButtonTFDisabled from 'shared/buttons/ButtonTFDisabled/ButtonTFDisabled'
-import { useState } from 'react'
 import { signUp } from '../registrationUtils'
-import { checkRegistrationError } from '../checkRegistrationError'
 import { signUpSchema } from '../registrationSchemas'
-import { RegistrationErrorType } from '../registrationEntity'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 type Props = {
   setIsUserRegistered: (isUserRegistered: boolean) => void
 }
 const FormPage = ({ setIsUserRegistered }: Props) => {
-  let navigate = useNavigate()
-  const [registrationErrorData, setRegistrationErrorData] =
-    useState<RegistrationErrorType>()
+  const showToastMessage = (message: string) => {
+    toast.error(message, {
+      position: toast.POSITION.TOP_RIGHT,
+    })
+  }
 
   return (
     <Formik
@@ -30,7 +31,7 @@ const FormPage = ({ setIsUserRegistered }: Props) => {
       }}
       validationSchema={signUpSchema}
       onSubmit={(values, actions) => {
-        signUp(values, setRegistrationErrorData, navigate, setIsUserRegistered)
+        signUp(values, setIsUserRegistered, showToastMessage)
       }}
     >
       {(formik) => {
@@ -91,10 +92,6 @@ const FormPage = ({ setIsUserRegistered }: Props) => {
                 ) : (
                   <ButtonTFMain label="Підтвердити" />
                 )}
-
-                {registrationErrorData
-                  ? checkRegistrationError(registrationErrorData)
-                  : null}
               </div>
 
               <p className="text-center ">
@@ -104,6 +101,7 @@ const FormPage = ({ setIsUserRegistered }: Props) => {
                 </span>
               </p>
             </div>
+            <ToastContainer />
           </Form>
         )
       }}

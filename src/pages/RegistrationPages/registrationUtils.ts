@@ -32,9 +32,8 @@ export const signIn = async (
 
 export const signUp = async (
   values: UserSignUpType,
-  setRegistrationErrorData: (data: RegistrationErrorType) => void,
-  navigate: NavigateFunction,
-  setIsUserRegistered: (isUserRegistered: boolean) => void
+  setIsUserRegistered: (isUserRegistered: boolean) => void,
+  showToastMessage: (message: string) => void
 ) => {
   const params = {
     user: {
@@ -51,7 +50,12 @@ export const signUp = async (
     })
     .catch((error) => {
       console.log('error signup', error)
-      setRegistrationErrorData(error.response.data)
-      // navigate('/error-page')
+      if (error.code === 'ERR_NETWORK') {
+        showToastMessage('Ой... Щось пішло не так! Спробуйте пізніше.')
+      } else if (error.response.data.statusCode === 422) {
+        showToastMessage(error.response.data.message)
+      } else {
+        showToastMessage('Ой... Щось пішло не так! Спробуйте пізніше.')
+      }
     })
 }
