@@ -5,19 +5,22 @@ import PasswordInput from 'shared/inputs/PasswordInput/PasswordInput'
 import VisitorBackgroundContainer from 'shared/containers/VisitorBackgroundContainer/VisitorBackgroundContainer'
 import VisitorPageTitle from 'shared/typography/VisitorPageTitle'
 import ButtonTFMain from 'shared/buttons/ButtonTFMain/ButtonTFMain'
-import { useState } from 'react'
-import { checkRegistrationError } from '../checkRegistrationError'
 import { signIn } from '../registrationUtils'
 import ButtonTFDisabled from 'shared/buttons/ButtonTFDisabled/ButtonTFDisabled'
-import { RegistrationErrorType } from '../registrationEntity'
 import { signInSchema } from '../registrationSchemas'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 type Props = {}
 
 const SignInPage = (props: Props) => {
   let navigate = useNavigate()
-  const [registrationErrorData, setRegistrationErrorData] =
-    useState<RegistrationErrorType>()
+
+  const showToastMessage = (message: string) => {
+    toast.error(message, {
+      position: toast.POSITION.TOP_RIGHT,
+    })
+  }
 
   return (
     <div className="mx-0 my-0 h-full md:mx-24 md:my-40">
@@ -29,7 +32,7 @@ const SignInPage = (props: Props) => {
           }}
           validationSchema={signInSchema}
           onSubmit={(values) => {
-            signIn(values, setRegistrationErrorData, navigate)
+            signIn(values, navigate, showToastMessage)
           }}
         >
           {(formik) => {
@@ -62,10 +65,6 @@ const SignInPage = (props: Props) => {
                     ) : (
                       <ButtonTFMain label="Підтвердити" />
                     )}
-
-                    {registrationErrorData
-                      ? checkRegistrationError(registrationErrorData)
-                      : null}
                   </div>
 
                   <p className="text-center ">
@@ -75,6 +74,7 @@ const SignInPage = (props: Props) => {
                     </span>
                   </p>
                 </div>
+                <ToastContainer />
               </Form>
             )
           }}

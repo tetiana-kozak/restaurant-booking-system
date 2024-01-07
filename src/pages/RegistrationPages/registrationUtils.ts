@@ -1,15 +1,11 @@
 import { configureAxios } from 'shared/axios/configureAxios'
 import { NavigateFunction } from 'react-router'
-import {
-  RegistrationErrorType,
-  UserSignInType,
-  UserSignUpType,
-} from './registrationEntity'
+import { UserSignInType, UserSignUpType } from './registrationEntity'
 
 export const signIn = async (
   values: UserSignInType,
-  setRegistrationErrorData: (data: RegistrationErrorType) => void,
-  navigate: NavigateFunction
+  navigate: NavigateFunction,
+  showToastMessage: (message: string) => void
 ) => {
   const params = {
     user: {
@@ -26,7 +22,11 @@ export const signIn = async (
     })
     .catch((error) => {
       console.log('error signin', error)
-      setRegistrationErrorData(error.response.data)
+      if (error.code === 'ERR_NETWORK') {
+        showToastMessage('Ой... Щось пішло не так! Спробуйте пізніше.')
+      } else if (error.response.data.statusCode === 422) {
+        showToastMessage(error.response.data.message)
+      }
     })
 }
 
