@@ -26,7 +26,7 @@ module.exports = {
     fontSize: {
       small: '12px',
       normal: '16px',
-      large: '22px',
+      large: '24px',
       xLarge: '28px',
       h2: '43px',
       p: '20px',
@@ -67,6 +67,7 @@ module.exports = {
         60: '60px',
         70: '70px',
         100: '100px',
+        120: '120px',
         185: '185px',
         264: '264px',
         350: '350px',
