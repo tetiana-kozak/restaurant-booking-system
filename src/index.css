@@ -21,6 +21,6 @@ h2 {
 
 @layer components {
   .button {
-    @apply flex justify-center items-center rounded-lg px-30 py-13;
+    @apply flex justify-center items-center rounded-lg px-30 py-12;
   }
 }

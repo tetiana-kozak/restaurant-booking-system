@@ -2,24 +2,28 @@ import { Form, Formik } from 'formik'
 import { Link, useNavigate } from 'react-router-dom'
 import TextInput from 'shared/inputs/TextInputs/TextInput'
 import PasswordInput from 'shared/inputs/PasswordInput/PasswordInput'
-import { signInErrorType } from './signInEntity'
 import VisitorBackgroundContainer from 'shared/containers/VisitorBackgroundContainer/VisitorBackgroundContainer'
 import VisitorPageTitle from 'shared/typography/VisitorPageTitle'
 import ButtonTFMain from 'shared/buttons/ButtonTFMain/ButtonTFMain'
-import { signInSchema } from './signInSchema'
-import { useState } from 'react'
-import { checkSignInErrorStatus } from './checkSignInError'
-import { signIn } from './signInUtils'
+import { signIn } from '../registrationUtils'
 import ButtonTFDisabled from 'shared/buttons/ButtonTFDisabled/ButtonTFDisabled'
+import { signInSchema } from '../registrationSchemas'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 type Props = {}
 
 const SignInPage = (props: Props) => {
   let navigate = useNavigate()
-  const [signInErrorData, setSignInErrorData] = useState<signInErrorType>()
+
+  const showToastMessage = (message: string) => {
+    toast.error(message, {
+      position: toast.POSITION.TOP_RIGHT,
+    })
+  }
 
   return (
-    <div className="mx-0 my-0 h-full  md:mx-24 md:my-40">
+    <div className="mx-0 my-0 h-full md:mx-24 md:my-40">
       <VisitorBackgroundContainer>
         <Formik
           initialValues={{
@@ -28,7 +32,7 @@ const SignInPage = (props: Props) => {
           }}
           validationSchema={signInSchema}
           onSubmit={(values) => {
-            signIn(values, setSignInErrorData, navigate)
+            signIn(values, navigate, showToastMessage)
           }}
         >
           {(formik) => {
@@ -61,10 +65,6 @@ const SignInPage = (props: Props) => {
                     ) : (
                       <ButtonTFMain label="Підтвердити" />
                     )}
-
-                    {signInErrorData
-                      ? checkSignInErrorStatus(signInErrorData)
-                      : null}
                   </div>
 
                   <p className="text-center ">
@@ -74,6 +74,7 @@ const SignInPage = (props: Props) => {
                     </span>
                   </p>
                 </div>
+                <ToastContainer />
               </Form>
             )
           }}
