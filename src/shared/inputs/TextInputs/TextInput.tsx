@@ -25,18 +25,25 @@ const TextInput = ({ ...props }: Props) => {
           shrink: true,
         }}
         InputProps={{
-          endAdornment: (
+          endAdornment: field.value ? (
             <div onClick={() => helpers.setValue('')}>
               <HighlightOffIcon
                 fontSize="medium"
                 className={`input-clear-icon ${isError ? 'icon-error' : ''}`}
               />
             </div>
-          ),
+          ) : null,
         }}
       />
 
-      {isError ? <FormHelperText>{meta.error}</FormHelperText> : null}
+      {isError ? (
+        <FormHelperText component={'div'}>
+          {meta.error}
+          <div className=" text-error">
+            Будь ласка, перевірте введені дані і спробуйте знову.
+          </div>
+        </FormHelperText>
+      ) : null}
     </FormControl>
   )
 }
