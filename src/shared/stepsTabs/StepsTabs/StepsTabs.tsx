@@ -26,7 +26,7 @@ const StepTabs = ({ steps, activeStep }: Props) => {
             <button
               type="button"
               key={index}
-              className={`py-10 px-20 w-164 font-sans text-p ${textColor} ${buttonClass}`}
+              className={`py-20 px-10 w-164 font-sans text-p ${textColor} ${buttonClass}`}
               disabled={index > activeStep || index === 0}
             >
               {step}
