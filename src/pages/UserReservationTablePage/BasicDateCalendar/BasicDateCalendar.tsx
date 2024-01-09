@@ -13,17 +13,10 @@ export default function BasicDateCalendar() {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer components={['DateCalendar']}>
-      <style>
-          {`
-            .MuiPickersCalendar-week {
-              margin-bottom: 16px; // Збільште відступ між тижнями за потребою
-            }
-          `}
-        </style>
         <DateCalendar
           referenceDate={dayjs()}
           views={['year', 'month', 'day']}
-          className="w-665"
+          className="w-665 h-380"
         />
       </DemoContainer>
     </LocalizationProvider>
