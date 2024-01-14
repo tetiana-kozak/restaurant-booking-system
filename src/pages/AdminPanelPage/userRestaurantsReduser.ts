@@ -35,7 +35,7 @@ export const createRestaurant = createAsyncThunk<
   }
 
   try {
-    const response = await configureAxios.post('/restaurant', params)
+    const response = await configureAxios.post('/restaurants', params)
     return response.data.restaurant
   } catch (error) {
     console.log('error', error)
