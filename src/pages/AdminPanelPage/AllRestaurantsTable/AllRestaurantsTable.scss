@@ -17,3 +17,12 @@
   height: 500px;
   background-color: #adadad;
 }
+
+.restaurants-table {
+  .MuiIconButton-root:hover {
+    background-color: transparent;
+    svg {
+      fill: black;
+    }
+  }
+}

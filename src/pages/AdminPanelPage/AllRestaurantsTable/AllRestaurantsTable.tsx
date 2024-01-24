@@ -1,4 +1,6 @@
 import DeleteIcon from '@mui/icons-material/Delete'
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
 import EditIcon from '@mui/icons-material/Edit'
 import { IconButton } from '@mui/material'
 import ModalContainer from 'shared/modals/editRestaurantModal/ModalContainer/ModalContainer'
@@ -10,6 +12,15 @@ import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
 import { restaurantType } from 'shared/types/restaurantsEntity'
 import './AllRestaurantsTable.scss'
+import {
+  TableContainer,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Paper,
+} from '@mui/material'
 
 type Props = {
   setSelectedRestaurant: (restaurant: restaurantType) => void
@@ -36,7 +47,75 @@ const AllRestaurantsTable = ({
 
   return (
     <>
-      <ul className="list">
+      <TableContainer component={Paper} className="restaurants-table">
+        <Table sx={{ minWidth: 650 }} aria-label="sticky table" stickyHeader>
+          <TableHead>
+            <TableRow>
+              <TableCell
+                align="center"
+                style={{
+                  width: 150,
+                  backgroundColor: '#503047',
+                  color: 'white',
+                }}
+              >
+                Назва закладу
+              </TableCell>
+              <TableCell align="center" style={{ width: 150 }}>
+                Тип
+              </TableCell>
+              <TableCell align="center" style={{ width: 150 }}>
+                Місто
+              </TableCell>
+              <TableCell align="center" style={{ width: 200 }}>
+                Адреса
+              </TableCell>
+              <TableCell align="center">Опис</TableCell>
+              <TableCell align="center" style={{ width: 110 }}>
+                Редагувати
+              </TableCell>
+              <TableCell align="center" style={{ width: 110 }}>
+                Видалити
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {userRestaurantsList.map((restaurant) => (
+              <TableRow
+                key={restaurant.title}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell component="th" scope="row" align="center">
+                  {restaurant.title}
+                </TableCell>
+                <TableCell align="center">{restaurant.type}</TableCell>
+                <TableCell align="center">{restaurant.city}</TableCell>
+                <TableCell align="center">{restaurant.location}</TableCell>
+                <TableCell align="center">{restaurant.description}</TableCell>
+                <TableCell align="center">
+                  <IconButton
+                    onClick={() => {
+                      handleEditModalOpen()
+                      setSelectedRestaurant(restaurant)
+                    }}
+                  >
+                    <EditOutlinedIcon />
+                  </IconButton>
+                </TableCell>
+                <TableCell align="center">
+                  <IconButton
+                    aria-label="delete"
+                    onClick={() => dispatch(deleteRestaurant(restaurant.id))}
+                  >
+                    <DeleteOutlineIcon />
+                  </IconButton>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      {/* <ul className="list">
         {userRestaurantsList.map((restaurant) => (
           <div key={restaurant.id} className="list-container">
             <li>
@@ -72,7 +151,7 @@ const AllRestaurantsTable = ({
             </div>
           </div>
         ))}
-      </ul>
+      </ul> */}
 
       <ModalContainer
         handleClose={handleEditModalClose}

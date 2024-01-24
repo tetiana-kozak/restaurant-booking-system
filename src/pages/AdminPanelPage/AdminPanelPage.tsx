@@ -3,6 +3,7 @@ import ModalContainer from 'shared/modals/editRestaurantModal/ModalContainer/Mod
 import PageTitleSection from 'shared/typography/PageTitleSection'
 import { useState } from 'react'
 import { restaurantType } from 'shared/types/restaurantsEntity'
+import AddIcon from '@mui/icons-material/Add'
 
 type Props = {}
 const AdminPanelPage = (props: Props) => {
@@ -31,9 +32,9 @@ const AdminPanelPage = (props: Props) => {
         <PageTitleSection>Адміністратор</PageTitleSection>
         <div className="mt-[32px]">
           <div className="flex items-center justify-between mb-[32px]">
-            <h2>Таблиця закладів</h2>
+            <h2 className="text-p">Створити заклад</h2>
             <button className="text-large" onClick={handleOpen}>
-              +
+              <AddIcon />
             </button>
           </div>
           <AllRestaurantsTable
