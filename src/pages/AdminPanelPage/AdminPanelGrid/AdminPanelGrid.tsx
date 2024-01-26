@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material'
 import { Container } from '@mui/system'
-import Sidebar from 'container/Sections/Sidebar/Sidebar'
+import Sidebar from 'shared/mainSidebar/Sidebar'
 import { Outlet } from 'react-router-dom'
 
 type Props = {}

@@ -15,11 +15,13 @@ module.exports = {
       backdrop: 'rgba(202, 196, 208, 0.5)',
       'input-bg': '#E6E0E9',
       iframe_bg_color: '#F7F2FA',
+      'border-title': '#CAD0D8'
     },
     fontFamily: {
       sans: ['Roboto', 'sans-serif'],
     },
     fontSize: {
+      small: '14px',
       normal: '16px',
       large: '22px',
       xLarge: '28px',
@@ -28,6 +30,7 @@ module.exports = {
     },
     boxShadow: {
       'hover-btn': '0px 5px 9.5px 0px rgba(0, 0, 0, 0.25)',
+      'slider': '0px 4px 10px 0px rgba(60, 56, 44, 0.7)',
     },
     transitionDelay: {
       'btn-transition':'boxShadow 250ms cubic-bezier(0.4, 0, 0.2, 1)',
