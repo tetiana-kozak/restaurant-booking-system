@@ -22,7 +22,6 @@ const SharedBlockRegisteredUser = () => {
         <p className="font-sans text-p mb-30">
           Забудьте про довгі черги та незручні дзвінки.
         </p>
-        {/* Решта вашого коду */}
       </div>
       <div className="w-552 flex items-center justify-center gap-40 mb-264">
         <ButtonTFMain onClick={redirectToPersonalOffice} label={"Особистий кабінет"} />
