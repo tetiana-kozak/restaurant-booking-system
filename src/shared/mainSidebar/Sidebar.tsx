@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Sidebar.scss";
+
 import SidebarNavigation from "shared/mainSidebar/adminSidebar/SidebarNavigation";
 import SidebarNavigationMini from "shared/mainSidebar/adminSidebar/SidebarNavigationMini";
 
