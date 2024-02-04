@@ -1,32 +1,31 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
-import { 
+import {
   CheckIcon,
   ApertureSidebar,
   Gridsidebar,
   HomeSidebar,
   LinkSidebar,
   UserSidebar,
-  LogOut
- } from "../../../assets/icons/UserSidebar";
+  LogOut,
+} from '../../../assets/icons/UserSidebar'
 
-
-import { GoChevronDown } from "react-icons/go";
-import LogoSvg from "./logo.svg";
+import { GoChevronDown } from 'react-icons/go'
+import LogoSvg from 'assets/icons/logo.svg'
 //ico
 // import { useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 
-type Props = {};
+type Props = {}
 
 const SidebarNavigation = (props: Props) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handelLogOut = () => {
     //log out logic
-    console.log("Log Out");
-    navigate("/sign-up");
-  };
+    console.log('Log Out')
+    navigate('/sign-up')
+  }
 
   return (
     <>
@@ -51,14 +50,14 @@ const SidebarNavigation = (props: Props) => {
 
       <nav className="">
         <ul className="flex flex-col gap-[4px] w-[191px]">
-          <Link to={"/admin-panel"} className="flex gap-[12px] p-[18px_8px]">
+          <Link to={'/admin-panel'} className="flex gap-[12px] p-[18px_8px]">
             <HomeSidebar />
             <li className="font-sans text-normal text-text-color text-center font-normal leading-6">
               Адміністратор
             </li>
           </Link>
           <Link
-            to={"restaurant-editor"}
+            to={'restaurant-editor'}
             className="flex gap-[12px] p-[18px_8px]"
           >
             <Gridsidebar />
@@ -67,7 +66,7 @@ const SidebarNavigation = (props: Props) => {
             </li>
           </Link>
           <Link
-            to={"restaurant-booking"}
+            to={'restaurant-booking'}
             className="flex gap-[12px] p-[18px_8px]"
           >
             <CheckIcon />
@@ -76,7 +75,7 @@ const SidebarNavigation = (props: Props) => {
             </li>
           </Link>
           <Link
-            to={"personal-cabinet"}
+            to={'personal-cabinet'}
             className="flex gap-[12px] p-[18px_8px]"
           >
             <UserSidebar />
@@ -84,13 +83,13 @@ const SidebarNavigation = (props: Props) => {
               Особистий кабінет
             </li>
           </Link>
-          <Link to={"generate-link"} className="flex gap-[12px] p-[18px_8px]">
+          <Link to={'generate-link'} className="flex gap-[12px] p-[18px_8px]">
             <LinkSidebar />
             <li className="font-sans text-normal text-text-color text-center font-normal leading-6">
               Link
             </li>
           </Link>
-          <Link to={"change-colors"} className="flex gap-[12px] p-[18px_8px]">
+          <Link to={'change-colors'} className="flex gap-[12px] p-[18px_8px]">
             <ApertureSidebar />
             <li className="font-sans text-normal text-text-color text-center font-normal leading-6">
               Colors
@@ -111,6 +110,6 @@ const SidebarNavigation = (props: Props) => {
         </button>
       </div>
     </>
-  );
-};
-export default SidebarNavigation;
+  )
+}
+export default SidebarNavigation
