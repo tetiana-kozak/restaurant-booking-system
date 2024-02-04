@@ -1,28 +1,12 @@
-.list-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f2f2f2d4;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  padding: 0 10px;
-  span {
-    font-weight: 600;
-  }
-}
-
-.modal {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background-color: #adadad;
-}
-
 .restaurants-table {
   .MuiIconButton-root:hover {
-    background-color: transparent;
+    @apply bg-transparent;
     svg {
-      fill: black;
+      @apply fill-text-color;
     }
+  }
+
+  .MuiTableCell-head {
+    @apply bg-button-secondary text-white;
   }
 }
