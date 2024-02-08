@@ -18,6 +18,7 @@ module.exports = {
       backdrop: 'rgba(202, 196, 208, 0.5)',
       'input-bg': '#E6E0E9',
       iframe_bg_color: '#F7F2FA',
+      transparent: 'transparent',
     },
 
     fontFamily: {

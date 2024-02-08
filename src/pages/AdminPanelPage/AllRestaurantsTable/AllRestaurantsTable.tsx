@@ -1,15 +1,18 @@
-import DeleteIcon from '@mui/icons-material/Delete'
-import EditIcon from '@mui/icons-material/Edit'
-import { IconButton } from '@mui/material'
 import ModalContainer from 'shared/modals/editRestaurantModal/ModalContainer/ModalContainer'
-import {
-  deleteRestaurant,
-  getUserRestaurantsList,
-} from 'pages/AdminPanelPage/userRestaurantsReduser'
+import { getUserRestaurantsList } from 'pages/AdminPanelPage/userRestaurantsReduser'
 import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
 import { restaurantType } from 'shared/types/restaurantsEntity'
 import './AllRestaurantsTable.scss'
+import {
+  TableContainer,
+  Table,
+  TableBody,
+  TableHead,
+  Paper,
+} from '@mui/material'
+import TableHeadContent from './TableHeadContent'
+import TableBodyContent from './TableBodyContent'
 
 type Props = {
   setSelectedRestaurant: (restaurant: restaurantType) => void
@@ -36,43 +39,20 @@ const AllRestaurantsTable = ({
 
   return (
     <>
-      <ul className="list">
-        {userRestaurantsList.map((restaurant) => (
-          <div key={restaurant.id} className="list-container">
-            <li>
-              <div>
-                <span>Title:</span> {restaurant.title}
-              </div>
-              <div>
-                <span>Description:</span> {restaurant.description}
-              </div>
-              <div>
-                <span>City:</span> {restaurant.city}
-              </div>
-              <div>
-                <span>Location:</span> {restaurant.location}
-              </div>
-            </li>
-            <div>
-              <IconButton
-                onClick={() => {
-                  handleEditModalOpen()
-                  setSelectedRestaurant(restaurant)
-                }}
-              >
-                <EditIcon />
-              </IconButton>
-
-              <IconButton
-                aria-label="delete"
-                onClick={() => dispatch(deleteRestaurant(restaurant.id))}
-              >
-                <DeleteIcon />
-              </IconButton>
-            </div>
-          </div>
-        ))}
-      </ul>
+      <TableContainer component={Paper} className="restaurants-table">
+        <Table sx={{ minWidth: 650 }} aria-label="sticky table" stickyHeader>
+          <TableHead>
+            <TableHeadContent />
+          </TableHead>
+          <TableBody>
+            <TableBodyContent
+              userRestaurantsList={userRestaurantsList}
+              handleEditModalOpen={handleEditModalOpen}
+              setSelectedRestaurant={setSelectedRestaurant}
+            />
+          </TableBody>
+        </Table>
+      </TableContainer>
 
       <ModalContainer
         handleClose={handleEditModalClose}
