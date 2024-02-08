@@ -1,11 +1,4 @@
-import {
-  FormControl,
-  FormHelperText,
-  IconButton,
-  Input,
-  InputAdornment,
-  InputLabel,
-} from '@mui/material'
+import { FormControl, FormHelperText, TextField } from '@mui/material'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import { useField } from 'formik'
@@ -18,38 +11,50 @@ type Props = {
   placeholder: string
 }
 
-const PasswordInput = ({ label, id, ...props }: Props) => {
+const PasswordInput = ({ ...props }: Props) => {
   const [showPassword, setShowPassword] = useState(false)
   const handleShowPassword = () => setShowPassword((show) => !show)
 
-  const [field, meta] = useField(props)
+  const [field, meta, helpers] = useField(props)
+  const isError = meta.touched && meta.error
 
   return (
-    <FormControl
-      variant="standard"
-      margin="normal"
-      fullWidth
-      className="relative"
-    >
-      <InputLabel htmlFor={id}>{label}</InputLabel>
-      <Input
-        id={id}
+    <FormControl variant="standard" margin="normal" fullWidth>
+      <TextField
         {...field}
         {...props}
+        variant="standard"
+        error={isError ? true : false}
         type={showPassword ? 'text' : 'password'}
-        endAdornment={
-          <InputAdornment position="end">
-            <IconButton
-              aria-label="toggle password visibility"
-              onClick={handleShowPassword}
-            >
-              {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-            </IconButton>
-          </InputAdornment>
-        }
+        InputLabelProps={{
+          shrink: true,
+        }}
+        InputProps={{
+          endAdornment: field.value ? (
+            <div onClick={handleShowPassword}>
+              {showPassword ? (
+                <VisibilityOffIcon
+                  fontSize="medium"
+                  className={`input-clear-icon ${isError ? 'icon-error' : ''}`}
+                />
+              ) : (
+                <VisibilityIcon
+                  fontSize="medium"
+                  className={`input-clear-icon ${isError ? 'icon-error' : ''}`}
+                />
+              )}
+            </div>
+          ) : null,
+        }}
       />
-      {meta.touched && meta.error ? (
-        <FormHelperText className="error">{meta.error}</FormHelperText>
+
+      {isError ? (
+        <FormHelperText component={'div'}>
+          {meta.error}
+          <div className=" text-error">
+            Будь ласка, перевірте введені дані і спробуйте знову.
+          </div>
+        </FormHelperText>
       ) : null}
     </FormControl>
   )
