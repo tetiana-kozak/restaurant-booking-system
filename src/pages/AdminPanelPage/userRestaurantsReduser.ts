@@ -10,6 +10,7 @@ import { configureAxios } from 'shared/axios/configureAxios'
 
 const initialState: initialStateRestaurantsListType = {
   userRestaurantsList: [],
+  // userRestaurantsCurrent: [],
 }
 
 export const getUserRestaurantsList = createAsyncThunk<restaurantType[]>(

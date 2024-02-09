@@ -10,13 +10,13 @@ import {
   LogOut,
 } from '../../../assets/icons/UserSidebar'
 
-import { GoChevronDown } from 'react-icons/go'
 import LogoSvg from 'assets/icons/logo.svg'
 
 // import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 
 type Props = {}
+
 
 const SidebarNavigationMini = (props: Props) => {
   const navigate = useNavigate()
@@ -50,6 +50,7 @@ const SidebarNavigationMini = (props: Props) => {
         {/* <p className="text-[#CAC4D0] text-[12px] ml-[0px] mt-[4px]">
         Введіть назву
       </p> */}
+
       </div>
 
       <nav className="">

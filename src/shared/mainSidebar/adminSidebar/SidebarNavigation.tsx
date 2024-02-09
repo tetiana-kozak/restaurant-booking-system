@@ -1,4 +1,16 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "redux/hooks";
+import { restaurantType } from "shared/types/restaurantsEntity";
+
+import { useNavigate } from "react-router-dom";
+
+import Select from "@mui/material/Select";
+import { FormControl, InputLabel, MenuItem } from "@mui/material";
+import { Formik, Field, Form, FormikProps, FieldProps } from "formik";
+import * as Yup from "yup";
+
+import { getUserRestaurantsList } from "pages/AdminPanelPage/userRestaurantsReduser";
 
 import {
   CheckIcon,
@@ -8,24 +20,59 @@ import {
   LinkSidebar,
   UserSidebar,
   LogOut,
-} from '../../../assets/icons/UserSidebar'
+} from "../../../assets/icons/UserSidebar";
 
-import { GoChevronDown } from 'react-icons/go'
-import LogoSvg from 'assets/icons/logo.svg'
-//ico
-// import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'
+// import { GoChevronDown } from 'react-icons/go'
+import LogoSvg from "assets/icons/logo.svg";
+import './SidebarNavigation.scss'
+type Props = {};
 
-type Props = {}
+interface FormValues {
+  categories: string;
+}
+
+const initialValues: FormValues = {
+  categories: "",
+};
+
+const validationSchema = Yup.object().shape({
+  categories: Yup.string(),
+});
 
 const SidebarNavigation = (props: Props) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const [category, setCategory] = useState<string>("");
 
   const handelLogOut = () => {
-    //log out logic
-    console.log('Log Out')
-    navigate('/sign-up')
-  }
+    console.log("Log Out");
+    navigate("/sign-up");
+  };
+  // Обробник події вибору категорії
+  // const handleCategoryChange = (
+  //   selectedOption: { value: string; label: string } | null,
+  //   form: FormikProps<FormValues>,
+  // ) => {
+  //   const selectedValue = selectedOption ? selectedOption.value : '';
+  //   setCategory(selectedValue);
+  //   form.setFieldValue('categories', selectedValue);
+  // };
+
+  // Обробник подачі форми
+  const handleSubmit = (values: FormValues) => {
+    console.log(values);
+    setCategory(values.categories);
+    // Додайте вашу логіку подачі форми тут
+  };
+
+  useEffect(() => {
+    dispatch(getUserRestaurantsList());
+  }, [dispatch]);
+
+  const userRestaurantsList: restaurantType[] = useAppSelector((state) => {
+    return state.userRestaurants.userRestaurantsList;
+  });
 
   return (
     <>
@@ -33,15 +80,97 @@ const SidebarNavigation = (props: Props) => {
         <div className="mb-[27px] ml-[52px] pt-[48px]">
           <img src={LogoSvg} alt="Table Flow Logo" />
         </div>
-        <div className="border-b-[0.5px] border-solid border-gray-500 flex h-[56px] w-[170px] ">
-          <input className="bg-[#F7F2FA] pt-[4px] pb-[4px] w-[137px]" />
-          <button
+        <div className="flex h-[56px] w-[170px]">
+          {/* <input className="bg-[#F7F2FA] pt-[4px] pb-[4px] w-[137px]" /> */}
+          {/* <button
             onClick={(event) => console.log(event)}
             type="button"
             className="w-[24px] m-[5px] cursor-pointer"
           >
             <GoChevronDown />
-          </button>
+          </button> */}
+                  <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          {(props: FormikProps<FormValues>) => (
+            <Form onSubmit={props.handleSubmit}>
+              <div className="flex h-[56px] w-[170px]">
+                <Field name="categories">
+                  {({ field, form }: FieldProps<any>) => (
+                    <FormControl className="styledSelect" fullWidth variant="standard">
+                      <InputLabel id="categories-label"></InputLabel>
+                      <Select
+                        className="styledSelect"
+                        labelId="categories-label"
+                        id="categories"
+                        {...field}
+                        value={category}
+                        onChange={(event) => {
+                          setCategory(event.target.value as string);
+                          form.setFieldValue("categories", event.target.value as string);
+                        }}
+                      >
+                        {userRestaurantsList.map(({ title }) => (
+                          <MenuItem key={title} value={title}>
+                            {title}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                  )}
+                </Field>
+              </div>
+            </Form>
+          )}
+        </Formik>
+        {/* <Formik
+initialValues={initialValues}
+validationSchema={validationSchema}
+onSubmit={handleSubmit}
+>
+{(props: FormikProps<FormValues>) => (
+  <Form onSubmit={props.handleSubmit}>
+      <div className="flex h-[56px] w-[170px]">
+    <Field name="categories" className="h-[56px] w-[170px]">
+      {({ field, form }: FieldProps<any>) => (
+        <Select
+        className="styledSelect"
+          closeMenuOnSelect={true}
+          isClearable={true}
+          options={
+            userRestaurantsList
+              ? userRestaurantsList.map(({ title }) => ({
+                  value: title,
+                  label: title,
+                }))
+              : []
+          }
+          // name={field ? field.name : ""}
+          // name="categories"
+          id="categories"
+          {...field}
+          value={
+     { value: category, label: category }
+
+          }
+          onChange={(selectedOption) => {
+            setCategory(selectedOption ? selectedOption.value : "");
+            form.setFieldValue(
+              "categories",
+              selectedOption ? selectedOption.value : ""
+            );
+          }}
+          // onChange={(selectedOption) => handleCategoryChange(selectedOption, props)}
+          placeholder="categories"
+        />
+      )}
+    </Field>
+    </div>
+  </Form>
+)}
+</Formik> */}
         </div>
         <p className="text-[#CAC4D0] text-[12px] ml-[16px] mt-[4px]">
           Введіть назву
@@ -50,14 +179,14 @@ const SidebarNavigation = (props: Props) => {
 
       <nav className="">
         <ul className="flex flex-col gap-[4px] w-[191px]">
-          <Link to={'/admin-panel'} className="flex gap-[12px] p-[18px_8px]">
+          <Link to={"/admin-panel"} className="flex gap-[12px] p-[18px_8px]">
             <HomeSidebar />
             <li className="font-sans text-normal text-text-color text-center font-normal leading-6">
               Адміністратор
             </li>
           </Link>
           <Link
-            to={'restaurant-editor'}
+            to={"restaurant-editor"}
             className="flex gap-[12px] p-[18px_8px]"
           >
             <Gridsidebar />
@@ -66,7 +195,7 @@ const SidebarNavigation = (props: Props) => {
             </li>
           </Link>
           <Link
-            to={'restaurant-booking'}
+            to={"restaurant-booking"}
             className="flex gap-[12px] p-[18px_8px]"
           >
             <CheckIcon />
@@ -75,7 +204,7 @@ const SidebarNavigation = (props: Props) => {
             </li>
           </Link>
           <Link
-            to={'personal-cabinet'}
+            to={"personal-cabinet"}
             className="flex gap-[12px] p-[18px_8px]"
           >
             <UserSidebar />
@@ -83,13 +212,13 @@ const SidebarNavigation = (props: Props) => {
               Особистий кабінет
             </li>
           </Link>
-          <Link to={'generate-link'} className="flex gap-[12px] p-[18px_8px]">
+          <Link to={"generate-link"} className="flex gap-[12px] p-[18px_8px]">
             <LinkSidebar />
             <li className="font-sans text-normal text-text-color text-center font-normal leading-6">
               Link
             </li>
           </Link>
-          <Link to={'change-colors'} className="flex gap-[12px] p-[18px_8px]">
+          <Link to={"change-colors"} className="flex gap-[12px] p-[18px_8px]">
             <ApertureSidebar />
             <li className="font-sans text-normal text-text-color text-center font-normal leading-6">
               Colors
@@ -110,6 +239,7 @@ const SidebarNavigation = (props: Props) => {
         </button>
       </div>
     </>
-  )
-}
-export default SidebarNavigation
+  );
+};
+export default SidebarNavigation;
+
