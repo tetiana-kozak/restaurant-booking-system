@@ -36,7 +36,7 @@ export const createRestaurant = createAsyncThunk<
   }
 
   try {
-    const response = await configureAxios.post('/restaurant', params)
+    const response = await configureAxios.post('/restaurants', params)
     return response.data.restaurant
   } catch (error) {
     console.log('error', error)
@@ -56,7 +56,7 @@ export const deleteRestaurant = createAsyncThunk<number, number>(
     }
 
     try {
-      await configureAxios.delete('/restaurant', params)
+      await configureAxios.delete('/restaurants', params)
       return value
     } catch (error) {
       console.log('error', error)
@@ -74,7 +74,7 @@ export const editRestaurant = createAsyncThunk<
   }
 
   try {
-    const response = await configureAxios.put('/restaurant', params)
+    const response = await configureAxios.put('/restaurants', params)
     return response.data.restaurant
   } catch (error) {
     console.log('error', error)

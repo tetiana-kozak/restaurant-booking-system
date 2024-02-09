@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
-import SignInPage from 'pages/SignInPage/SignInPage'
-import SignUpPage from 'pages/SignUpPage/SignUpPage'
+import SignInPage from 'pages/RegistrationPages/SignInPage/SignInPage'
+import SignUpPage from 'pages/RegistrationPages/SignUpPage/SignUpPage'
 import ProtectedRoute from 'routes/CustomRoutes/ProtectedRoute'
 import AdminPanelGrid from 'pages/AdminPanelPage/AdminPanelGrid/AdminPanelGrid'
 import RestaurantEditorPage from 'pages/RestaurantEditorPage/RestaurantEditorPage'

@@ -27,6 +27,10 @@
     @apply text-error pl-16  m-0 p-0;
   }
 
+  .MuiIconButton-root {
+    // @apply p-0;
+  }
+
   .input-clear-icon,
   .MuiSelect-icon {
     @apply absolute right-0 -top-8 mr-12 cursor-pointer;
@@ -34,6 +38,10 @@
 
   .input-clear-icon.icon-error {
     @apply fill-error;
+  }
+
+  .MuiInputLabel-root.Mui-error {
+    @apply text-error;
   }
 
   .css-1rb63tl-MuiInputBase-root-MuiInput-root {
