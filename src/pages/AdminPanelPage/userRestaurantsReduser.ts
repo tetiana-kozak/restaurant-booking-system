@@ -1,4 +1,5 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+
 import {
   createRestaurantValuesType,
   editRestaurantValuesType,
@@ -10,7 +11,7 @@ import { configureAxios } from 'shared/axios/configureAxios'
 
 const initialState: initialStateRestaurantsListType = {
   userRestaurantsList: [],
-  // userRestaurantsCurrent: [],
+  userRestaurantsCurrent: [],
 }
 
 export const getUserRestaurantsList = createAsyncThunk<restaurantType[]>(
@@ -85,7 +86,11 @@ export const editRestaurant = createAsyncThunk<
 export const userRestaurantsListSlice = createSlice({
   name: 'restaurantsList',
   initialState,
-  reducers: {},
+  reducers: {
+    updateUserRestaurantsCurrent(state, action: PayloadAction<restaurantType[]>) {
+      state.userRestaurantsCurrent = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(getUserRestaurantsList.fulfilled, (state, action) => {
@@ -110,5 +115,9 @@ export const userRestaurantsListSlice = createSlice({
       })
   },
 })
+export const { updateUserRestaurantsCurrent } = userRestaurantsListSlice.actions;
 
 export default userRestaurantsListSlice.reducer
+
+
+

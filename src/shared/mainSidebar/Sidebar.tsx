@@ -1,42 +1,27 @@
 import { useState } from "react";
-
+import { Button } from "@mui/material";
 import SidebarNavigation from "shared/mainSidebar/adminSidebar/SidebarNavigation";
 import SidebarNavigationMini from "shared/mainSidebar/adminSidebar/SidebarNavigationMini";
+import { ChevronLeft, ChevronRight } from "../../assets/icons/UserSidebar";
 
-import { ChevronLeft } from "../../assets/icons/UserSidebar";
-
-type Props = {};
+type Props = {
+  onToggle: () => void;
+};
 
 const Sidebar = (props: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isWidth, setIsWidth] = useState("261px");
 
   const handleToggle = () => {
-    if (isOpen === false) {
-      setIsOpen(true);
-      setIsWidth("104px");
-    } else {
-      setIsOpen(false);
-      setIsWidth("261px");
-    }
+    setIsOpen(!isOpen);
+    props.onToggle();
   };
-console.log(isWidth)
-  const sidebarWidthClass = isOpen ? "w-[109px]" : "w-[252px]";
 
   return (
     <>
-      <div
-        className={`flex gap-[12px] bg-iframe_bg_color pl-[24px] ${sidebarWidthClass} h-[900px] shadow-slider rounded-r-lg`}
-      >
+      <div className={`flex gap-[12px] bg-iframe_bg_color pl-[24px] ${isOpen ? "w-[109px]" : "w-[252px]"} h-[900px] shadow-slider rounded-r-lg`}>
         <div>{isOpen ? <SidebarNavigationMini /> : <SidebarNavigation />}</div>
         <div className="flex items-center justify-center p-[10px] w-[25px] h-[900px] bg-white border-solid border-l-button-disabled rounded-r-lg border-l">
-          <button
-            onClick={handleToggle}
-            className="w-[25px] h-[900px]"
-            // className="flex items-center justify-center p-[10px] w-[25px] h-[900px] ml-[20px] bg-white border-solid border-l-button-disabled rounded-r-lg cursor-pointer"
-          >
-            <ChevronLeft />
-          </button>
+          <Button onClick={handleToggle}>{isOpen ? <ChevronLeft /> : <ChevronRight />}</Button>
         </div>
       </div>
     </>

@@ -1,16 +1,6 @@
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "redux/hooks";
-import { restaurantType } from "shared/types/restaurantsEntity";
+import { Link, useNavigate } from "react-router-dom";
 
-import { useNavigate } from "react-router-dom";
-
-import Select from "@mui/material/Select";
-import { FormControl, InputLabel, MenuItem } from "@mui/material";
-import { Formik, Field, Form, FormikProps, FieldProps } from "formik";
-import * as Yup from "yup";
-
-import { getUserRestaurantsList } from "pages/AdminPanelPage/userRestaurantsReduser";
+import SidebarSelect from "./SidebarSelect";
 
 import {
   CheckIcon,
@@ -22,57 +12,17 @@ import {
   LogOut,
 } from "../../../assets/icons/UserSidebar";
 
-// import { GoChevronDown } from 'react-icons/go'
 import LogoSvg from "assets/icons/logo.svg";
-import './SidebarNavigation.scss'
+import "./SidebarNavigation.scss";
 type Props = {};
-
-interface FormValues {
-  categories: string;
-}
-
-const initialValues: FormValues = {
-  categories: "",
-};
-
-const validationSchema = Yup.object().shape({
-  categories: Yup.string(),
-});
 
 const SidebarNavigation = (props: Props) => {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-
-  const [category, setCategory] = useState<string>("");
 
   const handelLogOut = () => {
     console.log("Log Out");
     navigate("/sign-up");
   };
-  // Обробник події вибору категорії
-  // const handleCategoryChange = (
-  //   selectedOption: { value: string; label: string } | null,
-  //   form: FormikProps<FormValues>,
-  // ) => {
-  //   const selectedValue = selectedOption ? selectedOption.value : '';
-  //   setCategory(selectedValue);
-  //   form.setFieldValue('categories', selectedValue);
-  // };
-
-  // Обробник подачі форми
-  const handleSubmit = (values: FormValues) => {
-    console.log(values);
-    setCategory(values.categories);
-    // Додайте вашу логіку подачі форми тут
-  };
-
-  useEffect(() => {
-    dispatch(getUserRestaurantsList());
-  }, [dispatch]);
-
-  const userRestaurantsList: restaurantType[] = useAppSelector((state) => {
-    return state.userRestaurants.userRestaurantsList;
-  });
 
   return (
     <>
@@ -81,96 +31,7 @@ const SidebarNavigation = (props: Props) => {
           <img src={LogoSvg} alt="Table Flow Logo" />
         </div>
         <div className="flex h-[56px] w-[170px]">
-          {/* <input className="bg-[#F7F2FA] pt-[4px] pb-[4px] w-[137px]" /> */}
-          {/* <button
-            onClick={(event) => console.log(event)}
-            type="button"
-            className="w-[24px] m-[5px] cursor-pointer"
-          >
-            <GoChevronDown />
-          </button> */}
-                  <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={handleSubmit}
-        >
-          {(props: FormikProps<FormValues>) => (
-            <Form onSubmit={props.handleSubmit}>
-              <div className="flex h-[56px] w-[170px]">
-                <Field name="categories">
-                  {({ field, form }: FieldProps<any>) => (
-                    <FormControl className="styledSelect" fullWidth variant="standard">
-                      <InputLabel id="categories-label"></InputLabel>
-                      <Select
-                        className="styledSelect"
-                        labelId="categories-label"
-                        id="categories"
-                        {...field}
-                        value={category}
-                        onChange={(event) => {
-                          setCategory(event.target.value as string);
-                          form.setFieldValue("categories", event.target.value as string);
-                        }}
-                      >
-                        {userRestaurantsList.map(({ title }) => (
-                          <MenuItem key={title} value={title}>
-                            {title}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
-                  )}
-                </Field>
-              </div>
-            </Form>
-          )}
-        </Formik>
-        {/* <Formik
-initialValues={initialValues}
-validationSchema={validationSchema}
-onSubmit={handleSubmit}
->
-{(props: FormikProps<FormValues>) => (
-  <Form onSubmit={props.handleSubmit}>
-      <div className="flex h-[56px] w-[170px]">
-    <Field name="categories" className="h-[56px] w-[170px]">
-      {({ field, form }: FieldProps<any>) => (
-        <Select
-        className="styledSelect"
-          closeMenuOnSelect={true}
-          isClearable={true}
-          options={
-            userRestaurantsList
-              ? userRestaurantsList.map(({ title }) => ({
-                  value: title,
-                  label: title,
-                }))
-              : []
-          }
-          // name={field ? field.name : ""}
-          // name="categories"
-          id="categories"
-          {...field}
-          value={
-     { value: category, label: category }
-
-          }
-          onChange={(selectedOption) => {
-            setCategory(selectedOption ? selectedOption.value : "");
-            form.setFieldValue(
-              "categories",
-              selectedOption ? selectedOption.value : ""
-            );
-          }}
-          // onChange={(selectedOption) => handleCategoryChange(selectedOption, props)}
-          placeholder="categories"
-        />
-      )}
-    </Field>
-    </div>
-  </Form>
-)}
-</Formik> */}
+          <SidebarSelect />
         </div>
         <p className="text-[#CAC4D0] text-[12px] ml-[16px] mt-[4px]">
           Введіть назву
@@ -242,4 +103,3 @@ onSubmit={handleSubmit}
   );
 };
 export default SidebarNavigation;
-
