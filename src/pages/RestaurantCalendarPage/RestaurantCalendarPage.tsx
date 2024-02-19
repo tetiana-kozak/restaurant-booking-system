@@ -1,9 +1,5 @@
 type Props = {}
 const RestaurantCalendarPage = (props: Props) => {
-  return (
-    <div>
-      <div>RestaurantCalendarPage</div>
-    </div>
-  )
+  return <div>RestaurantCalendarPage</div>
 }
 export default RestaurantCalendarPage

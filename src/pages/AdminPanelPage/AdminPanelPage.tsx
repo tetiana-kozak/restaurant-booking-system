@@ -4,6 +4,7 @@ import PageTitleSection from 'shared/typography/PageTitleSection'
 import { useState } from 'react'
 import { restaurantType } from 'shared/types/restaurantsEntity'
 import AddIcon from '@mui/icons-material/Add'
+import AdminContainer from 'shared/AdminContainer/AdminContainer'
 
 type Props = {}
 const AdminPanelPage = (props: Props) => {
@@ -27,7 +28,7 @@ const AdminPanelPage = (props: Props) => {
   })
 
   return (
-    <>
+    <AdminContainer>
       <div>
         <PageTitleSection>Адміністратор</PageTitleSection>
         <div className="mt-[32px]">
@@ -37,6 +38,7 @@ const AdminPanelPage = (props: Props) => {
               <AddIcon />
             </button>
           </div>
+
           <AllRestaurantsTable
             setSelectedRestaurant={setSelectedRestaurant}
             selectedRestaurant={selectedRestaurant}
@@ -50,7 +52,7 @@ const AdminPanelPage = (props: Props) => {
         title={'Додати заклад'}
         onSubmitAction={'add'}
       />
-    </>
+    </AdminContainer>
   )
 }
 export default AdminPanelPage

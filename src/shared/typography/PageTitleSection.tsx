@@ -5,9 +5,10 @@ type Props = {
 }
 const PageTitleSection = ({ children }: Props) => {
   return (
-    <div className="border-b-2 border-primary border-solid">
-      <h1 className="mb-[10px]">{children}</h1>
+    <div className=" p-[16px_8px]">
+      <h1 className="text-text-color text-left font-sans text-xLarge font-normal leading-9">{children}</h1>
     </div>
   )
 }
-export default PageTitleSection
+export default PageTitleSection;
+

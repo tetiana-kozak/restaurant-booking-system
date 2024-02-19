@@ -1,5 +1,6 @@
 export type initialStateRestaurantsListType = {
-  userRestaurantsList: restaurantType[]
+  userRestaurantsList: restaurantType[],
+  userRestaurantsCurrent: restaurantType[]
 }
 
 export type restaurantsType = {
