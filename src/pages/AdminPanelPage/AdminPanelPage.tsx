@@ -1,9 +1,10 @@
-import AllRestaurantsTable from "pages/AdminPanelPage/AllRestaurantsTable/AllRestaurantsTable";
-import ModalContainer from "shared/modals/editRestaurantModal/ModalContainer/ModalContainer";
-import PageTitleSection from "shared/typography/PageTitleSection";
-import { useState } from "react";
-import { restaurantType } from "shared/types/restaurantsEntity";
-import AdminContainer from "shared/AdminContainer/AdminContainer";
+import AllRestaurantsTable from 'pages/AdminPanelPage/AllRestaurantsTable/AllRestaurantsTable'
+import ModalContainer from 'shared/modals/editRestaurantModal/ModalContainer/ModalContainer'
+import PageTitleSection from 'shared/typography/PageTitleSection'
+import { useState } from 'react'
+import { restaurantType } from 'shared/types/restaurantsEntity'
+import AddIcon from '@mui/icons-material/Add'
+
 
 type Props = {};
 const AdminPanelPage = (props: Props) => {
@@ -31,12 +32,10 @@ const AdminPanelPage = (props: Props) => {
       <div>
         <PageTitleSection>Адміністратор</PageTitleSection>
         <div className="mt-[32px]">
-          <div className="p-[0px_16px] flex items-center justify-between mb-[32px]">
-            <h2 className=" text-text-color text-center font-sans text-p font-normal leading-8">
-              Таблиця закладів
-            </h2>
+          <div className="flex items-center justify-between mb-[32px]">
+            <h2 className="text-p">Створити заклад</h2>
             <button className="text-large" onClick={handleOpen}>
-              +
+              <AddIcon />
             </button>
           </div>
 
