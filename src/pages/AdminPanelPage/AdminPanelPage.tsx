@@ -4,28 +4,28 @@ import PageTitleSection from 'shared/typography/PageTitleSection'
 import { useState } from 'react'
 import { restaurantType } from 'shared/types/restaurantsEntity'
 import AddIcon from '@mui/icons-material/Add'
+import AdminContainer from 'shared/AdminContainer/AdminContainer'
 
-
-type Props = {};
+type Props = {}
 const AdminPanelPage = (props: Props) => {
-  const [openModal, setOpenModal] = useState(false);
-  const handleOpen = () => setOpenModal(true);
-  const handleClose = () => setOpenModal(false);
+  const [openModal, setOpenModal] = useState(false)
+  const handleOpen = () => setOpenModal(true)
+  const handleClose = () => setOpenModal(false)
 
   const [selectedRestaurant, setSelectedRestaurant] = useState<restaurantType>({
     id: 0,
-    title: "",
-    description: "",
-    location: "",
-    city: "",
-    type: "",
+    title: '',
+    description: '',
+    location: '',
+    city: '',
+    type: '',
     user: {
       id: 0,
-      email: "",
-      bio: "",
-      image: "",
+      email: '',
+      bio: '',
+      image: '',
     },
-  });
+  })
 
   return (
     <AdminContainer>
@@ -49,10 +49,10 @@ const AdminPanelPage = (props: Props) => {
       <ModalContainer
         handleClose={handleClose}
         openModal={openModal}
-        title={"Додати заклад"}
-        onSubmitAction={"add"}
+        title={'Додати заклад'}
+        onSubmitAction={'add'}
       />
     </AdminContainer>
-  );
-};
-export default AdminPanelPage;
+  )
+}
+export default AdminPanelPage
