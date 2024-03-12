@@ -1,0 +1,190 @@
+.restaurantEditor-modal .MuiModal-backdrop {
+  @apply bg-transparent;
+}
+
+.restaurantEditor-modal .MuiDialog-paper {
+  @apply w-[406px] top-[100px] left-[500px] ;
+}
+
+.restaurantEditor-form .MuiBox-root {
+  @apply flex items-center;
+}
+.restaurantEditor-form .MuiFormControl-root {
+  @apply flex items-center w-[257px];
+}
+.restaurantEditor-form .input .MuiFormControl-root {
+  @apply bg-input-bg;
+}
+.restaurantEditor-form .MuiInputBase-input {
+  @apply w-[257px];
+}
+
+.restaurantEditor-form .label .MuiFormLabel-root {
+  @apply left-[99px];
+}
+
+.restaurantEditor-form .MuiFormLabel-root {
+  @apply left-[37px];
+}
+
+.restaurantEditor-deleteModal .MuiModal-backdrop {
+  @apply bg-transparent;
+}
+
+.restaurantEditor-deleteModal .MuiDialog-paper {
+  @apply w-[245px] bg-input-bg;
+}
+.container {
+  position: absolute;
+  top: 50vh;
+  left: 10%;
+  // transform: translate(-50%, -50%);
+  background: #fff;
+  width: 700px;
+  height: 400px;
+  position: relative;
+  border-radius: 4px;
+  box-shadow: 0 0 30px 15px rgba(200, 200, 200,.75);
+  overflow: hidden;
+}
+
+.part {
+  position: absolute;
+  &__figure {
+    border-radius: 50%;
+  }
+}
+
+
+// const data = [
+//   {
+//     color: '#51c4c2',
+//     diameter: 90,
+//     position: {
+//       left: 180,
+//       top: 45,
+//     },
+//     interval: 1,
+//     distance: 40,
+//     step: 7,
+//   },
+//   {
+//     color: '#1fbecf',
+//     diameter: 350,
+//     position: {
+//       left: -100,
+//       top: 150,
+//     },
+//     interval: 1,
+//     distance: 25,
+//     step: 5,
+//   },
+//   {
+//     color: '#60c7bc',
+//     diameter: 170,
+//     position: {
+//       left: 300,
+//       top: 300,
+//     },
+//     interval: 1,
+//     distance: 30,
+//     step: 8,
+//   },
+//   {
+//     color: '#f47f61',
+//     diameter: 150,
+//     position: {
+//       left: 600,
+//       top: 150,
+//     },
+//     interval: 1,
+//     distance: 20,
+//     step: 5,
+//   },
+//   {
+//     color: '#f05572',
+//     diameter: 60,
+//     position: {
+//       left: 510,
+//       top: 170,
+//     },
+//     interval: 1,
+//     distance: 25,
+//     step: 6,
+//   },
+//   {
+//     color: '#f1666e',
+//     diameter: 100,
+//     position: {
+//       left: 535,
+//       top: 50,
+//     },
+//     interval: 1,
+//     distance: 10,
+//     step: 3,
+//   },
+// ];
+
+
+
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 1.5vmin);
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.characters {
+  list-style: none;
+  padding-left: 0;
+}
+
+.characters li {
+  display: flex;
+  align-items: center;
+  border: solid 2px #d0d0d0;
+  border-radius: .2em;
+  padding: .5em .8em .5em .5em;
+  margin-bottom: 1em;
+}
+
+.characters p {
+  max-width: none;
+  font-weight: bold;
+  margin: 0;
+}
+
+.characters-thumb {
+  overflow: hidden;
+  flex-shrink: 0;
+  width: 2em;
+  height: 2em;
+  background-color: #e8e8e8;
+  padding: .5em;
+  margin-right: .5em;
+}
+
+.characters-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
