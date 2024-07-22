@@ -12,7 +12,7 @@ import ButtonAddTableTFActive from 'shared/buttons/ButtonAddTableTFActive/Button
 import { Dialog } from '@mui/material'
 import TextField from '@mui/material/TextField'
 
-import ModalDeleteTable from './ModalDeleteTable'
+import ModalDeleteTable from '../../shared/modals/editRestaurantModal/ModalDeleteTable'
 import './RestaurantEditorPage.scss'
 
 import { tableType } from 'shared/types/restaurantsEntity'
@@ -280,7 +280,8 @@ const ModalEditingTable = ({ openModal, handleClose, tableInfo }: Props) => {
       {/* {tableInfo && ( */}
       <ModalDeleteTable
         openModal={openDeleteModal}
-        handleClose={handleCloseDelete}
+        handleCloseDeleteModal={handleCloseDelete}
+        handleCloseEditModal={handleClose}
         id={tableInfo?.id || 0}
       />
       {/* )} */}

@@ -1,91 +1,42 @@
 import { useState, useEffect } from 'react'
 import PageTitleSection from 'shared/typography/PageTitleSection'
-import { Formik, Form, FormikProps } from 'formik'
-import Radio from '@mui/material/Radio'
-import RadioGroup from '@mui/material/RadioGroup'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import FormControl from '@mui/material/FormControl'
-import * as Yup from 'yup'
 import AdminContainer from 'shared/AdminContainer/AdminContainer'
-//test
+
 import ButtonTFMain from 'shared/buttons/ButtonTFMain/ButtonTFMain'
-//test
 import ButtonTFDisabled from 'shared/buttons/ButtonTFDisabled/ButtonTFDisabled'
 import ButtonTFSecondary from 'shared/buttons/ButtonTFSecondary/ButtonTFSecondary'
 
-import ButtonAddTableTFDisabled from 'shared/buttons/ButtonAddTableTFDisabled/ButtonAddTableTFDisabled'
-import ButtonAddTableTFSecondary from 'shared/buttons/ButtonAddTableTFSecondary/ButtonAddTableTFSecondary'
-import ButtonAddTableTFActive from 'shared/buttons/ButtonAddTableTFActive/ButtonAddTableTFActive'
-
-import { Dialog } from '@mui/material'
-import TextField from '@mui/material/TextField'
-import './RestaurantEditorPage.scss'
-// import ModalAddTable from './ModalAddTable'
-// import ModalDeleteTable from './ModalDeleteTable'
+import ModalAddTable from './ModalAddTable'
 import ModalEditingTable from './ModalEditingTable'
 
-import {
-  // restaurantTableType,
-  // getTableType,
-  tableType
-} from 'shared/types/restaurantsEntity'
+import { tableType } from 'shared/types/restaurantsEntity'
 
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
 
-import {
-  createRestaurantTable,
-  getRestaurantTable,
-} from 'pages/AdminPanelPage/userRestaurantsReduser'
+import { getRestaurantTable } from 'pages/AdminPanelPage/userRestaurantsReduser'
 
-// import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+// import {
+//   DragDropContext,
+//   Droppable,
+//   Draggable,
+//   DraggableLocation,
+//   MovementMode,
+// } from "react-beautiful-dnd";
 
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import './RestaurantEditorPage.scss'
+
 type Props = {}
-interface FormValues {
-  title: string
-  seatsCount: number
-  // whereTable: string
-}
 
-const initialValues: FormValues = {
-  title: '',
-  seatsCount: 0,
-  // whereTable: '',
-}
-
-// interface DroppableProvided {
-//   droppableProps: {
-//     // Об'єкт, що містить властивості, які слід передати до Droppable компонента
-//     // Наприклад, класи, події, тощо.
-//     [key: string]: any;
-//   };
-//   innerRef: React.RefObject<HTMLElement>;
-//   // Інші властивості, які можуть бути використані в контексті даних
-// }
-
-const validationSchema = Yup.object().shape({
-  title: Yup.string().required("Обов'язкове поле"),
-  seatsCount: Yup.number().required("Обов'язкове поле"),
-  // whereTable: Yup.string().required("Обов'язкове поле"),
-})
-
-// interface Table {
-//   restaurantId: number;
-//   floorId: number;
-//   title: string;
-//   seatsCount: number;
-// }
-
-// const tables: Table[] = [
-//   { restaurantId: 150, floorId: 2, title: '1', seatsCount: 2 },
-//   { restaurantId: 150, floorId: 2, title: '2', seatsCount: 3 },
-//   { restaurantId: 150, floorId: 2, title: '3', seatsCount: 3 },
-//   { restaurantId: 150, floorId: 2, title: '4', seatsCount: 3 },
-//   { restaurantId: 150, floorId: 2, title: '5', seatsCount: 3 },
-//   { restaurantId: 150, floorId: 2, title: '6', seatsCount: 3 },
-//   { restaurantId: 150, floorId: 2, title: '7', seatsCount: 3 },
-// ];
+// type DropResult = {
+//   draggableId: string; // ідентифікатор перетягуваного елемента
+//   type: string; // тип дропаблу
+//   reason?: string; // причина, по якій викликано подію (не завжди доступна)
+//   source: DraggableLocation; // місце, з якого елемент почав перетягуватися
+//   destination?: DraggableLocation | null; // місце, куди елемент було перетягнуто (або null, якщо елемент було відпущено за межами дропаблу)
+//   mode: MovementMode; // режим пересування (може бути FLUID або SNAP)
+// };
 
 const RestaurantEditorPage = (props: Props) => {
   const dispatch = useAppDispatch()
@@ -98,6 +49,10 @@ const RestaurantEditorPage = (props: Props) => {
   const [openModalEditing, setOpenModalEditing] = useState(false)
   const [selectedTable, setSelectedTable] = useState<tableType | null>(null)
 
+  const [selectedTables, setSelectedTables] = useState<tableType[]>([])
+
+  console.log('selectedTables', selectedTables)
+
   useEffect(() => {
     dispatch(getRestaurantTable())
   }, [dispatch])
@@ -105,7 +60,7 @@ const RestaurantEditorPage = (props: Props) => {
   const userRestaurantsTable: tableType[] = useAppSelector((state) => {
     return state.userRestaurants.userRestaurantsTable.tables
   })
-  console.log('getUserRestaurantsTable', userRestaurantsTable)
+  // console.log("getUserRestaurantsTable", userRestaurantsTable);
 
   const handleOpenEditing = (table: tableType) => {
     setSelectedTable(table)
@@ -125,93 +80,50 @@ const RestaurantEditorPage = (props: Props) => {
 
   console.log('userRestaurantsCurrent', userRestaurantsCurrent)
 
-  const handleTableTitleChange = (
-    value: string,
-    props: FormikProps<FormValues>
-  ) => {
-    props.setFieldValue('title', value) // Встановлюємо значення title
+  //=======================================================
+
+  const handleSelectTable = (table: tableType) => {
+    setSelectedTables([...selectedTables, table])
   }
 
-  const handleCountTableChange = (
-    value: string,
-    props: FormikProps<FormValues>
-  ) => {
-    const parsedValue = parseInt(value) // Спробувати перетворити введене значення в число
-    console.log(parsedValue)
-    if (!isNaN(parsedValue)) {
-      // Якщо введено число
-      props.setFieldValue('seatsCount', parsedValue) // Встановити введене число як значення countTable
-    } else {
-      props.setFieldValue('seatsCount', value) // Якщо введено не число, встановити значення з радіокнопок
+  //===================================
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null)
+
+  const onDragOverContainer = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault()
+  }
+
+  const onDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault()
+    const tableId = e.dataTransfer.getData('tableId')
+    const selectedTable = userRestaurantsTable.find(
+      (t) => t.id?.toString() === tableId
+    )
+    if (selectedTable) {
+      handleSelectTable(selectedTable)
     }
   }
 
-  const handleSubmit = (values: FormValues) => {
-    const selectedRestaurant = userRestaurantsCurrent[0]
-    if (!selectedRestaurant) {
-      console.log('Виберіть ресторан')
-      toast.error('Виберіть ресторан', {
-        position: toast.POSITION.TOP_RIGHT,
-      })
-    } else if (selectedRestaurant) {
-      const formDataWithStaticData = {
-        restaurantId: selectedRestaurant.id,
-        floorId: 54,
-        ...values,
-      }
-      dispatch(createRestaurantTable(formDataWithStaticData))
-      console.log('Form submitted with values:', formDataWithStaticData)
-      handleClose()
-    }
+  const onDragStart = (index: number) => {
+    setDraggedIndex(index)
   }
 
-  // const handleWhereTableChange = (
-  //   value: string,
-  //   props: FormikProps<FormValues>
-  // ) => {
-  //   props.setFieldValue('whereTable', value)
+  // const onDragOver = (e: React.DragEvent<HTMLElement>) => {
+  //   e.preventDefault()
   // }
 
-  // const handleDragEnd = (result: any) => {
-  //   if (!result.destination) {
-  //     return;
-  //   }
+  const onDragEnter = (index: number) => {
+    if (draggedIndex === null || draggedIndex === index) return
+    const newSelectedTables = [...selectedTables]
+    const movedTable = newSelectedTables[draggedIndex]
+    newSelectedTables.splice(draggedIndex, 1)
+    newSelectedTables.splice(index, 0, movedTable)
+    setSelectedTables(newSelectedTables)
+    setDraggedIndex(index)
+  }
 
-  //   const items = Array.from(tables);
-  //   const [reorderedItem] = items.splice(result.source.index, 1);
-  //   items.splice(result.destination.index, 0, reorderedItem);
-  //   // оновіть стан компонента з використанням нового порядку
-  //   // setTables(items); // оновити стан, якщо `tables` зберігається в стані
-  // };
-
-  // const finalSpaceCharacters = [
-  //   { id: '150', title: '1' },
-  //   { id: '151', title: '2' },
-  //   { id: '152', title: '3' },
-  //   { id: '153', title: '4' },
-  //   { id: '154', title: '5' },
-  //   { id: '155', title: '6' },
-  //   { id: '156', title: '7' },
-  // ]
-
-  // const finalSpaceCharacters = [
-  //   { id: 'gary', name: 'Gary Goodspeed', thumb: '/images/gary.png' },
-  //   { id: 'cato', name: 'Little Cato', thumb: '/images/cato.png' },
-  //   { id: 'kvn', name: 'KVN', thumb: '/images/kvn.png' },
-  //   { id: 'mooncake', name: 'Mooncake', thumb: '/images/mooncake.png' },
-  //   { id: 'quinn', name: 'Quinn Ergon', thumb: '/images/quinn.png' }
-  // ]
-
-  // const [characters, updateCharacters] = useState(finalSpaceCharacters)
-
-  // function handleOnDragEnd(result: any) {
-  //   if (!result.destination) return
-
-  //   const items = Array.from(characters)
-  //   const [reorderedItem] = items.splice(result.source.index, 1)
-  //   items.splice(result.destination.index, 0, reorderedItem)
-
-  //   updateCharacters(items)
+  // const onDragEnd = () => {
+  //   setDraggedIndex(null)
   // }
 
   return (
@@ -225,15 +137,31 @@ const RestaurantEditorPage = (props: Props) => {
               </div>
 
               <div className="mt-[32px]">
-                <div className=" flex direction-column h-[611px] border border-solid border-border-title">
-                  {/* {newArray.length > 0 && */}
-                  {/* {tables.map(({title}) => (
-            <button>{title}</button>
-          ))} */}
-                  {/* <ModalDeleteTable
-                    openModal={openDeleteModal}
-                    handleClose={handleCloseDelete}
-                  /> */}
+                <div
+                  className="відмалювання кнопок flex items-center justify-center h-[611px] border border-solid border-border-title"
+                  onDrop={onDrop}
+                  onDragOver={onDragOverContainer}
+                  
+                >
+                  {/* відмалювання кнопок */}
+                  {selectedTables.map((table, index) => (
+                    <button
+                      key={table.id}
+                      onClick={() => handleOpenEditing(table)}
+                      onDragEnter={() => onDragEnter(index)}
+                      className="w-[24px] h-[24px] bg-secondary rounded-[100px] shadow-slider font-sans text-[14px] text-text-color text-center font-[300] leading-4 cursor-pointer m-2"
+                      draggable // Додаємо можливість перетягування
+                      onDragStart={(e) => {
+                        e.dataTransfer.setData(
+                          'tableId',
+                          table.id ? table.id.toString() : ''
+                        )
+                        onDragStart(index) // Викликаємо onDragStart для оновлення draggedIndex
+                      }}
+                    >
+                      {table.title}
+                    </button>
+                  ))}
                 </div>
                 <div className="mt-[40px] flex items-center justify-end p-[8px_12px] ">
                   <ul className="flex gap-[20px] p-[10px_0]">
@@ -241,9 +169,11 @@ const RestaurantEditorPage = (props: Props) => {
                       <ButtonTFSecondary label={'Скасувати'} />
                     </li>
                     <li>
-                      <ButtonTFDisabled label={'Зберегти'} />
-
-                      <ButtonTFMain label={'test'} />
+                      {selectedTables.length === 0 ? (
+                        <ButtonTFDisabled label={'Зберегти'} />
+                      ) : (
+                        <ButtonTFMain label={'Зберегти'} />
+                      )}
                     </li>
                   </ul>
                 </div>
@@ -262,19 +192,93 @@ const RestaurantEditorPage = (props: Props) => {
             </button>
           </div>
 
-          <ul>
-            <li className="flex items-center flex-wrap gap-x-[24px] gap-y-[33px] w-[284px] p-[10px]">
-              {userRestaurantsTable.map((table) => (
+          <ul className="button-item flex items-center flex-wrap w-[284px] gap-x-[24px] gap-y-[33px] p-[10px]">
+            {userRestaurantsTable.map((table, index) => (
+              <li
+                key={table.id}
+                draggable
+                onDragStart={() => onDragStart(index)}
+                onDragEnter={() => onDragEnter(index)}
+                className="button-item flex items-center flex-wrap"
+              >
                 <button
                   key={table.id}
+                  className="w-[24px] h-[24px] bg-secondary rounded-[100px] shadow-slider font-sans text-[14px] text-text-color text-center font-[300] leading-4 cursor-pointer"
                   onClick={() => handleOpenEditing(table)}
-                  className="w-[24px] h-[24px] bg-secondary rounded-[100px] shadow-slider font-sans text-[14px] text-text-color text-center  font-[300] leading-4 cursor-pointer"
+                  onDragStart={(e) =>
+                    e.dataTransfer.setData(
+                      'tableId',
+                      table.id ? table.id.toString() : ''
+                    )
+                  }
                 >
                   {table.title}
                 </button>
-              ))}
-            </li>
+              </li>
+            ))}
           </ul>
+
+          {/* <ul className="button-item flex items-center flex-wrap w-[284px] gap-x-[24px] gap-y-[33px] p-[10px]">
+            {userRestaurantsTable.map((table, index) => (
+              <li
+                className="button-item flex items-center flex-wrap"
+                draggable
+                onDragStart={() => onDragStart(index)}
+                onDragOver={onDragOver}
+                onDragEnter={() => onDragEnter(index)}
+                onDragEnd={onDragEnd}
+                onClick={() => handleSelectTable(table)}
+              >
+                <button
+                  key={table.id}
+                  onClick={() => handleOpenEditing(table)}
+                  className="w-[24px] h-[24px] bg-secondary rounded-[100px] shadow-slider font-sans text-[14px] text-text-color text-center font-[300] leading-4 cursor-pointer"
+                >
+                  {table.title}
+                </button>
+              </li>
+            ))}
+          </ul> */}
+
+          {/* <DragDropContext onDragEnd={handleOnDragEnd}>
+              <Droppable droppableId="constructorContainer">
+                {(provided) => (
+                  <ul
+                    ref={provided.innerRef}
+                    {...provided.droppableProps}
+                    className="button-item flex items-center flex-wrap w-[284px] gap-x-[24px] gap-y-[33px] p-[10px]"
+                  >
+          
+                    {userRestaurantsTable.map((table, index) => (
+                      <Draggable
+                        key={table.id}
+                        draggableId={table.title}
+                        index={index}
+                      >
+                        {(provided, snapshot) => (
+                          <li
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            className="button-item flex items-center flex-wrap"
+                            onClick={() => handleSelectTable(table)} // Додати обробник кліків для вибору столика
+                          >
+                            <button
+                              key={table.id}
+                              onClick={() => handleOpenEditing(table)}
+                              className="w-[24px] h-[24px] bg-secondary rounded-[100px] shadow-slider font-sans text-[14px] text-text-color text-center font-[300] leading-4 cursor-pointer"
+                            >
+                              {table.title}
+                            </button>
+                          </li>
+                        )}
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </ul>
+                )}
+              </Droppable>
+            </DragDropContext> */}
           <p className="pt-[298px] pb-[32px] text-text-color font-sans text-p font-medium leading-8">
             Клікніть на столик, щоб його редагувати
           </p>
@@ -289,251 +293,8 @@ const RestaurantEditorPage = (props: Props) => {
         handleClose={handleCloseEditing}
         tableInfo={selectedTable}
       />
-      {/* <ModalAddTable openModal={openModal} handleClose={handleClose} /> */}
+      <ModalAddTable openModal={openModal} handleClose={handleClose} />
 
-      {/* <div className="App">
-      <div className="App-header">
-          <DragDropContext onDragEnd={handleOnDragEnd}>
-          <Droppable droppableId="characters">
-            {(provided) => (
-              <ul className="characters" {...provided.droppableProps} ref={provided.innerRef}>
-                {characters.map(({id, title}, index) => {
-                  return (
-                    <Draggable key={id} draggableId={id} index={index}>
-                      {(provided) => (
-                        <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} className="flex items-center flex-wrap gap-x-[24px] gap-y-[33px] w-[284px] p-[10px]">
-                          <div className="characters-thumb">
-                          <button className="w-[24px] h-[24px] bg-secondary rounded-[100px] shadow-slider font-sans text-[14px] text-text-color text-center  font-[300] leading-4 cursor-pointer">{title}</button>
-                          </div>
-                   
-                        </li>
-                      )}
-                    </Draggable>
-                  );
-                })}
-                {provided.placeholder}
-              </ul>
-            )}
-          </Droppable>
-        </DragDropContext>
-        </div>
-        </div> */}
-
-      <Dialog
-        open={openModal}
-        onClose={handleClose}
-        className="restaurantEditor-modal"
-      >
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={handleSubmit}
-        >
-          {(props) => (
-            <Form className="restaurantEditor-form flex flex-col items-center justify-center gap-[32px] p-[16px] w-[406px]">
-              <FormControl component="fieldset" className="label">
-                <TextField
-                  id="standard-basic"
-                  label="Стіл 1"
-                  variant="standard"
-                  placeholder="Введіть назву столика"
-                  name="title"
-                  value={props.values.title || ''}
-                  onChange={(e) =>
-                    handleTableTitleChange(e.target.value, props)
-                  }
-                />
-              </FormControl>
-              <FormControl
-                component="fieldset"
-                className="input flex justify-center"
-              >
-                <RadioGroup
-                  name="seatsCount"
-                  value={props.values.seatsCount}
-                  onChange={(e) =>
-                    handleCountTableChange(e.target.value, props)
-                  }
-                  className="flex flex-wrap items-center justify-center flex-row gap-[25px] w-[374px] pb-[18px]"
-                >
-                  <FormControlLabel
-                    value="2"
-                    control={
-                      <Radio
-                        sx={{
-                          '& .MuiSvgIcon-root': {
-                            fontSize: 18,
-                          },
-                        }}
-                      />
-                    }
-                    label="2 місця"
-                    className="flex items-center gap-[4px] w-[103px] h-[20px] text-text-color font-sans text-small text-center font-normal leading-4"
-                  />
-                  <FormControlLabel
-                    value="4"
-                    control={
-                      <Radio
-                        sx={{
-                          '& .MuiSvgIcon-root': {
-                            fontSize: 18,
-                          },
-                        }}
-                      />
-                    }
-                    label="4 місця"
-                    className="flex items-center gap-[4px] w-[103px] h-[20px] text-text-color font-sans text-small text-center font-normal leading-4"
-                  />
-                  <FormControlLabel
-                    value="6"
-                    control={
-                      <Radio
-                        sx={{
-                          '& .MuiSvgIcon-root': {
-                            fontSize: 18,
-                          },
-                        }}
-                      />
-                    }
-                    label="6 місць"
-                    className="flex items-center gap-[4px] w-[103px] h-[20px] text-text-color font-sans text-small text-center font-normal leading-4"
-                  />
-                  <FormControlLabel
-                    value="8"
-                    control={
-                      <Radio
-                        sx={{
-                          '& .MuiSvgIcon-root': {
-                            fontSize: 18,
-                          },
-                        }}
-                      />
-                    }
-                    label="8 місць"
-                    className="flex items-center gap-[4px] w-[103px] h-[20px] text-text-color font-sans text-small text-center font-normal leading-4"
-                  />
-                  <FormControlLabel
-                    value="10"
-                    control={
-                      <Radio
-                        sx={{
-                          '& .MuiSvgIcon-root': {
-                            fontSize: 18,
-                          },
-                        }}
-                      />
-                    }
-                    label="10 місць"
-                    className="flex items-center gap-[4px] w-[103px] h-[20px] text-text-color font-sans text-small text-center font-normal leading-4"
-                  />
-                  <FormControlLabel
-                    value="12"
-                    control={
-                      <Radio
-                        sx={{
-                          '& .MuiSvgIcon-root': {
-                            fontSize: 18,
-                          },
-                        }}
-                      />
-                    }
-                    label="12 місць"
-                    className="flex items-center gap-[4px] w-[103px] h-[20px] text-text-color font-sans text-small text-center font-normal leading-4"
-                  />
-                </RadioGroup>
-
-                <TextField
-                  // className='restaurantEditor-form'
-                  id="Інша кількість"
-                  label="Інша кількість"
-                  variant="standard"
-                  placeholder="Введіть кількість місць"
-                  name="seatsCount"
-                  value={
-                    props.values.seatsCount !== null &&
-                    !isNaN(props.values.seatsCount)
-                      ? props.values.seatsCount
-                      : ''
-                  }
-                  onChange={(e) =>
-                    handleCountTableChange(e.target.value, props)
-                  }
-                />
-              </FormControl>
-
-              {/* <FormControl component="fieldset" className="">
-                <RadioGroup
-                  name="whereTable"
-                  onChange={(e) =>
-                    handleWhereTableChange(e.target.value, props)
-                  }
-                  className="flex flex-wrap justify-center flex-row gap-[25px] w-[395px]"
-                >
-                  <FormControlLabel
-                    value="Біля вікна"
-                    control={
-                      <Radio
-                        sx={{
-                          '& .MuiSvgIcon-root': {
-                            fontSize: 18,
-                          },
-                        }}
-                      />
-                    }
-                    label="Біля вікна"
-                    className="flex items-center gap-[4px] w-[118px] h-[20px] text-text-color font-sans text-small text-center font-normal leading-4"
-                  />
-                  <FormControlLabel
-                    value="На терасі"
-                    control={
-                      <Radio
-                        sx={{
-                          '& .MuiSvgIcon-root': {
-                            fontSize: 18,
-                          },
-                        }}
-                      />
-                    }
-                    label="На терасі"
-                    className="flex items-center gap-[4px] w-[118px] h-[20px] text-text-color font-sans text-small text-center font-normal leading-4"
-                  />
-                  <FormControlLabel
-                    value="В залі"
-                    control={
-                      <Radio
-                        sx={{
-                          '& .MuiSvgIcon-root': {
-                            fontSize: 18,
-                          },
-                        }}
-                      />
-                    }
-                    label="В залі"
-                    className="flex items-center gap-[4px] w-[118px] h-[20px] text-text-color font-sans text-small text-center font-normal leading-4"
-                  />
-                </RadioGroup>
-              </FormControl> */}
-
-              <ul className="flex items-center gap-[12px]">
-                <li>
-                  <ButtonAddTableTFSecondary
-                    onClick={handleClose}
-                    label={'Скасувати'}
-                  />
-                </li>
-                <li>
-                  {props.dirty && props.isValid ? (
-                    <ButtonAddTableTFActive label={'Підтвердити'} />
-                  ) : (
-                    <ButtonAddTableTFDisabled label={'Підтвердити'} />
-                  )}
-                </li>
-              </ul>
-              {/* <button onClick={handleOpenDelete}>Видалити столик</button> */}
-            </Form>
-          )}
-        </Formik>
-      </Dialog>
       <ToastContainer />
     </div>
   )

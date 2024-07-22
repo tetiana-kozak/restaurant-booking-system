@@ -1,0 +1,36 @@
+.restaurantEditor-modal .MuiModal-backdrop {
+    @apply bg-transparent;
+  }
+  
+  .restaurantEditor-modal .MuiDialog-paper {
+    @apply w-[406px] top-[100px] left-[500px] ;
+  }
+  
+  .restaurantEditor-form .MuiBox-root {
+    @apply flex items-center;
+  }
+  .restaurantEditor-form .MuiFormControl-root {
+    @apply flex items-center w-[257px];
+  }
+  .restaurantEditor-form .input .MuiFormControl-root {
+    @apply bg-input-bg;
+  }
+  .restaurantEditor-form .MuiInputBase-input {
+    @apply w-[257px];
+  }
+  
+  .restaurantEditor-form .label .MuiFormLabel-root {
+    @apply left-[99px];
+  }
+  
+  .restaurantEditor-form .MuiFormLabel-root {
+    @apply left-[37px];
+  }
+  
+  .restaurantEditor-deleteModal .MuiModal-backdrop {
+    @apply bg-transparent;
+  }
+  
+  .restaurantEditor-deleteModal .MuiDialog-paper {
+    @apply w-[245px] bg-input-bg;
+  }
