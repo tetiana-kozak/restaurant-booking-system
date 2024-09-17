@@ -16,3 +16,4 @@ const ButtonTFDisabled = ({ onClick, label }: Props) => {
 }
 
 export default ButtonTFDisabled
+
